@@ -186,7 +186,7 @@ public class LoginFrame extends javax.swing.JFrame {
         if (resultSet.next()) {
                 CurrentUser.setCurrentUser(usernameD);
             dispose();
-            new AdminDashboard().setVisible(true);
+            new AdminDashboardUI().setVisible(true);
             JOptionPane.showMessageDialog(this, "Connection successful");
         } else {
             JOptionPane.showMessageDialog(this, "Invalid credentials");
