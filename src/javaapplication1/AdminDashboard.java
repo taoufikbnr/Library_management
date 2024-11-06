@@ -67,13 +67,14 @@ public class AdminDashboard extends javax.swing.JFrame {
 
         // Set the scaled image as the button's icon
         addDocBtn.setIcon(new javax.swing.ImageIcon(scaledImage));
-        addDocBtn.setText("Add Subscriber");
+        addDocBtn.setText("Add  Document");
         addDocBtn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 addDocBtnActionPerformed(evt);
             }
         });
 
+        addSubBtn.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/add_user.png"))); // NOI18N
         addSubBtn.setText("Add Subscriber");
         addSubBtn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -97,8 +98,8 @@ public class AdminDashboard extends javax.swing.JFrame {
                 .addContainerGap(127, Short.MAX_VALUE))
             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                    .addContainerGap(248, Short.MAX_VALUE)
-                    .addComponent(addSubBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 138, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addContainerGap(221, Short.MAX_VALUE)
+                    .addComponent(addSubBtn)
                     .addGap(14, 14, 14)))
         );
         layout.setVerticalGroup(
@@ -112,8 +113,8 @@ public class AdminDashboard extends javax.swing.JFrame {
             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                     .addContainerGap(218, Short.MAX_VALUE)
-                    .addComponent(addSubBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGap(47, 47, 47)))
+                    .addComponent(addSubBtn)
+                    .addGap(30, 30, 30)))
         );
 
         pack();

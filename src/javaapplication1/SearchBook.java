@@ -136,7 +136,6 @@ String selectedCriteria="username";
 
     private void jComboBox1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBox1ActionPerformed
                 selectedCriteria = (String) jComboBox1.getSelectedItem();
-                   System.out.println(selectedCriteria);
     }//GEN-LAST:event_jComboBox1ActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
@@ -160,12 +159,12 @@ String selectedCriteria="username";
         ResultSet resultSet = null;
             String st;
     String usernameD = query.getText();
-            switch (selectedCriteria) { // Ensure case-insensitive matching
+            switch (selectedCriteria) { 
               case "username":
                   st = "SELECT * FROM users WHERE username LIKE ?";
                   break;
               case "password":
-                  st = "SELECT * FROM users WHERE password LIKE ?"; // Be cautious with this in real applications
+                  st = "SELECT * FROM users WHERE password LIKE ?"; 
                   break;
               default:
                   st = "SELECT * FROM users WHERE username LIKE ?";
@@ -177,10 +176,8 @@ String selectedCriteria="username";
             statement = conn.prepareStatement(st);
         statement.setString(1, "%" + usernameD + "%");
             resultSet = statement.executeQuery();
-            // Displaying the list of users
                 ArrayList<Object[]> data = new ArrayList<>();
 
-            // Collect data from ResultSet
             while (resultSet.next()) {
                 String username = resultSet.getString("username");
                 String password = resultSet.getString("password");
