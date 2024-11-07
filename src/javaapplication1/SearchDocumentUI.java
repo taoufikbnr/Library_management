@@ -155,6 +155,7 @@ String selectedCriteria="id";
                 data.add(new Object[]{id, cote,etat});
             }
             Object[][] tableData = data.toArray(new Object[0][]);
+            System.out.println(tableData[0][0]);
              docTable.setModel(new javax.swing.table.DefaultTableModel(
                 tableData,
                 new String[] {"ID", "Cote","Etat"} // Column names

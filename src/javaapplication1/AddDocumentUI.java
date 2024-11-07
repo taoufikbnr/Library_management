@@ -20,7 +20,6 @@ import javax.swing.JOptionPane;
 public class AddDocumentUI extends javax.swing.JFrame {
  String selectedType;
  String selectedMemoire="licence";
-  String currentUser=CurrentUser.instance.getUsername();
 
     /**
      * Creates new form AddDocumentUI
