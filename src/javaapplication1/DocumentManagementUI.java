@@ -15,6 +15,7 @@ public class DocumentManagementUI extends javax.swing.JFrame {
      */
     public DocumentManagementUI() {
         initComponents();
+        setLocationRelativeTo(null);
     }
 
     /**
@@ -32,6 +33,7 @@ public class DocumentManagementUI extends javax.swing.JFrame {
         searchDocBtn = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setTitle("RT | Admin Dashboard");
 
         addDocBtn.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/add Doc 50.png"))); // NOI18N
         addDocBtn.setText("Add Document");

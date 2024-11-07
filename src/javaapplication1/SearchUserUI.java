@@ -17,12 +17,12 @@ import javax.swing.table.DefaultTableModel;
  *
  * @author lenovo
  */
-public class SearchBook extends javax.swing.JFrame {
+public class SearchUserUI extends javax.swing.JFrame {
 String selectedCriteria="username";
 /**
      * Creates new form SearchBook
      */
-    public SearchBook() {
+    public SearchUserUI() {
         initComponents();
         setLocationRelativeTo(null);
           performSearch();

@@ -148,7 +148,7 @@ public class AdminDashboardUI extends javax.swing.JFrame {
     }//GEN-LAST:event_addSubBtnActionPerformed
 
     private void addDocBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addDocBtnActionPerformed
-   new AddDocumentUI().setVisible(true);
+   new DocumentManagementUI().setVisible(true);
 
         dispose();    }//GEN-LAST:event_addDocBtnActionPerformed
 
