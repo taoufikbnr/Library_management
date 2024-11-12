@@ -13,6 +13,8 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JOptionPane;
 import java.awt.*;
+import java.util.ArrayList;
+import javax.swing.table.DefaultTableModel;
 
 /**
  *
@@ -21,6 +23,9 @@ import java.awt.*;
 public class AddDocumentUI extends javax.swing.JFrame {
  String selectedType;
  String selectedMemoire="licence";
+ArrayList<String> selectedAuthors = new ArrayList<>();
+ArrayList<Integer> selectedAuthorsId = new ArrayList<>();
+
 
     /**
      * Creates new form AddDocumentUI
@@ -29,6 +34,7 @@ public class AddDocumentUI extends javax.swing.JFrame {
         initComponents();
             type.setSelectedItem("ouvrage");
         setLocationRelativeTo(null); 
+        getAuthors();
 
 
     }
@@ -46,9 +52,6 @@ public class AddDocumentUI extends javax.swing.JFrame {
         ajoutDoc = new javax.swing.JLabel();
         cote = new javax.swing.JTextField();
         titre = new javax.swing.JTextField();
-        prenom_auteur = new javax.swing.JTextField();
-        code_auteur = new javax.swing.JTextField();
-        nom_auteur = new javax.swing.JTextField();
         etat = new javax.swing.JComboBox<>();
         type = new javax.swing.JComboBox<>();
         addBtn = new javax.swing.JButton();
@@ -56,6 +59,8 @@ public class AddDocumentUI extends javax.swing.JFrame {
         coteLabel = new javax.swing.JLabel();
         titreLabel = new javax.swing.JLabel();
         dateLabel = new javax.swing.JLabel();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        jTable1 = new javax.swing.JTable();
         jLayeredPane2 = new javax.swing.JLayeredPane();
         memoirePanel = new javax.swing.JPanel();
         licenceBtn = new javax.swing.JRadioButton();
@@ -66,11 +71,13 @@ public class AddDocumentUI extends javax.swing.JFrame {
         isbn = new javax.swing.JTextField();
         isbnLabel1 = new javax.swing.JLabel();
         editeurLabel1 = new javax.swing.JLabel();
-        codeAuteurLabel = new javax.swing.JLabel();
         etatLabel = new javax.swing.JLabel();
         nomAuteurLabel = new javax.swing.JLabel();
-        prenomAuteurLabe = new javax.swing.JLabel();
         homeBtn = new javax.swing.JButton();
+        jScrollPane2 = new javax.swing.JScrollPane();
+        nomAuteurs = new javax.swing.JTextArea();
+        searchInput = new javax.swing.JTextField();
+        searchBtn = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setBackground(new java.awt.Color(0, 0, 0));
@@ -81,12 +88,6 @@ public class AddDocumentUI extends javax.swing.JFrame {
         cote.setText("1");
 
         titre.setText("titre");
-
-        prenom_auteur.setText("prenom_auteur");
-
-        code_auteur.setText("2");
-
-        nom_auteur.setText("nom_auteur");
 
         etat.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "disponible", "non disponible" }));
 
@@ -112,6 +113,25 @@ public class AddDocumentUI extends javax.swing.JFrame {
         titreLabel.setText("Titre");
 
         dateLabel.setText("Date partution");
+
+        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null}
+            },
+            new String [] {
+                "Title 1", "Title 2", "Title 3", "Title 4"
+            }
+        ));
+        jTable1.setSelectionMode(javax.swing.ListSelectionModel.MULTIPLE_INTERVAL_SELECTION);
+        jTable1.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jTable1MouseClicked(evt);
+            }
+        });
+        jScrollPane1.setViewportView(jTable1);
 
         jLayeredPane2.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
@@ -189,21 +209,34 @@ public class AddDocumentUI extends javax.swing.JFrame {
                 .addGap(24, 24, 24))
         );
 
-        jLayeredPane2.add(ouvragePanel, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 330, -1));
-
-        codeAuteurLabel.setText("Code auteur");
+        jLayeredPane2.add(ouvragePanel, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 300, -1));
 
         etatLabel.setText("Etat");
 
-        nomAuteurLabel.setText("Nom auteur");
+        nomAuteurLabel.setText("Nom auteur(s)");
 
-        prenomAuteurLabe.setText("Prenom auteur");
-
-        homeBtn.setBackground(new Color(0, 0, 0, 0));
         homeBtn.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/home icon 50.png"))); // NOI18N
+        homeBtn.setBackground(new Color(0, 0, 0, 0));
         homeBtn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 homeBtnActionPerformed(evt);
+            }
+        });
+
+        nomAuteurs.setColumns(20);
+        nomAuteurs.setRows(5);
+        jScrollPane2.setViewportView(nomAuteurs);
+
+        searchInput.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                searchInputActionPerformed(evt);
+            }
+        });
+
+        searchBtn.setText("Search");
+        searchBtn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                searchBtnActionPerformed(evt);
             }
         });
 
@@ -212,50 +245,59 @@ public class AddDocumentUI extends javax.swing.JFrame {
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addGap(75, 75, 75)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(titreLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(coteLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(49, 49, 49))
-                    .addComponent(codeAuteurLabel, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 86, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(dateLabel, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 86, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(nomAuteurLabel, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 86, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(etatLabel, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 86, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(prenomAuteurLabe, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 86, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(nom_auteur, javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(datePicker1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(titre)
-                    .addComponent(etat, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(prenom_auteur)
-                    .addComponent(cote)
-                    .addComponent(code_auteur))
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(146, 146, 146)
-                        .addComponent(type, javax.swing.GroupLayout.PREFERRED_SIZE, 149, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(81, 81, 81)
-                        .addComponent(jLayeredPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 277, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(22, Short.MAX_VALUE))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(addBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 105, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(296, 296, 296))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addGap(16, 16, 16)
                 .addComponent(homeBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(ajoutDoc, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(265, 265, 265))
+            .addGroup(layout.createSequentialGroup()
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(334, 334, 334)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(addBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 105, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(nomAuteurLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 86, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(18, 18, 18)
+                                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 189, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(75, 75, 75)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 230, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGroup(layout.createSequentialGroup()
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                            .addComponent(titreLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                            .addComponent(coteLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                        .addGap(49, 49, 49))
+                                    .addComponent(dateLabel, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 86, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(etatLabel, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 86, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                    .addComponent(datePicker1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                    .addComponent(titre)
+                                    .addComponent(etat, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                    .addComponent(cote))))
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(layout.createSequentialGroup()
+                                .addGap(146, 146, 146)
+                                .addComponent(type, javax.swing.GroupLayout.PREFERRED_SIZE, 149, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(layout.createSequentialGroup()
+                                .addGap(81, 81, 81)
+                                .addComponent(jLayeredPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 277, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(134, 134, 134)
+                        .addComponent(searchInput, javax.swing.GroupLayout.PREFERRED_SIZE, 86, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(searchBtn)))
+                .addContainerGap(80, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+            .addGroup(layout.createSequentialGroup()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(homeBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 52, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(layout.createSequentialGroup()
                         .addGap(12, 12, 12)
                         .addComponent(ajoutDoc, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -274,32 +316,30 @@ public class AddDocumentUI extends javax.swing.JFrame {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(etat, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(etatLabel))
-                        .addGap(8, 8, 8)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(code_auteur, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(codeAuteurLabel))
-                        .addGap(28, 28, 28)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addGroup(layout.createSequentialGroup()
-                                .addGap(27, 27, 27)
-                                .addComponent(nomAuteurLabel))
-                            .addGroup(layout.createSequentialGroup()
-                                .addGap(7, 7, 7)
-                                .addComponent(nom_auteur, javax.swing.GroupLayout.DEFAULT_SIZE, 42, Short.MAX_VALUE)))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(prenom_auteur, javax.swing.GroupLayout.PREFERRED_SIZE, 44, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(prenomAuteurLabe)))
+                            .addComponent(etatLabel)))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(60, 60, 60)
                         .addComponent(type, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jLayeredPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 210, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addComponent(homeBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 52, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jLayeredPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 152, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addGap(26, 26, 26)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(1, 1, 1)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(searchInput, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(searchBtn))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 103, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 48, Short.MAX_VALUE)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 59, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(nomAuteurLabel))
+                        .addGap(108, 108, 108)))
                 .addComponent(addBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(20, Short.MAX_VALUE))
+                .addGap(90, 90, 90))
         );
 
         pack();
@@ -318,57 +358,14 @@ public class AddDocumentUI extends javax.swing.JFrame {
     }//GEN-LAST:event_typeActionPerformed
 
     private void addBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addBtnActionPerformed
-       Connection conn=null;
-       PreparedStatement statement=null;
-        try {
-      conn = DBConnection.getConnection();
-      String sql = "INSERT INTO documents (cote, titre, date_parution,etat, code_auteur, nom_auteur, prenom_auteur,type, isbn, editeur, diplome) VALUES (?,?,?,?,?,?,?,?,?,?,?)";
-    statement = conn.prepareStatement(sql);
-    
-    // Gather the data from the text fields
-    String coteData = cote.getText();
-    String titreData = titre.getText();
-    String dateString = datePicker1.getText();  // '1 novembre 2024'
-    String code_auteurData = code_auteur.getText();
-    String nom_auteurData = nom_auteur.getText();
-    String prenom_auteurData = prenom_auteur.getText();
-    
-    SimpleDateFormat inputFormat = new SimpleDateFormat("d MMMM yyyy", Locale.FRENCH);  
-    java.util.Date utilDate = inputFormat.parse(dateString);             
-    java.sql.Date sqlDate = new java.sql.Date(utilDate.getTime());  
-  
+      int docId = addDocument();
 
-    // Set the common fields
-    statement.setString(1, coteData);
-    statement.setString(2, titreData);
-    statement.setDate(3, sqlDate); 
-    statement.setString(4, (String) etat.getSelectedItem());
-    statement.setString(5, code_auteurData);
-    statement.setString(6, nom_auteurData);
-    statement.setString(7, prenom_auteurData);
-    statement.setString(8, selectedType);
-    
-    // Depending on the selected type, set additional fields
-    if ("ouvrage".equals(selectedType)) {
-        statement.setString(9, isbn.getText()); 
-        statement.setString(10, editeur.getText()); 
-        statement.setString(11, null); 
+    // Step 2: Pass the docId to addDocAuth to associate authors with the document
+    if (docId != -1) {
+        addDocAuth(docId);
     } else {
-        // Set diplome for the other case
-        statement.setString(9, null); 
-        statement.setString(10, null); 
-        statement.setString(11, selectedMemoire); 
+        JOptionPane.showMessageDialog(null, "Failed to add document. Cannot proceed with adding authors.");
     }
-    
-    statement.executeUpdate();
-        } catch (SQLException e) {
-            e.printStackTrace();
-            JOptionPane.showMessageDialog(null, "Error adding users: " + e.getMessage());
-        } catch (ParseException ex) {
-                        JOptionPane.showMessageDialog(null, "Error adding users: " + ex.getMessage());
-
-         Logger.getLogger(AddDocumentUI.class.getName()).log(Level.SEVERE, null, ex);
-     }
     }//GEN-LAST:event_addBtnActionPerformed
 
     private void licenceBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_licenceBtnActionPerformed
@@ -392,6 +389,147 @@ public class AddDocumentUI extends javax.swing.JFrame {
         dispose();
     }//GEN-LAST:event_homeBtnActionPerformed
 
+    private void jTable1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTable1MouseClicked
+         int[] selectedRows=jTable1.getSelectedRows();
+        DefaultTableModel model = (DefaultTableModel) jTable1.getModel();
+        for (int rowIndex : selectedRows) {
+                     Object id = model.getValueAt(rowIndex, 0);
+                     Object nom = model.getValueAt(rowIndex, 1);
+                     Object prenom = model.getValueAt(rowIndex, 2);
+                         String fullName = nom + " " + prenom;
+                      if (selectedAuthors.contains((String)fullName)) {
+                             selectedAuthors.remove((String)fullName);
+                            selectedAuthorsId.remove(Integer.valueOf((int) id));
+                         } else {
+                             selectedAuthors.add((String) fullName);
+                             selectedAuthorsId.add((int)id);
+                         }
+                     nomAuteurs.setText(String.join(", ", selectedAuthors));
+                     System.out.println(selectedAuthorsId);
+                }
+    }//GEN-LAST:event_jTable1MouseClicked
+
+    private void searchInputActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_searchInputActionPerformed
+        getAuthors();
+    }//GEN-LAST:event_searchInputActionPerformed
+
+    private void searchBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_searchBtnActionPerformed
+        getAuthors();
+    }//GEN-LAST:event_searchBtnActionPerformed
+    private int addDocument(){
+       Connection conn=null;
+       PreparedStatement statement=null;
+       ResultSet generatedKeys = null;
+        int docId = -1;
+        
+        try {
+      conn = DBConnection.getConnection();
+      String sql = "INSERT INTO documents (cote, titre, date_parution,etat,type, isbn, editeur, diplome) VALUES (?,?,?,?,?,?,?,?)";
+        statement = conn.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS);
+    
+    // Gather the data from the text fields
+    String coteData = cote.getText();
+    String titreData = titre.getText();
+    String dateString = datePicker1.getText();  // '1 novembre 2024'
+    
+    SimpleDateFormat inputFormat = new SimpleDateFormat("d MMMM yyyy", Locale.FRENCH);  
+    java.util.Date utilDate = inputFormat.parse(dateString);             
+    java.sql.Date sqlDate = new java.sql.Date(utilDate.getTime());  
+  
+
+    // Set the common fields
+    statement.setString(1, coteData);
+    statement.setString(2, titreData);
+    statement.setDate(3, sqlDate); 
+    statement.setString(4, (String) etat.getSelectedItem());
+    statement.setString(5, selectedType);
+    
+    // Depending on the selected type, set additional fields
+    if ("ouvrage".equals(selectedType)) {
+        statement.setString(6, isbn.getText()); 
+        statement.setString(7, editeur.getText()); 
+        statement.setString(8, null); 
+    } else {
+        // Set diplome for the other case
+        statement.setString(6, null); 
+        statement.setString(7, null); 
+        statement.setString(8, selectedMemoire); 
+    }
+    
+        int affectedRows = statement.executeUpdate();
+    
+            if (affectedRows > 0) {
+            // Get the generated docId
+            generatedKeys = statement.getGeneratedKeys();
+            if (generatedKeys.next()) {
+                docId = generatedKeys.getInt(1);  // The docId is the first (and only) generated key
+            }
+        }
+    
+        } catch (SQLException e) {
+            e.printStackTrace();
+            JOptionPane.showMessageDialog(null, "Error adding users: " + e.getMessage());
+        } catch (ParseException ex) {
+                        JOptionPane.showMessageDialog(null, "Error adding users: " + ex.getMessage());
+
+         Logger.getLogger(AddDocumentUI.class.getName()).log(Level.SEVERE, null, ex);
+     }
+         return docId;
+    }
+    private void addDocAuth(int documentId){
+     Connection conn=null;
+      PreparedStatement statement=null;
+        try {
+      conn = DBConnection.getConnection();
+      String sql = "INSERT INTO documents_authors (document_id,author_id) VALUES (?,?)";
+    statement = conn.prepareStatement(sql);
+
+     for (int authorId : selectedAuthorsId) {
+        statement.setInt(1, documentId);  
+        statement.setInt(2, authorId);      
+
+        // Execute the insert for this row
+        statement.addBatch();  // Use addBatch to batch the inserts for performance
+    }
+
+    // Execute the batch insert
+    statement.executeBatch();
+        } catch (SQLException e) {
+            e.printStackTrace();
+            JOptionPane.showMessageDialog(null, "Error adding users: " + e.getMessage());
+        } 
+    }
+    private void getAuthors(){
+
+        Connection conn=null;
+       ResultSet resultSet=null;
+       PreparedStatement statement=null;
+       String queryStr = (String) searchInput.getText();
+        try {
+            conn = DBConnection.getConnection();
+            statement = conn.prepareStatement("SELECT * FROM authors WHERE nom_auteur LIKE ? OR prenom_auteur LIKE ?");
+            statement.setString(1,"%" + queryStr + "%" );
+            statement.setString(2,"%" + queryStr + "%" );
+            resultSet = statement.executeQuery();
+            
+            ArrayList<Object[]> data = new ArrayList<>();
+
+            while (resultSet.next()) {
+                int id = resultSet.getInt("code_auteur");
+                String lastName = resultSet.getString("prenom_auteur");
+                String firstName = resultSet.getString("nom_auteur");
+                data.add(new Object[]{id,lastName, firstName});
+            }
+            Object[][] tableData = data.toArray(new Object[0][]);
+      jTable1.setModel(new javax.swing.table.DefaultTableModel(
+                tableData,
+                new String[] {"code_auteur", "Nom","Prenom"} // Column names
+            ));
+      
+               
+        } catch (SQLException e) {
+        }
+    }
     /**
      * @param args the command line arguments
      */
@@ -401,8 +539,6 @@ public class AddDocumentUI extends javax.swing.JFrame {
     private javax.swing.JButton addBtn;
     private javax.swing.JLabel ajoutDoc;
     private javax.swing.ButtonGroup btnGrpMemoire;
-    private javax.swing.JLabel codeAuteurLabel;
-    private javax.swing.JTextField code_auteur;
     private javax.swing.JTextField cote;
     private javax.swing.JLabel coteLabel;
     private javax.swing.JLabel dateLabel;
@@ -416,14 +552,17 @@ public class AddDocumentUI extends javax.swing.JFrame {
     private javax.swing.JTextField isbn;
     private javax.swing.JLabel isbnLabel1;
     private javax.swing.JLayeredPane jLayeredPane2;
+    private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JScrollPane jScrollPane2;
+    private javax.swing.JTable jTable1;
     private javax.swing.JRadioButton licenceBtn;
     private javax.swing.JRadioButton mastereBtn;
     private javax.swing.JPanel memoirePanel;
     private javax.swing.JLabel nomAuteurLabel;
-    private javax.swing.JTextField nom_auteur;
+    private javax.swing.JTextArea nomAuteurs;
     private javax.swing.JPanel ouvragePanel;
-    private javax.swing.JLabel prenomAuteurLabe;
-    private javax.swing.JTextField prenom_auteur;
+    private javax.swing.JButton searchBtn;
+    private javax.swing.JTextField searchInput;
     private javax.swing.JTextField titre;
     private javax.swing.JLabel titreLabel;
     private javax.swing.JComboBox<String> type;

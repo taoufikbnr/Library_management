@@ -62,6 +62,7 @@ String selectedCriteria="username";
             }
         }
     );
+    jTable1.setSelectionMode(javax.swing.ListSelectionModel.MULTIPLE_INTERVAL_SELECTION);
     jTable1.addMouseListener(new java.awt.event.MouseAdapter() {
         public void mouseClicked(java.awt.event.MouseEvent evt) {
             jTable1MouseClicked(evt);
@@ -89,8 +90,6 @@ String selectedCriteria="username";
         }
     });
 
-    jTextField1.setText("jTextField1");
-
     javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
     getContentPane().setLayout(layout);
     layout.setHorizontalGroup(
@@ -100,7 +99,7 @@ String selectedCriteria="username";
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 545, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGroup(layout.createSequentialGroup()
                     .addGap(62, 62, 62)
-                    .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 71, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 138, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(query, javax.swing.GroupLayout.PREFERRED_SIZE, 71, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGap(18, 18, 18)
@@ -143,12 +142,17 @@ String selectedCriteria="username";
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jTable1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTable1MouseClicked
-        int selectedRow=jTable1.getSelectedRow();
+         int selectedRow=jTable1.getSelectedRow();
         DefaultTableModel model = (DefaultTableModel) jTable1.getModel();
 
+            // Iterate over all selected rows and get the value of the first column (e.g., username)
+        // Get the value in the first column (index 0)
         Object username = model.getValueAt(selectedRow, 0);
-        System.out.println(username);
+        System.out.println(username); 
+        String currentText = jTextField1.getText();
         jTextField1.setText((String)username);
+    
+//        jTextField1.setText((String)username);
     }//GEN-LAST:event_jTable1MouseClicked
     /**
      * @param args the command line arguments
