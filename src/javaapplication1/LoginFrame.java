@@ -11,6 +11,8 @@ import javax.swing.JOptionPane;
 import javax.swing.SwingUtilities;
 import javax.swing.*;
 import java.sql.*;
+import org.mindrot.jbcrypt.BCrypt;
+
 /**
  *
  * @author lenovo
@@ -171,18 +173,14 @@ public class LoginFrame extends javax.swing.JFrame {
         }
 
     try {
-        // Establish connection to the database
         conn = DBConnection.getConnection();
 
-        // Prepare SQL statement
         statement = conn.prepareStatement("SELECT * FROM librarian WHERE username = ? AND password = ?");
         statement.setString(1, usernameD);
-        statement.setString(2, passwordData);
+        statement.setString(2, MD5(passwordData));
 
-        // Execute the query
         resultSet = statement.executeQuery();
 
-        // Check for valid credentials
         if (resultSet.next()) {
                 CurrentUser.setCurrentUser(usernameD);
             dispose();

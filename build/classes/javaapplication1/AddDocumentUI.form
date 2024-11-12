@@ -51,29 +51,32 @@
                       </Group>
                   </Group>
                   <Group type="102" alignment="0" attributes="0">
-                      <EmptySpace min="-2" pref="75" max="-2" attributes="0"/>
-                      <Group type="103" groupAlignment="1" attributes="0">
-                          <Component id="jScrollPane1" min="-2" pref="230" max="-2" attributes="0"/>
-                          <Group type="102" alignment="1" attributes="0">
-                              <Group type="103" groupAlignment="0" attributes="0">
-                                  <Group type="102" alignment="1" attributes="0">
-                                      <Group type="103" groupAlignment="0" attributes="0">
-                                          <Component id="titreLabel" min="-2" pref="37" max="-2" attributes="0"/>
-                                          <Component id="coteLabel" min="-2" pref="37" max="-2" attributes="0"/>
+                      <EmptySpace min="75" pref="75" max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="0" attributes="0">
+                          <Group type="103" groupAlignment="1" attributes="0">
+                              <Group type="102" alignment="1" attributes="0">
+                                  <Group type="103" groupAlignment="0" attributes="0">
+                                      <Group type="102" alignment="1" attributes="0">
+                                          <Group type="103" groupAlignment="0" attributes="0">
+                                              <Component id="titreLabel" min="-2" pref="37" max="-2" attributes="0"/>
+                                              <Component id="coteLabel" min="-2" pref="37" max="-2" attributes="0"/>
+                                          </Group>
+                                          <EmptySpace min="-2" pref="49" max="-2" attributes="0"/>
                                       </Group>
-                                      <EmptySpace min="-2" pref="49" max="-2" attributes="0"/>
+                                      <Component id="dateLabel" alignment="1" min="-2" pref="86" max="-2" attributes="0"/>
+                                      <Component id="etatLabel" alignment="1" min="-2" pref="86" max="-2" attributes="0"/>
                                   </Group>
-                                  <Component id="dateLabel" alignment="1" min="-2" pref="86" max="-2" attributes="0"/>
-                                  <Component id="etatLabel" alignment="1" min="-2" pref="86" max="-2" attributes="0"/>
+                                  <EmptySpace max="-2" attributes="0"/>
+                                  <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                                      <Component id="datePicker1" alignment="0" max="32767" attributes="0"/>
+                                      <Component id="titre" alignment="0" max="32767" attributes="0"/>
+                                      <Component id="etat" max="32767" attributes="0"/>
+                                      <Component id="cote" max="32767" attributes="0"/>
+                                  </Group>
                               </Group>
-                              <EmptySpace max="-2" attributes="0"/>
-                              <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                                  <Component id="datePicker1" alignment="0" max="32767" attributes="0"/>
-                                  <Component id="titre" alignment="0" max="32767" attributes="0"/>
-                                  <Component id="etat" max="32767" attributes="0"/>
-                                  <Component id="cote" max="32767" attributes="0"/>
-                              </Group>
+                              <Component id="jScrollPane1" alignment="1" min="-2" pref="230" max="-2" attributes="0"/>
                           </Group>
+                          <Component id="newAuthorBtn" alignment="1" min="-2" pref="231" max="-2" attributes="0"/>
                       </Group>
                       <Group type="103" groupAlignment="0" attributes="0">
                           <Group type="102" alignment="0" attributes="0">
@@ -93,7 +96,7 @@
                       <Component id="searchBtn" min="-2" max="-2" attributes="0"/>
                   </Group>
               </Group>
-              <EmptySpace pref="80" max="32767" attributes="0"/>
+              <EmptySpace pref="98" max="32767" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
@@ -133,25 +136,26 @@
                       <Component id="jLayeredPane2" min="-2" pref="152" max="-2" attributes="0"/>
                   </Group>
               </Group>
-              <EmptySpace min="-2" pref="26" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="0" attributes="0">
                   <Group type="102" attributes="0">
-                      <EmptySpace min="-2" pref="1" max="-2" attributes="0"/>
+                      <EmptySpace min="-2" pref="27" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="3" attributes="0">
                           <Component id="searchInput" alignment="3" min="-2" max="-2" attributes="0"/>
                           <Component id="searchBtn" alignment="3" min="-2" max="-2" attributes="0"/>
                       </Group>
                       <EmptySpace max="-2" attributes="0"/>
                       <Component id="jScrollPane1" min="-2" pref="103" max="-2" attributes="0"/>
-                      <EmptySpace max="32767" attributes="0"/>
+                      <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                      <Component id="newAuthorBtn" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace pref="13" max="32767" attributes="0"/>
                   </Group>
                   <Group type="102" alignment="1" attributes="0">
-                      <EmptySpace pref="48" max="32767" attributes="0"/>
+                      <EmptySpace max="32767" attributes="0"/>
                       <Group type="103" groupAlignment="0" attributes="0">
                           <Component id="jScrollPane2" min="-2" pref="59" max="-2" attributes="0"/>
                           <Component id="nomAuteurLabel" min="-2" max="-2" attributes="0"/>
                       </Group>
-                      <EmptySpace min="-2" pref="108" max="-2" attributes="0"/>
+                      <EmptySpace min="108" pref="108" max="-2" attributes="0"/>
                   </Group>
               </Group>
               <Component id="addBtn" min="-2" pref="33" max="-2" attributes="0"/>
@@ -451,6 +455,18 @@
       </Properties>
       <Events>
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="searchBtnActionPerformed"/>
+      </Events>
+    </Component>
+    <Component class="javax.swing.JToggleButton" name="newAuthorBtn">
+      <Properties>
+        <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
+          <Image iconType="3" name="/images/add_author (50).png"/>
+        </Property>
+        <Property name="text" type="java.lang.String" value="Nouveau Auteur"/>
+        <Property name="horizontalAlignment" type="int" value="2"/>
+      </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="newAuthorBtnActionPerformed"/>
       </Events>
     </Component>
   </SubComponents>
