@@ -5,20 +5,23 @@
 package javaapplication1;
 import java.sql.*;
 import java.util.ArrayList;
+import java.awt.*;
+import javax.swing.table.TableColumnModel;
 
 /**
  *
  * @author lenovo
  */
 public class SearchDocumentUI extends javax.swing.JFrame {
-String selectedCriteria="id";
+String selectedCriteria="";
+Object[][] tableData = null;
     /**
      * Creates new form SearchDocumentUI
      */
     public SearchDocumentUI() {
         initComponents();
         setLocationRelativeTo(null);
-        getDocuments();
+        performSearch();
     }
 
     /**
@@ -32,35 +35,26 @@ String selectedCriteria="id";
 
         jScrollPane1 = new javax.swing.JScrollPane();
         docTable = new javax.swing.JTable();
-        searchBtn = new javax.swing.JButton();
         queryInput = new javax.swing.JTextField();
         jComboBox1 = new javax.swing.JComboBox<>();
         jLabel1 = new javax.swing.JLabel();
         errorLabel = new javax.swing.JLabel();
+        searchBtn = new javax.swing.JToggleButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        docTable.getTableHeader().setBackground(new java.awt.Color(0, 153, 51));
-        docTable.getTableHeader().setForeground(new java.awt.Color(255, 255, 255));
         docTable.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null}
+
             },
             new String [] {
-                "Title 1", "Title 2", "Title 3", "Title 4"
+
             }
         ));
+        docTable.setAutoResizeMode(javax.swing.JTable.AUTO_RESIZE_LAST_COLUMN);
+        docTable.getTableHeader().setBackground(new java.awt.Color(0, 153, 51));
+        docTable.getTableHeader().setForeground(new java.awt.Color(255, 255, 255));
         jScrollPane1.setViewportView(docTable);
-
-        searchBtn.setText("Search");
-        searchBtn.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                searchBtnActionPerformed(evt);
-            }
-        });
 
         queryInput.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -68,17 +62,24 @@ String selectedCriteria="id";
             }
         });
 
-        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "id", "cote", "etat" }));
+        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "id", "cote", "titre", "auteur", "etat", "type" }));
         jComboBox1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jComboBox1ActionPerformed(evt);
             }
         });
 
-        jLabel1.setFont(new java.awt.Font("sansserif", 1, 12)); // NOI18N
         jLabel1.setText("Search Document");
+        jLabel1.setFont(new java.awt.Font("sansserif", 1, 12)); // NOI18N
 
         errorLabel.setForeground(new java.awt.Color(255, 0, 0));
+
+        searchBtn.setText("Search");
+        searchBtn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                searchBtnActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -92,9 +93,9 @@ String selectedCriteria="id";
                 .addComponent(queryInput, javax.swing.GroupLayout.PREFERRED_SIZE, 109, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(16, 16, 16)
                 .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(searchBtn)
-                .addGap(35, 35, 35))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(searchBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 92, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(21, 21, 21))
             .addGroup(layout.createSequentialGroup()
                 .addGap(227, 227, 227)
                 .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 119, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -105,12 +106,12 @@ String selectedCriteria="id";
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addGap(19, 19, 19)
                 .addComponent(jLabel1)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 32, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 34, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(searchBtn)
                         .addComponent(queryInput, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(searchBtn))
                     .addComponent(errorLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(29, 29, 29)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 184, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -121,71 +122,45 @@ String selectedCriteria="id";
     }// </editor-fold>//GEN-END:initComponents
 
     private void queryInputActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_queryInputActionPerformed
-        getDocuments();
+          performSearch();
     }//GEN-LAST:event_queryInputActionPerformed
-
-    private void searchBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_searchBtnActionPerformed
-         getDocuments();    }//GEN-LAST:event_searchBtnActionPerformed
 
     private void jComboBox1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBox1ActionPerformed
             selectedCriteria = (String) jComboBox1.getSelectedItem();
     }//GEN-LAST:event_jComboBox1ActionPerformed
 
+    private void searchBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_searchBtnActionPerformed
+       performSearch();
+    }//GEN-LAST:event_searchBtnActionPerformed
+          private void performSearch() {
+        String query = queryInput.getText();
+       
+        tableData = new Documents().getDocuments(query, selectedCriteria);
+if (tableData != null && tableData.length > 0) {
+        errorLabel.setText(""); 
+        docTable.setModel(new javax.swing.table.DefaultTableModel(
+            tableData,
+            new String[]{"ID","Cote","Titre","Auteur","Type", "Etat"} 
+        ));
+    } else {
+        errorLabel.setText("No records found");
+            }    
+    }
+     private void setColumnWidths() {
+    // Access the column model of the table
+         TableColumnModel columnModel = docTable.getColumnModel();
+    
+    // Set the preferred width for each column (use the index of the column)
+    columnModel.getColumn(0).setPreferredWidth(50); // ID column
+    columnModel.getColumn(1).setPreferredWidth(100); // Cote column
+    columnModel.getColumn(2).setPreferredWidth(150); // Titre column
+
+}     
+          
     /**
      * @param args the command line arguments
      */
-    public void getDocuments(){
-            PreparedStatement statement=null;
-            ResultSet resultSet=null;
-            Connection conn=null;
-            String query = queryInput.getText().toLowerCase();
-            String sql;
-            switch (selectedCriteria) { 
-              case "id":
-                  sql = "SELECT * FROM documents WHERE id LIKE ?";
-                  break;
-              case "cote":
-                  sql = "SELECT * FROM documents WHERE cote LIKE ?"; 
-                  break;
-              case "etat":
-                  sql = "SELECT * FROM documents WHERE etat LIKE ?"; 
-                  break;
-              default:
-                sql = "SELECT * FROM documents WHERE id LIKE ?";
-                  break;
-          }
-        try {
-               conn = DBConnection.getConnection();
-              statement = conn.prepareStatement(sql);
-               statement.setString(1, "%" + query + "%"); 
-              resultSet = statement.executeQuery();
-              
-              ArrayList<Object[]> data = new ArrayList<>();
 
-               while (resultSet.next()) {
-                String id = resultSet.getString("documents.id");
-                String cote = resultSet.getString("cote");
-                String etat = resultSet.getString("etat");
-                data.add(new Object[]{id, cote,etat});
-            }
-            Object[][] tableData = data.toArray(new Object[0][]);
-                  if (tableData.length > 0) {
-                                errorLabel.setText("");
-                                docTable.setModel(new javax.swing.table.DefaultTableModel(
-                                tableData,
-                                new String[] {"ID", "Cote","Etat"} // Column names
-                            ));
-                        }else{
-                            errorLabel.setText("No records found" ); 
-                        }
-
-
-        } catch (SQLException e) {
-            errorLabel.setText("Database error: " + e.getMessage());
-            System.out.println("Error: " + e.getMessage());
-            e.printStackTrace();
-        }
-    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JTable docTable;
@@ -194,6 +169,6 @@ String selectedCriteria="id";
     private javax.swing.JLabel jLabel1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTextField queryInput;
-    private javax.swing.JButton searchBtn;
+    private javax.swing.JToggleButton searchBtn;
     // End of variables declaration//GEN-END:variables
 }
