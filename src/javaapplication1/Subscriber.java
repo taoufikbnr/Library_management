@@ -36,15 +36,27 @@ public class Subscriber {
         ResultSet resultSet = null;
          String st;
 
-            switch (selectedCriteria) { // Ensure case-insensitive matching
+            switch (selectedCriteria) {
+              case "id":
+                  st = "SELECT * FROM subscribers WHERE id LIKE ?";
+                  break;
               case "nom":
-                  st = "SELECT * FROM users WHERE nom LIKE ?";
+                  st = "SELECT * FROM subscribers WHERE nom LIKE ?";
                   break;
               case "prenom":
-                  st = "SELECT * FROM users WHERE prenom LIKE ?"; // Be cautious with this in real applications
+                  st = "SELECT * FROM subscribers WHERE prenom LIKE ?";
+                  break;
+              case "cin":
+                  st = "SELECT * FROM subscribers WHERE cin LIKE ?";
+                  break;
+              case "adresse":
+                  st = "SELECT * FROM subscribers WHERE adresse LIKE ?";
+                  break;
+              case "tel":
+                  st = "SELECT * FROM subscribers WHERE tel LIKE ?";
                   break;
               default:
-                  st = "SELECT * FROM users WHERE nom LIKE ?";
+                  st = "SELECT * FROM subscribers WHERE id LIKE ?";
                   break;
           }
         try {
@@ -52,15 +64,17 @@ public class Subscriber {
             statement = conn.prepareStatement(st);
         statement.setString(1, "%" + query + "%");
             resultSet = statement.executeQuery();
-            // Displaying the list of users
                 ArrayList<Object[]> data = new ArrayList<>();
 
             // Collect data from ResultSet
             while (resultSet.next()) {
-                System.out.println(resultSet);
-                String username = resultSet.getString("username");
-                String password = resultSet.getString("password");
-                data.add(new Object[]{username, password});
+                int id = resultSet.getInt("id");
+                String nom = resultSet.getString("nom");
+                String prenom = resultSet.getString("prenom");
+                String cin = resultSet.getString("cin");
+                String adresse = resultSet.getString("adresse");
+                int tel = resultSet.getInt("tel");
+                data.add(new Object[]{id,nom, prenom,cin,adresse,tel});
             }
             
             return data.toArray(new Object[0][]);

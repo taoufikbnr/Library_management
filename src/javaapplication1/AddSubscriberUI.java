@@ -91,10 +91,12 @@ public class AddSubscriberUI extends javax.swing.JFrame {
         returnBtn.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
         returnBtn.setForeground(new java.awt.Color(255, 255, 255));
         returnBtn.setText("◄");
-        returnBtn.setAlignmentX(0.5F);
+        returnBtn.setAlignmentY(0.0F);
         returnBtn.setBorderPainted(false);
+        returnBtn.setFocusable(false);
         returnBtn.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         returnBtn.setHorizontalTextPosition(javax.swing.SwingConstants.LEFT);
+        returnBtn.setIconTextGap(0);
         returnBtn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 returnBtnActionPerformed(evt);

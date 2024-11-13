@@ -13,6 +13,7 @@ import java.util.ArrayList;
 import java.awt.*;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
+import javax.swing.table.TableColumnModel;
 
 /**
  *
@@ -44,7 +45,6 @@ String selectedCriteria="username";
         jButton1 = new javax.swing.JButton();
         query = new javax.swing.JTextField();
         jComboBox1 = new javax.swing.JComboBox<>();
-        jTextField1 = new javax.swing.JTextField();
         homeBtn1 = new javax.swing.JButton();
         returnBtn = new javax.swing.JButton();
 
@@ -86,7 +86,7 @@ String selectedCriteria="username";
         }
     });
 
-    jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "username", "password", "Item 3", "Item 4" }));
+    jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "id", "nom", "prenom", "cin", "adresse", "tel" }));
     jComboBox1.addActionListener(new java.awt.event.ActionListener() {
         public void actionPerformed(java.awt.event.ActionEvent evt) {
             jComboBox1ActionPerformed(evt);
@@ -108,10 +108,13 @@ String selectedCriteria="username";
     returnBtn.setBackground(new java.awt.Color(0, 153, 51));
     returnBtn.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
     returnBtn.setForeground(new java.awt.Color(255, 255, 255));
-    returnBtn.setText("← ");
-    returnBtn.setAlignmentX(0.5F);
+    returnBtn.setText("◄");
+    returnBtn.setAlignmentY(0.0F);
     returnBtn.setBorderPainted(false);
-    returnBtn.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+    returnBtn.setFocusable(false);
+    returnBtn.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+    returnBtn.setHorizontalTextPosition(javax.swing.SwingConstants.LEFT);
+    returnBtn.setIconTextGap(0);
     returnBtn.addActionListener(new java.awt.event.ActionListener() {
         public void actionPerformed(java.awt.event.ActionEvent evt) {
             returnBtnActionPerformed(evt);
@@ -123,12 +126,10 @@ String selectedCriteria="username";
     layout.setHorizontalGroup(
         layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
         .addGroup(layout.createSequentialGroup()
-            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 545, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGroup(layout.createSequentialGroup()
                     .addGap(62, 62, 62)
-                    .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 138, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(query, javax.swing.GroupLayout.PREFERRED_SIZE, 71, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGap(18, 18, 18)
                     .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -137,7 +138,7 @@ String selectedCriteria="username";
             .addGap(0, 17, Short.MAX_VALUE))
         .addGroup(layout.createSequentialGroup()
             .addContainerGap()
-            .addComponent(returnBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 59, javax.swing.GroupLayout.PREFERRED_SIZE)
+            .addComponent(returnBtn)
             .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addComponent(homeBtn1)
             .addContainerGap())
@@ -145,22 +146,16 @@ String selectedCriteria="username";
     layout.setVerticalGroup(
         layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
         .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+            .addContainerGap()
             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(layout.createSequentialGroup()
-                    .addContainerGap()
-                    .addComponent(homeBtn1))
-                .addComponent(returnBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE))
-            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 35, Short.MAX_VALUE)
-            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(jButton1)
-                        .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(query, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGap(46, 46, 46))
-                .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                    .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGap(55, 55, 55)))
+                .addComponent(homeBtn1)
+                .addComponent(returnBtn))
+            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 43, Short.MAX_VALUE)
+            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                .addComponent(jButton1)
+                .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(query, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+            .addGap(46, 46, 46)
             .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 188, javax.swing.GroupLayout.PREFERRED_SIZE)
             .addContainerGap())
     );
@@ -183,15 +178,9 @@ String selectedCriteria="username";
     private void jTable1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTable1MouseClicked
          int selectedRow=jTable1.getSelectedRow();
         DefaultTableModel model = (DefaultTableModel) jTable1.getModel();
-
-            // Iterate over all selected rows and get the value of the first column (e.g., username)
-        // Get the value in the first column (index 0)
         Object username = model.getValueAt(selectedRow, 0);
-        System.out.println(username); 
-        String currentText = jTextField1.getText();
-        jTextField1.setText((String)username);
+        System.out.println(username);
     
-//        jTextField1.setText((String)username);
     }//GEN-LAST:event_jTable1MouseClicked
 
     private void homeBtn1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_homeBtn1ActionPerformed
@@ -206,66 +195,22 @@ String selectedCriteria="username";
     /**
      * @param args the command line arguments
      */
-    private void searchUser(){
-         Connection conn = null;
-        PreparedStatement statement = null;
-        ResultSet resultSet = null;
-            String st;
-    String usernameD = query.getText();
-            switch (selectedCriteria) { 
-              case "username":
-                  st = "SELECT * FROM users WHERE username LIKE ?";
-                  break;
-              case "password":
-                  st = "SELECT * FROM users WHERE password LIKE ?"; 
-                  break;
-              default:
-                  st = "SELECT * FROM users WHERE username LIKE ?";
-                  break;
-          }
-
-        try {
-            conn = DBConnection.getConnection();
-            statement = conn.prepareStatement(st);
-        statement.setString(1, "%" + usernameD + "%");
-            resultSet = statement.executeQuery();
-                ArrayList<Object[]> data = new ArrayList<>();
-
-            while (resultSet.next()) {
-                String username = resultSet.getString("username");
-                String password = resultSet.getString("password");
-                data.add(new Object[]{username, password});
-            }
-            Object[][] tableData = data.toArray(new Object[0][]);
-      jTable1.setModel(new javax.swing.table.DefaultTableModel(
-                tableData,
-                new String[] {"Username", "Password"} // Column names
-            ));
-
-        } catch (SQLException e) {
-            e.printStackTrace();
-            JOptionPane.showMessageDialog(null, "Error retrieving users: " + e.getMessage());
-        } finally {
-            // Close resources in finally block
-            try {
-                if (resultSet != null) resultSet.close();
-                if (statement != null) statement.close();
-                if (conn != null) conn.close();
-            } catch (SQLException e) {
-                e.printStackTrace();
-            }
-        }
-    }
+  
         private void performSearch() {
-        String usernameD = query.getText();
+        String queryStr = query.getText();
        
         Subscriber userSubscriber = new Subscriber();
 
-        Object[][] tableData = userSubscriber.getUsers(usernameD, selectedCriteria);
+        Object[][] tableData = userSubscriber.getUsers(queryStr, selectedCriteria);
         jTable1.setModel(new javax.swing.table.DefaultTableModel(
             tableData,
-            new String[]{"Username", "Password"} 
+            new String[]{"Id","Nom", "Prénom","CIN","Adresse","Tel"}
+                
         ));
+        
+                TableColumnModel columnModel = jTable1.getColumnModel();
+                columnModel.getColumn(0).setPreferredWidth(2);
+
     }
      private void showUsers() {
         Connection conn = null;
@@ -318,7 +263,6 @@ String selectedCriteria="username";
     private javax.swing.JComboBox<String> jComboBox1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTable jTable1;
-    private javax.swing.JTextField jTextField1;
     private javax.swing.JTextField query;
     private javax.swing.JButton returnBtn;
     // End of variables declaration//GEN-END:variables
