@@ -73,7 +73,6 @@ ArrayList<Integer> selectedAuthorsId = new ArrayList<>();
         editeurLabel1 = new javax.swing.JLabel();
         etatLabel = new javax.swing.JLabel();
         nomAuteurLabel = new javax.swing.JLabel();
-        homeBtn = new javax.swing.JButton();
         jScrollPane2 = new javax.swing.JScrollPane();
         nomAuteurs = new javax.swing.JTextArea();
         searchInput = new javax.swing.JTextField();
@@ -216,14 +215,6 @@ ArrayList<Integer> selectedAuthorsId = new ArrayList<>();
 
         nomAuteurLabel.setText("Nom auteur(s)");
 
-        homeBtn.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/home icon 50.png"))); // NOI18N
-        homeBtn.setBackground(new Color(0, 0, 0, 0));
-        homeBtn.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                homeBtnActionPerformed(evt);
-            }
-        });
-
         nomAuteurs.setColumns(20);
         nomAuteurs.setRows(5);
         jScrollPane2.setViewportView(nomAuteurs);
@@ -255,9 +246,7 @@ ArrayList<Integer> selectedAuthorsId = new ArrayList<>();
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addGap(16, 16, 16)
-                .addComponent(homeBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGap(16, 347, Short.MAX_VALUE)
                 .addComponent(ajoutDoc, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(265, 265, 265))
             .addGroup(layout.createSequentialGroup()
@@ -309,7 +298,6 @@ ArrayList<Integer> selectedAuthorsId = new ArrayList<>();
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(homeBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 52, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(layout.createSequentialGroup()
                         .addGap(12, 12, 12)
                         .addComponent(ajoutDoc, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -396,11 +384,6 @@ ArrayList<Integer> selectedAuthorsId = new ArrayList<>();
     private void editeurActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_editeurActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_editeurActionPerformed
-
-    private void homeBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_homeBtnActionPerformed
-        new AdminDashboardUI().setVisible(true);
-        dispose();
-    }//GEN-LAST:event_homeBtnActionPerformed
 
     private void jTable1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTable1MouseClicked
          int[] selectedRows=jTable1.getSelectedRows();
@@ -566,7 +549,6 @@ ArrayList<Integer> selectedAuthorsId = new ArrayList<>();
     private javax.swing.JLabel editeurLabel1;
     private javax.swing.JComboBox<String> etat;
     private javax.swing.JLabel etatLabel;
-    private javax.swing.JButton homeBtn;
     private javax.swing.JTextField isbn;
     private javax.swing.JLabel isbnLabel1;
     private javax.swing.JLayeredPane jLayeredPane2;

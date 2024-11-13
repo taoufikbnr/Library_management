@@ -19,7 +19,16 @@ import javax.swing.table.DefaultTableModel;
  * @author lenovo
  */
 public class Subscriber {
-    public Subscriber(){
+    private String nom, prenom,cin,adresse;
+    private int tel;
+       public Subscriber(){
+        }
+    public Subscriber(String nom,String prenom,String cin,String adresse,int tel){
+        this.nom=nom;
+        this.prenom=prenom;
+        this.cin=cin;
+        this.adresse=adresse;
+        this.tel=tel;
     }
     public Object[][] getUsers(String query,String selectedCriteria){
         Connection conn = null;
@@ -28,14 +37,14 @@ public class Subscriber {
          String st;
 
             switch (selectedCriteria) { // Ensure case-insensitive matching
-              case "username":
-                  st = "SELECT * FROM users WHERE username LIKE ?";
+              case "nom":
+                  st = "SELECT * FROM users WHERE nom LIKE ?";
                   break;
-              case "password":
-                  st = "SELECT * FROM users WHERE password LIKE ?"; // Be cautious with this in real applications
+              case "prenom":
+                  st = "SELECT * FROM users WHERE prenom LIKE ?"; // Be cautious with this in real applications
                   break;
               default:
-                  st = "SELECT * FROM users WHERE username LIKE ?";
+                  st = "SELECT * FROM users WHERE nom LIKE ?";
                   break;
           }
         try {
@@ -112,16 +121,19 @@ public class Subscriber {
     }
     
 }
-      public void addUser(String username,String password){
+      public void addUser(){
         Connection conn = null;
         PreparedStatement statement = null;
         ResultSet resultSet = null;
 
            try {
             conn = DBConnection.getConnection();
-            statement = conn.prepareStatement("INSERT INTO users (username,password) VALUES (?,?)");
-            statement.setString(1,(String)username);
-            statement.setString(2,(String)password);
+            statement = conn.prepareStatement("INSERT INTO subscribers (nom,prenom,cin,adresse,tel) VALUES (?,?,?,?,?)");
+            statement.setString(1,this.nom);
+            statement.setString(2,this.prenom);
+            statement.setString(3,this.cin);
+            statement.setString(4,this.adresse);
+            statement.setInt(5,this.tel);
             statement.executeUpdate();      
   
         } catch (SQLException e) {

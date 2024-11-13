@@ -90,6 +90,10 @@ public class AdminDashboardUI extends javax.swing.JFrame {
 
         homeBtn.setBackground(new Color(0, 0, 0, 0));
         homeBtn.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/home icon 50.png"))); // NOI18N
+        homeBtn.setBorder(null);
+        homeBtn.setBorderPainted(false);
+        homeBtn.setFocusPainted(false);
+        homeBtn.setSelectedIcon(new javax.swing.ImageIcon(getClass().getResource("/images/home icon 50.png"))); // NOI18N
         homeBtn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 homeBtnActionPerformed(evt);
