@@ -37,10 +37,12 @@
           </Group>
           <Group type="102" alignment="0" attributes="0">
               <EmptySpace max="-2" attributes="0"/>
-              <Component id="homeBtn" min="-2" max="-2" attributes="0"/>
-              <EmptySpace min="-2" pref="171" max="-2" attributes="0"/>
+              <Component id="returnBtn" min="-2" max="-2" attributes="0"/>
+              <EmptySpace min="-2" pref="179" max="-2" attributes="0"/>
               <Component id="jLabel1" min="-2" pref="119" max="-2" attributes="0"/>
               <EmptySpace max="32767" attributes="0"/>
+              <Component id="homeBtn" min="-2" max="-2" attributes="0"/>
+              <EmptySpace max="-2" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
@@ -51,14 +53,11 @@
                   <Group type="102" attributes="0">
                       <EmptySpace min="-2" pref="19" max="-2" attributes="0"/>
                       <Component id="jLabel1" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace pref="34" max="32767" attributes="0"/>
                   </Group>
-                  <Group type="102" alignment="1" attributes="0">
-                      <EmptySpace max="32767" attributes="0"/>
-                      <Component id="homeBtn" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                  </Group>
+                  <Component id="homeBtn" alignment="0" min="-2" max="-2" attributes="0"/>
+                  <Component id="returnBtn" alignment="1" min="-2" max="-2" attributes="0"/>
               </Group>
+              <EmptySpace pref="19" max="32767" attributes="0"/>
               <Group type="103" groupAlignment="0" attributes="0">
                   <Group type="103" groupAlignment="3" attributes="0">
                       <Component id="queryInput" alignment="3" min="-2" max="-2" attributes="0"/>
@@ -166,6 +165,27 @@
       </Properties>
       <Events>
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="homeBtnActionPerformed"/>
+      </Events>
+    </Component>
+    <Component class="javax.swing.JButton" name="returnBtn">
+      <Properties>
+        <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
+          <Image iconType="3" name="/images/return_icon.png"/>
+        </Property>
+        <Property name="alignmentY" type="float" value="0.0"/>
+        <Property name="borderPainted" type="boolean" value="false"/>
+        <Property name="focusPainted" type="boolean" value="false"/>
+        <Property name="focusable" type="boolean" value="false"/>
+        <Property name="horizontalTextPosition" type="int" value="0"/>
+        <Property name="margin" type="java.awt.Insets" editor="org.netbeans.beaninfo.editors.InsetsEditor">
+          <Insets value="[0, 0, 0, 0]"/>
+        </Property>
+        <Property name="requestFocusEnabled" type="boolean" value="false"/>
+        <Property name="rolloverEnabled" type="boolean" value="false"/>
+        <Property name="verifyInputWhenFocusTarget" type="boolean" value="false"/>
+      </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="returnBtnActionPerformed"/>
       </Events>
     </Component>
   </SubComponents>

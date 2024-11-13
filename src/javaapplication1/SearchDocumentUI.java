@@ -24,6 +24,11 @@ String currentUser = (CurrentUser.instance != null && CurrentUser.instance.getUs
         initComponents();
         setLocationRelativeTo(null);
         performSearch();
+         if(currentUser!=null){
+            homeBtn.setVisible(true);
+        }else{
+            homeBtn.setVisible(false);
+         }
     }
 
     /**
@@ -43,6 +48,7 @@ String currentUser = (CurrentUser.instance != null && CurrentUser.instance.getUs
         errorLabel = new javax.swing.JLabel();
         searchBtn = new javax.swing.JToggleButton();
         homeBtn = new javax.swing.JButton();
+        returnBtn = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -96,6 +102,22 @@ String currentUser = (CurrentUser.instance != null && CurrentUser.instance.getUs
             }
         });
 
+        returnBtn.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/return_icon.png"))); // NOI18N
+        returnBtn.setAlignmentY(0.0F);
+        returnBtn.setBorderPainted(false);
+        returnBtn.setFocusPainted(false);
+        returnBtn.setFocusable(false);
+        returnBtn.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        returnBtn.setMargin(new java.awt.Insets(0, 0, 0, 0));
+        returnBtn.setRequestFocusEnabled(false);
+        returnBtn.setRolloverEnabled(false);
+        returnBtn.setVerifyInputWhenFocusTarget(false);
+        returnBtn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                returnBtnActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -113,10 +135,12 @@ String currentUser = (CurrentUser.instance != null && CurrentUser.instance.getUs
                 .addGap(21, 21, 21))
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(homeBtn)
-                .addGap(171, 171, 171)
+                .addComponent(returnBtn)
+                .addGap(179, 179, 179)
                 .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 119, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(homeBtn)
+                .addContainerGap())
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -124,12 +148,10 @@ String currentUser = (CurrentUser.instance != null && CurrentUser.instance.getUs
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
                         .addGap(19, 19, 19)
-                        .addComponent(jLabel1)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 34, Short.MAX_VALUE))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(homeBtn)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)))
+                        .addComponent(jLabel1))
+                    .addComponent(homeBtn)
+                    .addComponent(returnBtn, javax.swing.GroupLayout.Alignment.TRAILING))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 19, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                         .addComponent(queryInput, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -161,12 +183,24 @@ String currentUser = (CurrentUser.instance != null && CurrentUser.instance.getUs
             new AdminDashboardUI().setVisible(true);
             dispose(); 
         }else{
-         homeBtn.setVisible(false);   
-       new Welcome().setVisible(true);
-       dispose();
+              new Welcome().setVisible(true);
+              dispose();
         }
  
     }//GEN-LAST:event_homeBtnActionPerformed
+
+    private void returnBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_returnBtnActionPerformed
+      if(currentUser!=null){
+        new DocumentManagementUI().setVisible(true);
+        dispose();
+        }else{
+        homeBtn.setVisible(false);   
+        new Welcome().setVisible(true);
+        dispose();
+        }
+        
+
+    }//GEN-LAST:event_returnBtnActionPerformed
           private void performSearch() {
         String query = queryInput.getText();
        
@@ -181,16 +215,7 @@ if (tableData != null && tableData.length > 0) {
         errorLabel.setText("No records found");
             }    
     }
-     private void setColumnWidths() {
-    // Access the column model of the table
-         TableColumnModel columnModel = docTable.getColumnModel();
     
-    // Set the preferred width for each column (use the index of the column)
-    columnModel.getColumn(0).setPreferredWidth(50); // ID column
-    columnModel.getColumn(1).setPreferredWidth(100); // Cote column
-    columnModel.getColumn(2).setPreferredWidth(150); // Titre column
-
-}     
           
     /**
      * @param args the command line arguments
@@ -205,6 +230,7 @@ if (tableData != null && tableData.length > 0) {
     private javax.swing.JLabel jLabel1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTextField queryInput;
+    private javax.swing.JButton returnBtn;
     private javax.swing.JToggleButton searchBtn;
     // End of variables declaration//GEN-END:variables
 }

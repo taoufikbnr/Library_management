@@ -76,6 +76,15 @@ public class SubscriberManagementUI extends javax.swing.JFrame {
         });
 
         jButton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/return_icon.png"))); // NOI18N
+        jButton1.setAlignmentY(0.0F);
+        jButton1.setBorderPainted(false);
+        jButton1.setFocusPainted(false);
+        jButton1.setFocusable(false);
+        jButton1.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        jButton1.setMargin(new java.awt.Insets(0, 0, 0, 0));
+        jButton1.setRequestFocusEnabled(false);
+        jButton1.setRolloverEnabled(false);
+        jButton1.setVerifyInputWhenFocusTarget(false);
         jButton1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton1ActionPerformed(evt);

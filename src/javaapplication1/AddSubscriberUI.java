@@ -43,7 +43,7 @@ public class AddSubscriberUI extends javax.swing.JFrame {
         nomInput = new javax.swing.JTextField();
         adrInput = new javax.swing.JTextField();
         homeBtn1 = new javax.swing.JButton();
-        returnBtn = new javax.swing.JButton();
+        jButton1 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -87,19 +87,19 @@ public class AddSubscriberUI extends javax.swing.JFrame {
             }
         });
 
-        returnBtn.setBackground(new java.awt.Color(0, 153, 51));
-        returnBtn.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
-        returnBtn.setForeground(new java.awt.Color(255, 255, 255));
-        returnBtn.setText("◄");
-        returnBtn.setAlignmentY(0.0F);
-        returnBtn.setBorderPainted(false);
-        returnBtn.setFocusable(false);
-        returnBtn.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        returnBtn.setHorizontalTextPosition(javax.swing.SwingConstants.LEFT);
-        returnBtn.setIconTextGap(0);
-        returnBtn.addActionListener(new java.awt.event.ActionListener() {
+        jButton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/return_icon.png"))); // NOI18N
+        jButton1.setAlignmentY(0.0F);
+        jButton1.setBorderPainted(false);
+        jButton1.setFocusPainted(false);
+        jButton1.setFocusable(false);
+        jButton1.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        jButton1.setMargin(new java.awt.Insets(0, 0, 0, 0));
+        jButton1.setRequestFocusEnabled(false);
+        jButton1.setRolloverEnabled(false);
+        jButton1.setVerifyInputWhenFocusTarget(false);
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                returnBtnActionPerformed(evt);
+                jButton1ActionPerformed(evt);
             }
         });
 
@@ -128,12 +128,12 @@ public class AddSubscriberUI extends javax.swing.JFrame {
                                 .addGap(6, 6, 6))))
                     .addGroup(layout.createSequentialGroup()
                         .addContainerGap()
-                        .addComponent(returnBtn)
+                        .addComponent(jButton1)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
                         .addComponent(addUserImg)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 211, Short.MAX_VALUE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 213, Short.MAX_VALUE)
                         .addComponent(homeBtn1))
                     .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
                         .addGap(41, 41, 41)
@@ -159,7 +159,7 @@ public class AddSubscriberUI extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(addUserImg)
                     .addComponent(homeBtn1)
-                    .addComponent(returnBtn))
+                    .addComponent(jButton1))
                 .addGap(45, 45, 45)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(nomLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -213,10 +213,10 @@ public class AddSubscriberUI extends javax.swing.JFrame {
         dispose();
     }//GEN-LAST:event_homeBtn1ActionPerformed
 
-    private void returnBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_returnBtnActionPerformed
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         new SubscriberManagementUI().setVisible(true);
         dispose();
-    }//GEN-LAST:event_returnBtnActionPerformed
+    }//GEN-LAST:event_jButton1ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -230,11 +230,11 @@ public class AddSubscriberUI extends javax.swing.JFrame {
     private javax.swing.JTextField cinInput;
     private javax.swing.JLabel cinLabel;
     private javax.swing.JButton homeBtn1;
+    private javax.swing.JButton jButton1;
     private javax.swing.JTextField nomInput;
     private javax.swing.JLabel nomLabel;
     private javax.swing.JTextField prenomInput;
     private javax.swing.JLabel prenomLabel;
-    private javax.swing.JButton returnBtn;
     private javax.swing.JTextField telInput;
     private javax.swing.JLabel telLabel;
     // End of variables declaration//GEN-END:variables

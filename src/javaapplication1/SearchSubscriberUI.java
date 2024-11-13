@@ -105,16 +105,16 @@ String selectedCriteria="username";
         }
     });
 
-    returnBtn.setBackground(new java.awt.Color(0, 153, 51));
-    returnBtn.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
-    returnBtn.setForeground(new java.awt.Color(255, 255, 255));
-    returnBtn.setText("◄");
+    returnBtn.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/return_icon.png"))); // NOI18N
     returnBtn.setAlignmentY(0.0F);
     returnBtn.setBorderPainted(false);
+    returnBtn.setFocusPainted(false);
     returnBtn.setFocusable(false);
-    returnBtn.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-    returnBtn.setHorizontalTextPosition(javax.swing.SwingConstants.LEFT);
-    returnBtn.setIconTextGap(0);
+    returnBtn.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+    returnBtn.setMargin(new java.awt.Insets(0, 0, 0, 0));
+    returnBtn.setRequestFocusEnabled(false);
+    returnBtn.setRolloverEnabled(false);
+    returnBtn.setVerifyInputWhenFocusTarget(false);
     returnBtn.addActionListener(new java.awt.event.ActionListener() {
         public void actionPerformed(java.awt.event.ActionEvent evt) {
             returnBtnActionPerformed(evt);
@@ -129,7 +129,6 @@ String selectedCriteria="username";
             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 545, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGroup(layout.createSequentialGroup()
-                    .addGap(62, 62, 62)
                     .addComponent(query, javax.swing.GroupLayout.PREFERRED_SIZE, 71, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGap(18, 18, 18)
                     .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
