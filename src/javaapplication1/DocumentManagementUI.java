@@ -50,6 +50,11 @@ public class DocumentManagementUI extends javax.swing.JFrame {
 
         delDocBtn.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/delete Doc 50.png"))); // NOI18N
         delDocBtn.setText("Delete Document");
+        delDocBtn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                delDocBtnActionPerformed(evt);
+            }
+        });
 
         searchDocBtn.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/search Doc 50.png"))); // NOI18N
         searchDocBtn.setText("Search Document");
@@ -130,6 +135,11 @@ public class DocumentManagementUI extends javax.swing.JFrame {
         new AdminDashboardUI().setVisible(true);
         dispose();
     }//GEN-LAST:event_homeBtnActionPerformed
+
+    private void delDocBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_delDocBtnActionPerformed
+        new DeleteDocumentUI().setVisible(true);
+        dispose();
+    }//GEN-LAST:event_delDocBtnActionPerformed
 
     /**
      * @param args the command line arguments

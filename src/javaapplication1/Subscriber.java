@@ -95,31 +95,21 @@ public class Subscriber {
             }
         }
     }
-    public void deleteUser(){
-//    int selectedRow = JTablel.getSelectedRow(); // Get the selected row index
-    int selectedRow=0;
+    public void deleteUser(String id){
          Connection conn = null;
         PreparedStatement statement = null;
         ResultSet resultSet = null;
-    if (selectedRow != -1) { // Check if a row is actually selected
-        // Assuming you have a default table model, change this if you're using a custom model
-//        DefaultTableModel model = (DefaultTableModel) jTable1.getModel();
-        DefaultTableModel model = null;
-        
-        // Retrieve data from the selected row
-        Object username = model.getValueAt(selectedRow, 0); // Change column index based on your table structure
             
  try {
             conn = DBConnection.getConnection();
-            statement = conn.prepareStatement("DELETE FROM users WHERE username = ?");
-            statement.setString(1,(String)username);
+            statement = conn.prepareStatement("DELETE FROM documents WHERE id = ?");
+            statement.setString(1,id);
             statement.executeUpdate();      
   
         } catch (SQLException e) {
             e.printStackTrace();
             JOptionPane.showMessageDialog(null, "Error retrieving users: " + e.getMessage());
         } finally {
-            // Close resources in finally block
             try {
                 if (resultSet != null) resultSet.close();
                 if (statement != null) statement.close();
@@ -128,11 +118,6 @@ public class Subscriber {
                 e.printStackTrace();
             }
         }
-        
-
-    } else {
-        System.out.println("No row selected.");
-    }
     
 }
       public void addUser(){

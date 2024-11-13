@@ -209,7 +209,7 @@ String selectedCriteria="username";
         ));
         
                 TableColumnModel columnModel = jTable1.getColumnModel();
-                columnModel.getColumn(0).setPreferredWidth(2);
+                columnModel.getColumn(0).setPreferredWidth(5);
 
     }
      private void showUsers() {
