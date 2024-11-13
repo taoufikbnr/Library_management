@@ -15,6 +15,8 @@ import javax.swing.table.TableColumnModel;
 public class SearchDocumentUI extends javax.swing.JFrame {
 String selectedCriteria="";
 Object[][] tableData = null;
+String currentUser = (CurrentUser.instance != null && CurrentUser.instance.getUsername() != null) ? CurrentUser.instance.getUsername() : null;
+
     /**
      * Creates new form SearchDocumentUI
      */
@@ -40,9 +42,12 @@ Object[][] tableData = null;
         jLabel1 = new javax.swing.JLabel();
         errorLabel = new javax.swing.JLabel();
         searchBtn = new javax.swing.JToggleButton();
+        homeBtn = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
+        docTable.getTableHeader().setBackground(new java.awt.Color(0, 153, 51));
+        docTable.getTableHeader().setForeground(new java.awt.Color(255, 255, 255));
         docTable.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
@@ -52,8 +57,6 @@ Object[][] tableData = null;
             }
         ));
         docTable.setAutoResizeMode(javax.swing.JTable.AUTO_RESIZE_LAST_COLUMN);
-        docTable.getTableHeader().setBackground(new java.awt.Color(0, 153, 51));
-        docTable.getTableHeader().setForeground(new java.awt.Color(255, 255, 255));
         jScrollPane1.setViewportView(docTable);
 
         queryInput.addActionListener(new java.awt.event.ActionListener() {
@@ -69,8 +72,8 @@ Object[][] tableData = null;
             }
         });
 
-        jLabel1.setText("Search Document");
         jLabel1.setFont(new java.awt.Font("sansserif", 1, 12)); // NOI18N
+        jLabel1.setText("Search Document");
 
         errorLabel.setForeground(new java.awt.Color(255, 0, 0));
 
@@ -78,6 +81,18 @@ Object[][] tableData = null;
         searchBtn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 searchBtnActionPerformed(evt);
+            }
+        });
+
+        homeBtn.setBackground(new Color(0, 0, 0, 0));
+        homeBtn.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/home_icon.png"))); // NOI18N
+        homeBtn.setBorder(null);
+        homeBtn.setBorderPainted(false);
+        homeBtn.setFocusPainted(false);
+        homeBtn.setSelectedIcon(new javax.swing.ImageIcon(getClass().getResource("/images/home icon 50.png"))); // NOI18N
+        homeBtn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                homeBtnActionPerformed(evt);
             }
         });
 
@@ -97,16 +112,24 @@ Object[][] tableData = null;
                 .addComponent(searchBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 92, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(21, 21, 21))
             .addGroup(layout.createSequentialGroup()
-                .addGap(227, 227, 227)
+                .addContainerGap()
+                .addComponent(homeBtn)
+                .addGap(171, 171, 171)
                 .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 119, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addGap(19, 19, 19)
-                .addComponent(jLabel1)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 34, Short.MAX_VALUE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(19, 19, 19)
+                        .addComponent(jLabel1)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 34, Short.MAX_VALUE))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(homeBtn)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)))
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                         .addComponent(queryInput, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -132,6 +155,18 @@ Object[][] tableData = null;
     private void searchBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_searchBtnActionPerformed
        performSearch();
     }//GEN-LAST:event_searchBtnActionPerformed
+
+    private void homeBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_homeBtnActionPerformed
+            if(currentUser!=null){
+            new AdminDashboardUI().setVisible(true);
+            dispose(); 
+        }else{
+         homeBtn.setVisible(false);   
+       new Welcome().setVisible(true);
+       dispose();
+        }
+ 
+    }//GEN-LAST:event_homeBtnActionPerformed
           private void performSearch() {
         String query = queryInput.getText();
        
@@ -165,6 +200,7 @@ if (tableData != null && tableData.length > 0) {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JTable docTable;
     private javax.swing.JLabel errorLabel;
+    private javax.swing.JButton homeBtn;
     private javax.swing.JComboBox<String> jComboBox1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JScrollPane jScrollPane1;
