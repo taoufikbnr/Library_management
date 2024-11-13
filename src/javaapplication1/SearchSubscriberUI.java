@@ -18,12 +18,12 @@ import javax.swing.table.DefaultTableModel;
  *
  * @author lenovo
  */
-public class SearchUserUI extends javax.swing.JFrame {
+public class SearchSubscriberUI extends javax.swing.JFrame {
 String selectedCriteria="username";
 /**
      * Creates new form SearchBook
      */
-    public SearchUserUI() {
+    public SearchSubscriberUI() {
         initComponents();
         setLocationRelativeTo(null);
           performSearch();
@@ -46,6 +46,7 @@ String selectedCriteria="username";
         jComboBox1 = new javax.swing.JComboBox<>();
         jTextField1 = new javax.swing.JTextField();
         homeBtn1 = new javax.swing.JButton();
+        returnBtn = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -104,6 +105,19 @@ String selectedCriteria="username";
         }
     });
 
+    returnBtn.setBackground(new java.awt.Color(0, 153, 51));
+    returnBtn.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
+    returnBtn.setForeground(new java.awt.Color(255, 255, 255));
+    returnBtn.setText("← ");
+    returnBtn.setAlignmentX(0.5F);
+    returnBtn.setBorderPainted(false);
+    returnBtn.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+    returnBtn.addActionListener(new java.awt.event.ActionListener() {
+        public void actionPerformed(java.awt.event.ActionEvent evt) {
+            returnBtnActionPerformed(evt);
+        }
+    });
+
     javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
     getContentPane().setLayout(layout);
     layout.setHorizontalGroup(
@@ -123,14 +137,19 @@ String selectedCriteria="username";
             .addGap(0, 17, Short.MAX_VALUE))
         .addGroup(layout.createSequentialGroup()
             .addContainerGap()
+            .addComponent(returnBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 59, javax.swing.GroupLayout.PREFERRED_SIZE)
+            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addComponent(homeBtn1)
-            .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addContainerGap())
     );
     layout.setVerticalGroup(
         layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
         .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-            .addContainerGap()
-            .addComponent(homeBtn1)
+            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(layout.createSequentialGroup()
+                    .addContainerGap()
+                    .addComponent(homeBtn1))
+                .addComponent(returnBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE))
             .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 35, Short.MAX_VALUE)
             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
@@ -179,6 +198,11 @@ String selectedCriteria="username";
         new AdminDashboardUI().setVisible(true);
         dispose();
     }//GEN-LAST:event_homeBtn1ActionPerformed
+
+    private void returnBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_returnBtnActionPerformed
+        new SubscriberManagementUI().setVisible(true);
+        dispose();
+    }//GEN-LAST:event_returnBtnActionPerformed
     /**
      * @param args the command line arguments
      */
@@ -296,5 +320,6 @@ String selectedCriteria="username";
     private javax.swing.JTable jTable1;
     private javax.swing.JTextField jTextField1;
     private javax.swing.JTextField query;
+    private javax.swing.JButton returnBtn;
     // End of variables declaration//GEN-END:variables
 }

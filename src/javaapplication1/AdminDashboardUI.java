@@ -70,7 +70,7 @@ public class AdminDashboardUI extends javax.swing.JFrame {
             }
         });
 
-        addSubBtn.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/add_user.png"))); // NOI18N
+        addSubBtn.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/gerer abonne.png"))); // NOI18N
         addSubBtn.setText("Gérer Abonné");
         addSubBtn.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         addSubBtn.addActionListener(new java.awt.event.ActionListener() {
@@ -88,8 +88,8 @@ public class AdminDashboardUI extends javax.swing.JFrame {
             }
         });
 
-        homeBtn.setBackground(new Color(0, 0, 0, 0));
         homeBtn.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/home_icon.png"))); // NOI18N
+        homeBtn.setBackground(new Color(0, 0, 0, 0));
         homeBtn.setBorder(null);
         homeBtn.setBorderPainted(false);
         homeBtn.setFocusPainted(false);
@@ -147,7 +147,7 @@ public class AdminDashboardUI extends javax.swing.JFrame {
     }//GEN-LAST:event_addPretBtnActionPerformed
 
     private void addSubBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addSubBtnActionPerformed
-        new AddSubscriberUI().setVisible(true);
+        new SubscriberManagementUI().setVisible(true);
         dispose();
     }//GEN-LAST:event_addSubBtnActionPerformed
 
