@@ -35,7 +35,7 @@ public class LoginFrame extends javax.swing.JFrame {
     private void initComponents() {
 
         username = new javax.swing.JTextField();
-        jButton1 = new javax.swing.JButton();
+        loginBtn = new javax.swing.JButton();
         password = new javax.swing.JPasswordField();
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
@@ -53,12 +53,12 @@ public class LoginFrame extends javax.swing.JFrame {
             }
         });
 
-        jButton1.setBackground(new java.awt.Color(0, 153, 51));
-        jButton1.setForeground(new java.awt.Color(255, 255, 255));
-        jButton1.setText("LOGIN");
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
+        loginBtn.setBackground(new java.awt.Color(0, 153, 51));
+        loginBtn.setForeground(new java.awt.Color(255, 255, 255));
+        loginBtn.setText("LOGIN");
+        loginBtn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
+                loginBtnActionPerformed(evt);
             }
         });
 
@@ -110,7 +110,7 @@ public class LoginFrame extends javax.swing.JFrame {
                                 .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 72, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addGroup(layout.createSequentialGroup()
                                 .addGap(30, 30, 30)
-                                .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 102, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                                .addComponent(loginBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 102, javax.swing.GroupLayout.PREFERRED_SIZE))))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(131, 131, 131)
                         .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE)))
@@ -131,7 +131,7 @@ public class LoginFrame extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(password, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
-                .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(loginBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(73, Short.MAX_VALUE))
         );
 
@@ -150,8 +150,23 @@ public class LoginFrame extends javax.swing.JFrame {
    
     }    }//GEN-LAST:event_usernameActionPerformed
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-    Connection conn = null;
+    private void passwordActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_passwordActionPerformed
+        String passwordData = new String(password.getPassword());
+        if(passwordData.isEmpty()){
+                    JOptionPane.showMessageDialog(this,"Password Field is empty");
+
+        }else{
+        
+            login();
+        }
+    }//GEN-LAST:event_passwordActionPerformed
+
+    private void loginBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_loginBtnActionPerformed
+        login();
+    }//GEN-LAST:event_loginBtnActionPerformed
+    
+    public void login(){
+     Connection conn = null;
     PreparedStatement statement = null;
     ResultSet resultSet = null;
 
@@ -159,8 +174,7 @@ public class LoginFrame extends javax.swing.JFrame {
     String usernameD = username.getText();
     String passwordData = new String(password.getPassword());
 
-    // Check for empty credentials
-       usernameActionPerformed(evt);
+    
           if (usernameD.isEmpty()) {
         return; 
     }
@@ -202,26 +216,19 @@ public class LoginFrame extends javax.swing.JFrame {
         } catch (SQLException e) {
             e.printStackTrace();
         }
-          
-                }    }//GEN-LAST:event_jButton1ActionPerformed
-
-    private void passwordActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_passwordActionPerformed
-        String passwordData = new String(password.getPassword());
-        if(passwordData.isEmpty()){
-                    JOptionPane.showMessageDialog(this,"Password Field is empty");
-
-        }
-    }//GEN-LAST:event_passwordActionPerformed
+    }
+    }
+    
     /**
      * @param args the command line arguments
      */
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JPanel jPanel1;
+    private javax.swing.JButton loginBtn;
     private javax.swing.JPasswordField password;
     private javax.swing.JTextField username;
     // End of variables declaration//GEN-END:variables

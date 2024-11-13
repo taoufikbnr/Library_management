@@ -195,7 +195,7 @@ String selectedCriteria="username";
      * @param args the command line arguments
      */
   
-        private void performSearch() {
+    private void performSearch() {
         String queryStr = query.getText();
        
         Subscriber userSubscriber = new Subscriber();
@@ -206,55 +206,10 @@ String selectedCriteria="username";
             new String[]{"Id","Nom", "Prénom","CIN","Adresse","Tel"}
                 
         ));
-        
                 TableColumnModel columnModel = jTable1.getColumnModel();
                 columnModel.getColumn(0).setPreferredWidth(5);
-
     }
-     private void showUsers() {
-        Connection conn = null;
-        PreparedStatement statement = null;
-        ResultSet resultSet = null;
-    
-        setTitle("Users");
-    
-    
-        try {
-            conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/library", "root", "");
-            statement = conn.prepareStatement("SELECT * FROM users");
-            resultSet = statement.executeQuery();
-    
-            // Displaying the list of users
-                ArrayList<Object[]> data = new ArrayList<>();
-
-            // Collect data from ResultSet
-            while (resultSet.next()) {
-                String username = resultSet.getString("username");
-                String password = resultSet.getString("password");
-                data.add(new Object[]{username, password, null, null});
-            }
-            Object[][] tableData = data.toArray(new Object[0][]);
-      jTable1.setModel(new javax.swing.table.DefaultTableModel(
-                tableData,
-                new String[] {"Username", "Password"} // Column names
-            ));
-
-        } catch (SQLException e) {
-            e.printStackTrace();
-            JOptionPane.showMessageDialog(null, "Error retrieving users: " + e.getMessage());
-        } finally {
-            // Close resources in finally block
-            try {
-                if (resultSet != null) resultSet.close();
-                if (statement != null) statement.close();
-                if (conn != null) conn.close();
-            } catch (SQLException e) {
-                e.printStackTrace();
-            }
-        }
-        
-        // Update the main frame with the user panel
-    }
+     
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton homeBtn1;
