@@ -397,7 +397,7 @@ ArrayList<Integer> selectedAuthorsId = new ArrayList<>();
     private void addBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addBtnActionPerformed
       int docId = addDocument();
 
-    // Step 2: Pass the docId to addDocAuth to associate authors with the document
+    
     if (docId != -1) {
         addDocAuth(docId);
     } else {
@@ -506,10 +506,10 @@ ArrayList<Integer> selectedAuthorsId = new ArrayList<>();
         int affectedRows = statement.executeUpdate();
     
             if (affectedRows > 0) {
-            // Get the generated docId
+           
             generatedKeys = statement.getGeneratedKeys();
             if (generatedKeys.next()) {
-                docId = generatedKeys.getInt(1);  // The docId is the first (and only) generated key
+                docId = generatedKeys.getInt(1);  
             }
         }
     

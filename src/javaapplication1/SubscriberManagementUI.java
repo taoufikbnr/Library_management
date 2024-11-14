@@ -55,6 +55,11 @@ public class SubscriberManagementUI extends javax.swing.JFrame {
 
         delSubBtn.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/delete user-icon.png"))); // NOI18N
         delSubBtn.setText("Supprimer Abonné");
+        delSubBtn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                delSubBtnActionPerformed(evt);
+            }
+        });
 
         searchSubBtn.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/search user 50x50.png"))); // NOI18N
         searchSubBtn.setText("Rechercher Abonné");
@@ -141,8 +146,13 @@ public class SubscriberManagementUI extends javax.swing.JFrame {
 
     private void modifySubBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_modifySubBtnActionPerformed
            new ModifySubscriberUI().setVisible(true);
-             dispose();
+           dispose();
     }//GEN-LAST:event_modifySubBtnActionPerformed
+
+    private void delSubBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_delSubBtnActionPerformed
+            new DeleteSubscriberUI().setVisible(true);
+            dispose();
+    }//GEN-LAST:event_delSubBtnActionPerformed
 
     /**
      * @param args the command line arguments

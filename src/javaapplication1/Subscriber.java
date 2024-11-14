@@ -102,7 +102,7 @@ public class Subscriber {
             
  try {
             conn = DBConnection.getConnection();
-            statement = conn.prepareStatement("DELETE FROM documents WHERE id = ?");
+            statement = conn.prepareStatement("DELETE FROM subscribers WHERE id = ?");
             statement.setString(1,id);
             statement.executeUpdate();      
   
