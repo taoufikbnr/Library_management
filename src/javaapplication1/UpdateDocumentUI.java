@@ -401,7 +401,7 @@ ArrayList<Integer> selectedAuthorsId = new ArrayList<>();
                                     .addGroup(layout.createSequentialGroup()
                                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                         .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE)))))))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 51, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(newAuthorBtn)
                     .addComponent(addBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -417,7 +417,7 @@ ArrayList<Integer> selectedAuthorsId = new ArrayList<>();
                         .addComponent(docId, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addComponent(docIdLabel)))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jScrollPane4, javax.swing.GroupLayout.PREFERRED_SIZE, 77, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(jScrollPane4, javax.swing.GroupLayout.PREFERRED_SIZE, 96, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
         );
 
@@ -436,14 +436,26 @@ ArrayList<Integer> selectedAuthorsId = new ArrayList<>();
     }//GEN-LAST:event_typeActionPerformed
 
     private void addBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addBtnActionPerformed
-      int docId = addDocument();
+        String id = docId.getText();
+        String titreData = titreInput.getText();
+        String dateString = datePicker1.getText();
+        
+       if(id.isEmpty() || nom.isEmpty() || prenom.isEmpty() || prenom.isEmpty() || prenom.isEmpty() || 
+         cin.isEmpty() || adresse.isEmpty() || telInput.getText().isEmpty() ){
+        JOptionPane.showMessageDialog(this,"All fields are required.");
+        }else{
+        new Subscriber(nom,prenom,cin,adresse,Integer.parseInt(tel)).updateUser(id);
+        docId.setText("");
+        prenomInput.setText("");
+        nomInput.setText("");
+        cinInput.setText("");
+        adrInput.setText("");
+        telInput.setText("");
+        JOptionPane.showMessageDialog(this,"Abonné modifié aves succes");
+        
+         }
+        
 
-    
-    if (docId != -1) {
-        addDocAuth(docId);
-    } else {
-        JOptionPane.showMessageDialog(null, "Failed to update document. Cannot proceed with adding authors.");
-    }
     }//GEN-LAST:event_addBtnActionPerformed
 
     private void licenceBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_licenceBtnActionPerformed
@@ -541,86 +553,8 @@ ArrayList<Integer> selectedAuthorsId = new ArrayList<>();
 
         getAuthors((String)id);
     }//GEN-LAST:event_docTableMouseClicked
-    private int addDocument(){
-       Connection conn=null;
-       PreparedStatement statement=null;
-       ResultSet generatedKeys = null;
-        int docId = -1;
-        
-        try {
-      conn = DBConnection.getConnection();
-      String sql = "INSERT INTO documents (cote, titre, date_parution,etat,type, isbn, editeur, diplome) VALUES (?,?,?,?,?,?,?,?)";
-        statement = conn.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS);
     
-    // Gather the data from the text fields
-    String coteData = coteInput.getText();
-    String titreData = titreInput.getText();
-    String dateString = datePicker1.getText();  // '1 novembre 2024'
-    
-    SimpleDateFormat inputFormat = new SimpleDateFormat("d MMMM yyyy", Locale.FRENCH);  
-    java.util.Date utilDate = inputFormat.parse(dateString);             
-    java.sql.Date sqlDate = new java.sql.Date(utilDate.getTime());  
-  
 
-    // Set the common fields
-    statement.setString(1, coteData);
-    statement.setString(2, titreData);
-    statement.setDate(3, sqlDate); 
-    statement.setString(4, (String) etat.getSelectedItem());
-    statement.setString(5, selectedType);
-    
-    // Depending on the selected type, set additional fields
-    if ("ouvrage".equals(selectedType)) {
-        statement.setString(6, isbn.getText()); 
-        statement.setString(7, editeur.getText()); 
-        statement.setString(8, null); 
-    } else {
-        // Set diplome for the other case
-        statement.setString(6, null); 
-        statement.setString(7, null); 
-        statement.setString(8, selectedMemoire); 
-    }
-    
-        int affectedRows = statement.executeUpdate();
-            if (affectedRows > 0) {
-            generatedKeys = statement.getGeneratedKeys();
-            if (generatedKeys.next()) {
-                docId = generatedKeys.getInt(1);  
-            }
-        }
-    
-        } catch (SQLException e) {
-            e.printStackTrace();
-            JOptionPane.showMessageDialog(null, "Error adding users: " + e.getMessage());
-        } catch (ParseException ex) {
-                        JOptionPane.showMessageDialog(null, "Error adding users: " + ex.getMessage());
-
-         Logger.getLogger(UpdateDocumentUI.class.getName()).log(Level.SEVERE, null, ex);
-     }
-         return docId;
-    }
-    private void addDocAuth(int documentId){
-     Connection conn=null;
-      PreparedStatement statement=null;
-        try {
-      conn = DBConnection.getConnection();
-      String sql = "INSERT INTO documents_authors (document_id,author_id) VALUES (?,?)";
-    statement = conn.prepareStatement(sql);
-
-     for (int authorId : selectedAuthorsId) {
-        statement.setInt(1, documentId);  
-        statement.setInt(2, authorId);      
-
-        statement.addBatch();  
-    }
-
-    // Execute the batch insert
-    statement.executeBatch();
-        } catch (SQLException e) {
-            e.printStackTrace();
-            JOptionPane.showMessageDialog(null, "Error adding users: " + e.getMessage());
-        } 
-    }
     private void getAuthors(String docId){
 
         Connection conn=null;

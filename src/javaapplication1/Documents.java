@@ -8,7 +8,14 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.sql.Statement;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Locale;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javax.swing.JOptionPane;
 /**
  *
  * @author lenovo
@@ -129,11 +136,57 @@ public class Documents {
         } catch (SQLException e) {
             e.printStackTrace();
         }
-    }
-
-    // Mise à jour de l'interface graphique après avoir obtenu les données
- 
+    } 
 
     return tableData;
 }
+ private void updateDocument(String id){
+       Connection conn=null;
+       PreparedStatement statement=null;
+        
+        try {
+      conn = DBConnection.getConnection();
+      String sql = "UPDATE documents SET  titre=?, date_parution=?,etat=?,type=?, isbn=?, editeur=?, diplome=? WHERE id=?";
+        statement = conn.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS);
+    
+    String id = docId.getText();
+    String titreData = titreInput.getText();
+    String dateString = datePicker1.getText();  
+    
+    SimpleDateFormat inputFormat = new SimpleDateFormat("d MMMM yyyy", Locale.FRENCH);  
+    java.util.Date utilDate = inputFormat.parse(dateString);             
+    java.sql.Date sqlDate = new java.sql.Date(utilDate.getTime());  
+  
+    statement.setString(1, titreData);
+    statement.setDate(2, sqlDate); 
+    statement.setString(3, etat);
+    statement.setString(4, selectedType);
+    
+    // Depending on the selected type, set additional fields
+    if ("ouvrage".equals(selectedType)) {
+        statement.setString(5, isbn.getText()); 
+        statement.setString(6, editeur.getText()); 
+        statement.setString(7, null); 
+    } else {
+        // Set diplome for the other case
+        statement.setString(5, null); 
+        statement.setString(6, null); 
+        statement.setString(7, selectedMemoire); 
+    }
+        statement.setString(8, id);
+
+        statement.executeUpdate();
+
+    
+        } catch (SQLException e) {
+            e.printStackTrace();
+            JOptionPane.showMessageDialog(null, "Error adding users: " + e.getMessage());
+        } catch (ParseException ex) {
+                        JOptionPane.showMessageDialog(null, "Error adding users: " + ex.getMessage());
+
+         Logger.getLogger(UpdateDocumentUI.class.getName()).log(Level.SEVERE, null, ex);
+     }
+    }
+ 
+ 
 }
