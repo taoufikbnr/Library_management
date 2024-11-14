@@ -23,7 +23,7 @@ import javax.swing.table.DefaultTableModel;
 public class UpdateDocumentUI extends javax.swing.JFrame {
  String selectedType="ouvrage";
  String selectedCriteria="";
- String selectedMemoire="";
+ String selectedMemoire="Licence";
 Object[][] tableData = null;
 
 ArrayList<String> selectedAuthors = new ArrayList<>();
@@ -68,8 +68,8 @@ ArrayList<Integer> selectedAuthorsId = new ArrayList<>();
         ouvragePanel = new javax.swing.JPanel();
         editeur = new javax.swing.JTextField();
         isbn = new javax.swing.JTextField();
-        isbnLabel1 = new javax.swing.JLabel();
-        editeurLabel1 = new javax.swing.JLabel();
+        editeurLabel = new javax.swing.JLabel();
+        isbnLabel = new javax.swing.JLabel();
         etatLabel = new javax.swing.JLabel();
         nomAuteurLabel = new javax.swing.JLabel();
         newAuthorBtn = new javax.swing.JToggleButton();
@@ -125,6 +125,7 @@ ArrayList<Integer> selectedAuthorsId = new ArrayList<>();
         memoirePanel.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         btnGrpMemoire.add(licenceBtn);
+        licenceBtn.setSelected(true);
         licenceBtn.setText("Licence");
         licenceBtn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -159,9 +160,9 @@ ArrayList<Integer> selectedAuthorsId = new ArrayList<>();
             }
         });
 
-        isbnLabel1.setText("ISBN");
+        editeurLabel.setText("Editeur");
 
-        editeurLabel1.setText("Editeur");
+        isbnLabel.setText("ISBN");
 
         javax.swing.GroupLayout ouvragePanelLayout = new javax.swing.GroupLayout(ouvragePanel);
         ouvragePanel.setLayout(ouvragePanelLayout);
@@ -171,12 +172,12 @@ ArrayList<Integer> selectedAuthorsId = new ArrayList<>();
                 .addGroup(ouvragePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(ouvragePanelLayout.createSequentialGroup()
                         .addGap(12, 12, 12)
-                        .addComponent(editeurLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(isbnLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(isbn, javax.swing.GroupLayout.PREFERRED_SIZE, 182, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(ouvragePanelLayout.createSequentialGroup()
                         .addGap(15, 15, 15)
-                        .addComponent(isbnLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(editeurLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(editeur, javax.swing.GroupLayout.PREFERRED_SIZE, 182, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addGap(23, 23, 23))
@@ -186,11 +187,11 @@ ArrayList<Integer> selectedAuthorsId = new ArrayList<>();
             .addGroup(ouvragePanelLayout.createSequentialGroup()
                 .addGap(6, 6, 6)
                 .addGroup(ouvragePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(isbnLabel1)
+                    .addComponent(editeurLabel)
                     .addComponent(editeur, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(17, 17, 17)
                 .addGroup(ouvragePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(editeurLabel1)
+                    .addComponent(isbnLabel)
                     .addComponent(isbn, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(15, 15, 15))
         );
@@ -439,18 +440,17 @@ ArrayList<Integer> selectedAuthorsId = new ArrayList<>();
         String id = docId.getText();
         String titreData = titreInput.getText();
         String dateString = datePicker1.getText();
+        String etatData = (String) etat.getSelectedItem();
+        String typeData = (String) type.getSelectedItem();
+        String isbnData = isbn.getText();
+        String editeurData = editeur.getText();
         
-       if(id.isEmpty() || nom.isEmpty() || prenom.isEmpty() || prenom.isEmpty() || prenom.isEmpty() || 
-         cin.isEmpty() || adresse.isEmpty() || telInput.getText().isEmpty() ){
+       if(id.isEmpty() || titreData.isEmpty() || dateString.isEmpty()){
         JOptionPane.showMessageDialog(this,"All fields are required.");
+        }else if("ouvrage".equals(typeData) && (isbnData.isEmpty() || editeurData.isEmpty()) ){
+            JOptionPane.showMessageDialog(this,"All fields are required.");
         }else{
-        new Subscriber(nom,prenom,cin,adresse,Integer.parseInt(tel)).updateUser(id);
-        docId.setText("");
-        prenomInput.setText("");
-        nomInput.setText("");
-        cinInput.setText("");
-        adrInput.setText("");
-        telInput.setText("");
+        new Documents(titreData,dateString,etatData,typeData,editeurData,isbnData,selectedMemoire).updateDocument(id);
         JOptionPane.showMessageDialog(this,"Abonné modifié aves succes");
         
          }
@@ -613,13 +613,13 @@ ArrayList<Integer> selectedAuthorsId = new ArrayList<>();
     private javax.swing.JTable docTable;
     private javax.swing.JRadioButton doctoratBtn;
     private javax.swing.JTextField editeur;
-    private javax.swing.JLabel editeurLabel1;
+    private javax.swing.JLabel editeurLabel;
     private javax.swing.JLabel errorLabel;
     private javax.swing.JComboBox<String> etat;
     private javax.swing.JLabel etatLabel;
     private javax.swing.JButton homeBtn1;
     private javax.swing.JTextField isbn;
-    private javax.swing.JLabel isbnLabel1;
+    private javax.swing.JLabel isbnLabel;
     private javax.swing.JComboBox<String> jComboBox1;
     private javax.swing.JLayeredPane jLayeredPane2;
     private javax.swing.JScrollPane jScrollPane2;

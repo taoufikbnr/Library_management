@@ -21,6 +21,23 @@ import javax.swing.JOptionPane;
  * @author lenovo
  */
 public class Documents {
+        
+        String titre;
+        String date;
+        String etat;
+        String type;
+        String isbn;
+        String editeur;
+        String diplome;
+        public Documents(String titre,String date,String etat,String type,String editeur,String isbn,String diplome ){
+            this.titre=titre;
+            this.date=date;
+            this.etat=etat;
+            this.type=type;
+            this.isbn=isbn;
+            this.editeur=editeur;
+            this.diplome=diplome;
+        }
         public Documents(){
         }
  public Object[][] getDocuments(String query, String selectedCriteria) {
@@ -117,7 +134,7 @@ public class Documents {
             String editeur = resultSet.getString("editeur");
             String etat = resultSet.getString("etat");
             String diplome = resultSet.getString("diplome");
-            data.add(new Object[]{id, cote,titre,nomAuteur+" "+prenomAuteur,date_parution,type,diplome,isbn,editeur, etat});
+            data.add(new Object[]{id, cote,titre,nomAuteur+" "+prenomAuteur,date_parution,type,diplome,editeur,isbn, etat});
         }
 
         // Conversion de la liste en tableau 2D
@@ -140,38 +157,35 @@ public class Documents {
 
     return tableData;
 }
- private void updateDocument(String id){
+ public void updateDocument(String id){
        Connection conn=null;
        PreparedStatement statement=null;
         
         try {
       conn = DBConnection.getConnection();
       String sql = "UPDATE documents SET  titre=?, date_parution=?,etat=?,type=?, isbn=?, editeur=?, diplome=? WHERE id=?";
-        statement = conn.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS);
+        statement = conn.prepareStatement(sql);
     
-    String id = docId.getText();
-    String titreData = titreInput.getText();
-    String dateString = datePicker1.getText();  
     
     SimpleDateFormat inputFormat = new SimpleDateFormat("d MMMM yyyy", Locale.FRENCH);  
-    java.util.Date utilDate = inputFormat.parse(dateString);             
+    java.util.Date utilDate = inputFormat.parse(this.date);             
     java.sql.Date sqlDate = new java.sql.Date(utilDate.getTime());  
   
-    statement.setString(1, titreData);
+    statement.setString(1, this.titre);
     statement.setDate(2, sqlDate); 
-    statement.setString(3, etat);
-    statement.setString(4, selectedType);
+    statement.setString(3, this.etat);
+    statement.setString(4, this.type);
     
     // Depending on the selected type, set additional fields
-    if ("ouvrage".equals(selectedType)) {
-        statement.setString(5, isbn.getText()); 
-        statement.setString(6, editeur.getText()); 
+    if ("ouvrage".equals(this.type)) {
+        statement.setString(5, this.isbn); 
+        statement.setString(6, this.editeur); 
         statement.setString(7, null); 
     } else {
         // Set diplome for the other case
         statement.setString(5, null); 
         statement.setString(6, null); 
-        statement.setString(7, selectedMemoire); 
+        statement.setString(7, this.diplome); 
     }
         statement.setString(8, id);
 

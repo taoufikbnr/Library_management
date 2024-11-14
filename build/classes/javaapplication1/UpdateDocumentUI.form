@@ -294,6 +294,7 @@
                 <Property name="buttonGroup" type="javax.swing.ButtonGroup" editor="org.netbeans.modules.form.RADComponent$ButtonGroupPropertyEditor">
                   <ComponentRef name="btnGrpMemoire"/>
                 </Property>
+                <Property name="selected" type="boolean" value="true"/>
                 <Property name="text" type="java.lang.String" value="Licence"/>
               </Properties>
               <Events>
@@ -353,13 +354,13 @@
                       <Group type="103" groupAlignment="0" attributes="0">
                           <Group type="102" attributes="0">
                               <EmptySpace min="-2" pref="12" max="-2" attributes="0"/>
-                              <Component id="editeurLabel1" min="-2" pref="45" max="-2" attributes="0"/>
+                              <Component id="isbnLabel" min="-2" pref="45" max="-2" attributes="0"/>
                               <EmptySpace type="unrelated" max="-2" attributes="0"/>
                               <Component id="isbn" min="-2" pref="182" max="-2" attributes="0"/>
                           </Group>
                           <Group type="102" alignment="0" attributes="0">
                               <EmptySpace min="15" pref="15" max="-2" attributes="0"/>
-                              <Component id="isbnLabel1" min="-2" pref="43" max="-2" attributes="0"/>
+                              <Component id="editeurLabel" min="-2" pref="43" max="-2" attributes="0"/>
                               <EmptySpace type="unrelated" max="-2" attributes="0"/>
                               <Component id="editeur" min="-2" pref="182" max="-2" attributes="0"/>
                           </Group>
@@ -373,12 +374,12 @@
                   <Group type="102" attributes="0">
                       <EmptySpace min="-2" pref="6" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="3" attributes="0">
-                          <Component id="isbnLabel1" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="editeurLabel" alignment="3" min="-2" max="-2" attributes="0"/>
                           <Component id="editeur" alignment="3" min="-2" max="-2" attributes="0"/>
                       </Group>
                       <EmptySpace min="-2" pref="17" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="3" attributes="0">
-                          <Component id="editeurLabel1" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="isbnLabel" alignment="3" min="-2" max="-2" attributes="0"/>
                           <Component id="isbn" alignment="3" min="-2" max="-2" attributes="0"/>
                       </Group>
                       <EmptySpace min="-2" pref="15" max="-2" attributes="0"/>
@@ -394,14 +395,14 @@
             </Component>
             <Component class="javax.swing.JTextField" name="isbn">
             </Component>
-            <Component class="javax.swing.JLabel" name="isbnLabel1">
-              <Properties>
-                <Property name="text" type="java.lang.String" value="ISBN"/>
-              </Properties>
-            </Component>
-            <Component class="javax.swing.JLabel" name="editeurLabel1">
+            <Component class="javax.swing.JLabel" name="editeurLabel">
               <Properties>
                 <Property name="text" type="java.lang.String" value="Editeur"/>
+              </Properties>
+            </Component>
+            <Component class="javax.swing.JLabel" name="isbnLabel">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="ISBN"/>
               </Properties>
             </Component>
           </SubComponents>
