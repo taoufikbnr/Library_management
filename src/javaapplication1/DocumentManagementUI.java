@@ -38,7 +38,7 @@ public class DocumentManagementUI extends javax.swing.JFrame {
         setTitle("RT | Admin Dashboard");
 
         addDocBtn.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/add Doc 50.png"))); // NOI18N
-        addDocBtn.setText("Add Document");
+        addDocBtn.setText("Ajouter Document");
         addDocBtn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 addDocBtnActionPerformed(evt);
@@ -57,7 +57,7 @@ public class DocumentManagementUI extends javax.swing.JFrame {
         });
 
         searchDocBtn.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/search Doc 50.png"))); // NOI18N
-        searchDocBtn.setText("Search Document");
+        searchDocBtn.setText("Rechercher Document");
         searchDocBtn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 searchDocBtnActionPerformed(evt);

@@ -37,7 +37,7 @@ String selectedCriteria="nom";
         addSubBtn = new javax.swing.JButton();
         nomInput = new javax.swing.JTextField();
         nomLabel = new javax.swing.JLabel();
-        addUserImg = new javax.swing.JLabel();
+        updateUserImg = new javax.swing.JLabel();
         prenomLabel = new javax.swing.JLabel();
         cinLabel = new javax.swing.JLabel();
         adrLabel = new javax.swing.JLabel();
@@ -55,6 +55,7 @@ String selectedCriteria="nom";
         query = new javax.swing.JTextField();
         docId = new javax.swing.JTextField();
         jLabel1 = new javax.swing.JLabel();
+        title = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -76,7 +77,7 @@ String selectedCriteria="nom";
 
         nomLabel.setText("Prénom");
 
-        addUserImg.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/modify user.png"))); // NOI18N
+        updateUserImg.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/modify user.png"))); // NOI18N
 
         prenomLabel.setText("Nom");
 
@@ -161,6 +162,10 @@ String selectedCriteria="nom";
 
     jLabel1.setText("ID");
 
+    title.setFont(new java.awt.Font("sansserif", 3, 12)); // NOI18N
+    title.setForeground(new java.awt.Color(0, 0, 204));
+    title.setText("Modifier Abonné");
+
     javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
     getContentPane().setLayout(layout);
     layout.setHorizontalGroup(
@@ -187,7 +192,7 @@ String selectedCriteria="nom";
             .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(layout.createSequentialGroup()
-                    .addComponent(addUserImg)
+                    .addComponent(updateUserImg)
                     .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(homeBtn1)
                     .addContainerGap())
@@ -208,25 +213,32 @@ String selectedCriteria="nom";
                     .addGap(57, 57, 57))))
         .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
             .addContainerGap(63, Short.MAX_VALUE)
-            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                .addGroup(layout.createSequentialGroup()
-                    .addComponent(query, javax.swing.GroupLayout.PREFERRED_SIZE, 71, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGap(18, 18, 18)
-                    .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                    .addComponent(jButton2))
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 535, javax.swing.GroupLayout.PREFERRED_SIZE))
-            .addGap(27, 27, 27))
+            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                        .addGroup(layout.createSequentialGroup()
+                            .addComponent(query, javax.swing.GroupLayout.PREFERRED_SIZE, 71, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGap(18, 18, 18)
+                            .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                            .addComponent(jButton2))
+                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 535, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGap(27, 27, 27))
+                .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                    .addComponent(title, javax.swing.GroupLayout.PREFERRED_SIZE, 129, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGap(225, 225, 225))))
     );
     layout.setVerticalGroup(
         layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
         .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
             .addContainerGap()
             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addComponent(addUserImg)
+                .addComponent(updateUserImg)
                 .addComponent(homeBtn1)
                 .addComponent(jButton1))
-            .addGap(45, 45, 45)
+            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+            .addComponent(title)
+            .addGap(23, 23, 23)
             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                 .addComponent(nomLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addComponent(nomInput, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -347,7 +359,6 @@ String selectedCriteria="nom";
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton addSubBtn;
-    private javax.swing.JLabel addUserImg;
     private javax.swing.JTextField adrInput;
     private javax.swing.JLabel adrLabel;
     private javax.swing.JTextField cinInput;
@@ -367,5 +378,7 @@ String selectedCriteria="nom";
     private javax.swing.JTextField query;
     private javax.swing.JTextField telInput;
     private javax.swing.JLabel telLabel;
+    private javax.swing.JLabel title;
+    private javax.swing.JLabel updateUserImg;
     // End of variables declaration//GEN-END:variables
 }
