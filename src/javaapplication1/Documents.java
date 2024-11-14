@@ -23,7 +23,7 @@ public class Documents {
     String sql;
     switch (selectedCriteria) {
         case "id":
-            sql = "SELECT d.id, d.cote, d.titre, d.etat, d.type, " +
+            sql = "SELECT d.id, d.cote, d.titre, d.etat, d.type,d.diplome,d.date_parution,d.ISBN,d.editeur, " +
                   "a.nom_auteur, a.prenom_auteur " +
                   "FROM documents d " +
                   "LEFT JOIN documents_authors da ON d.id = da.document_id " +
@@ -31,7 +31,7 @@ public class Documents {
                   "WHERE d.id LIKE ?";
             break;
         case "cote":
-            sql = "SELECT d.id, d.cote, d.titre, d.etat, d.type, " +
+            sql = "SELECT d.id, d.cote, d.titre, d.etat, d.type,d.diplome,d.date_parution,d.ISBN,d.editeur, " +
                   "a.nom_auteur, a.prenom_auteur " +
                   "FROM documents d " +
                   "LEFT JOIN documents_authors da ON d.id = da.document_id " +
@@ -39,7 +39,7 @@ public class Documents {
                   "WHERE d.cote LIKE ?";
             break;
         case "etat":
-            sql = "SELECT d.id, d.cote, d.titre, d.etat, d.type, " +
+            sql = "SELECT d.id, d.cote, d.titre, d.etat, d.type,d.diplome,d.date_parution,d.ISBN,d.editeur,  " +
                   "a.nom_auteur, a.prenom_auteur " +
                   "FROM documents d " +
                   "LEFT JOIN documents_authors da ON d.id = da.document_id " +
@@ -47,28 +47,31 @@ public class Documents {
                   "WHERE d.etat LIKE ?";
             break;
         case "auteur":
-        sql = "SELECT d.id, d.cote,d.titre, d.etat,d.type,a.nom_auteur,a.prenom_auteur  " +
+        sql = "SELECT d.id, d.cote,d.titre, d.etat,d.type,d.diplome,d.date_parution,d.ISBN,d.editeur, "
+                + "a.nom_auteur,a.prenom_auteur  " +
               "FROM documents d " +
               "LEFT JOIN documents_authors da ON d.id = da.document_id " +
               "LEFT JOIN authors a ON da.author_id = a.code_auteur " +
               "WHERE (a.nom_auteur LIKE ? OR a.prenom_auteur LIKE ?)";
             break;
         case "type":
-        sql = "SELECT d.id, d.cote,d.titre, d.etat,d.type,a.nom_auteur,a.prenom_auteur  " +
+        sql = "SELECT d.id, d.cote,d.titre, d.etat,d.type,d.diplome,d.date_parution,d.ISBN,d.editeur, "
+                + "a.nom_auteur,a.prenom_auteur  " +
               "FROM documents d " +
               "LEFT JOIN documents_authors da ON d.id = da.document_id " +
               "LEFT JOIN authors a ON da.author_id = a.code_auteur " +
               "WHERE d.type LIKE ?";
             break;
         case "titre":
-                 sql = "SELECT d.id, d.cote,d.titre, d.etat,d.type,a.nom_auteur,a.prenom_auteur  " +
+                 sql = "SELECT d.id, d.cote,d.titre, d.etat,d.type,d.diplome,d.date_parution,d.ISBN,d.editeur, "
+                         + "a.nom_auteur,a.prenom_auteur  " +
               "FROM documents d " +
               "LEFT JOIN documents_authors da ON d.id = da.document_id " +
               "LEFT JOIN authors a ON da.author_id = a.code_auteur " +
               "WHERE d.titre LIKE ?";
             break;
         default:
-            sql = "SELECT d.id, d.cote, d.titre, d.etat, d.type, " +
+            sql = "SELECT d.id, d.cote, d.titre, d.etat, d.type,d.diplome,d.date_parution,d.ISBN,d.editeur, " +
                   "a.nom_auteur, a.prenom_auteur " +
                   "FROM documents d " +
                   "LEFT JOIN documents_authors da ON d.id = da.document_id " +
@@ -101,9 +104,13 @@ public class Documents {
             String titre = resultSet.getString("titre");
             String nomAuteur = resultSet.getString("nom_auteur");
             String prenomAuteur = resultSet.getString("prenom_auteur");
+            String date_parution = resultSet.getString("date_parution");
             String type = resultSet.getString("type");
+            String isbn = resultSet.getString("ISBN");
+            String editeur = resultSet.getString("editeur");
             String etat = resultSet.getString("etat");
-            data.add(new Object[]{id, cote,titre,nomAuteur+" "+prenomAuteur,type, etat});
+            String diplome = resultSet.getString("diplome");
+            data.add(new Object[]{id, cote,titre,nomAuteur+" "+prenomAuteur,date_parution,type,diplome,isbn,editeur, etat});
         }
 
         // Conversion de la liste en tableau 2D

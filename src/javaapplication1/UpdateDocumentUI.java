@@ -20,9 +20,12 @@ import javax.swing.table.DefaultTableModel;
  *
  * @author lenovo
  */
-public class AddDocumentUI extends javax.swing.JFrame {
- String selectedType;
- String selectedMemoire="licence";
+public class UpdateDocumentUI extends javax.swing.JFrame {
+ String selectedType="ouvrage";
+ String selectedCriteria="";
+ String selectedMemoire="";
+Object[][] tableData = null;
+
 ArrayList<String> selectedAuthors = new ArrayList<>();
 ArrayList<Integer> selectedAuthorsId = new ArrayList<>();
 
@@ -30,14 +33,14 @@ ArrayList<Integer> selectedAuthorsId = new ArrayList<>();
     /**
      * Creates new form AddDocumentUI
      */
-    public AddDocumentUI() {
+    public UpdateDocumentUI() {
         initComponents();
-            type.setSelectedItem("ouvrage");
         setLocationRelativeTo(null); 
-        getAuthors();
+        type.setSelectedItem(selectedType);
+        performSearch();
 
     }
-   
+
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -48,8 +51,8 @@ ArrayList<Integer> selectedAuthorsId = new ArrayList<>();
     private void initComponents() {
 
         btnGrpMemoire = new javax.swing.ButtonGroup();
-        cote = new javax.swing.JTextField();
-        titre = new javax.swing.JTextField();
+        coteInput = new javax.swing.JTextField();
+        titreInput = new javax.swing.JTextField();
         etat = new javax.swing.JComboBox<>();
         type = new javax.swing.JComboBox<>();
         addBtn = new javax.swing.JButton();
@@ -57,8 +60,6 @@ ArrayList<Integer> selectedAuthorsId = new ArrayList<>();
         coteLabel = new javax.swing.JLabel();
         titreLabel = new javax.swing.JLabel();
         dateLabel = new javax.swing.JLabel();
-        jScrollPane1 = new javax.swing.JScrollPane();
-        jTable1 = new javax.swing.JTable();
         jLayeredPane2 = new javax.swing.JLayeredPane();
         memoirePanel = new javax.swing.JPanel();
         licenceBtn = new javax.swing.JRadioButton();
@@ -71,33 +72,38 @@ ArrayList<Integer> selectedAuthorsId = new ArrayList<>();
         editeurLabel1 = new javax.swing.JLabel();
         etatLabel = new javax.swing.JLabel();
         nomAuteurLabel = new javax.swing.JLabel();
-        jScrollPane2 = new javax.swing.JScrollPane();
-        nomAuteurs = new javax.swing.JTextArea();
-        searchInput = new javax.swing.JTextField();
-        searchBtn = new javax.swing.JButton();
         newAuthorBtn = new javax.swing.JToggleButton();
         homeBtn1 = new javax.swing.JButton();
         returnBtn1 = new javax.swing.JButton();
         title = new javax.swing.JLabel();
         addDocImg = new javax.swing.JLabel();
+        queryInput = new javax.swing.JTextField();
+        jComboBox1 = new javax.swing.JComboBox<>();
+        searchBtn1 = new javax.swing.JToggleButton();
+        errorLabel = new javax.swing.JLabel();
+        docId = new javax.swing.JTextField();
+        docIdLabel = new javax.swing.JLabel();
+        jScrollPane4 = new javax.swing.JScrollPane();
+        docTable = new javax.swing.JTable();
+        jScrollPane2 = new javax.swing.JScrollPane();
+        jTextArea1 = new javax.swing.JTextArea();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setBackground(new java.awt.Color(0, 0, 0));
 
-        cote.setText("1");
-
-        titre.setText("titre");
+        coteInput.setEditable(false);
 
         etat.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "disponible", "non disponible" }));
 
         type.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "ouvrage", "memoire" }));
+        type.setSelectedItem("ouvrage");
         type.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 typeActionPerformed(evt);
             }
         });
 
-        addBtn.setText("Add");
+        addBtn.setText("Enregistrer");
         addBtn.setBackground(new java.awt.Color(0, 204, 51));
         addBtn.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         addBtn.setForeground(new java.awt.Color(255, 255, 255));
@@ -114,31 +120,11 @@ ArrayList<Integer> selectedAuthorsId = new ArrayList<>();
 
         dateLabel.setText("Date partution");
 
-        jTable1.setModel(new javax.swing.table.DefaultTableModel(
-            new Object [][] {
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null}
-            },
-            new String [] {
-                "Title 1", "Title 2", "Title 3", "Title 4"
-            }
-        ));
-        jTable1.setSelectionMode(javax.swing.ListSelectionModel.MULTIPLE_INTERVAL_SELECTION);
-        jTable1.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                jTable1MouseClicked(evt);
-            }
-        });
-        jScrollPane1.setViewportView(jTable1);
-
         jLayeredPane2.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         memoirePanel.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         btnGrpMemoire.add(licenceBtn);
-        licenceBtn.setSelected(true);
         licenceBtn.setText("Licence");
         licenceBtn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -165,7 +151,7 @@ ArrayList<Integer> selectedAuthorsId = new ArrayList<>();
         });
         memoirePanel.add(doctoratBtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 50, -1, -1));
 
-        jLayeredPane2.add(memoirePanel, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 220, 100));
+        jLayeredPane2.add(memoirePanel, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 220, 80));
 
         editeur.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -201,36 +187,19 @@ ArrayList<Integer> selectedAuthorsId = new ArrayList<>();
                 .addGap(6, 6, 6)
                 .addGroup(ouvragePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(isbnLabel1)
-                    .addComponent(editeur, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(editeur, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(17, 17, 17)
                 .addGroup(ouvragePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(editeurLabel1)
-                    .addComponent(isbn, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(24, 24, 24))
+                    .addComponent(isbn, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(15, 15, 15))
         );
 
         jLayeredPane2.add(ouvragePanel, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 300, -1));
 
         etatLabel.setText("Etat");
 
-        nomAuteurLabel.setText("Nom auteur(s)");
-
-        nomAuteurs.setColumns(20);
-        nomAuteurs.setRows(5);
-        jScrollPane2.setViewportView(nomAuteurs);
-
-        searchInput.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                searchInputActionPerformed(evt);
-            }
-        });
-
-        searchBtn.setText("Search");
-        searchBtn.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                searchBtnActionPerformed(evt);
-            }
-        });
+        nomAuteurLabel.setText("Auteur(s)");
 
         newAuthorBtn.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/add_author (50).png"))); // NOI18N
         newAuthorBtn.setText("Nouveau Auteur");
@@ -269,11 +238,58 @@ ArrayList<Integer> selectedAuthorsId = new ArrayList<>();
             }
         });
 
+        title.setText("Modifier Document");
         title.setFont(new java.awt.Font("sansserif", 3, 12)); // NOI18N
         title.setForeground(new java.awt.Color(0, 0, 204));
-        title.setText("Ajouter Document");
 
         addDocImg.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/add Doc 50.png"))); // NOI18N
+
+        queryInput.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                queryInputActionPerformed(evt);
+            }
+        });
+
+        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "id", "cote", "titre", "auteur", "etat", "type" }));
+        jComboBox1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jComboBox1ActionPerformed(evt);
+            }
+        });
+
+        searchBtn1.setText("Search");
+        searchBtn1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                searchBtn1ActionPerformed(evt);
+            }
+        });
+
+        errorLabel.setForeground(new java.awt.Color(255, 0, 0));
+
+        docId.setBackground(new java.awt.Color(0, 102, 153));
+        docId.setForeground(new java.awt.Color(255, 255, 255));
+
+        docIdLabel.setText("ID  document");
+
+        docTable.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+
+            },
+            new String [] {
+
+            }
+        ));
+        docTable.setAutoResizeMode(javax.swing.JTable.AUTO_RESIZE_LAST_COLUMN);
+        docTable.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                docTableMouseClicked(evt);
+            }
+        });
+        jScrollPane4.setViewportView(docTable);
+
+        jTextArea1.setColumns(20);
+        jTextArea1.setRows(5);
+        jScrollPane2.setViewportView(jTextArea1);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -282,61 +298,72 @@ ArrayList<Integer> selectedAuthorsId = new ArrayList<>();
             .addGroup(layout.createSequentialGroup()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(334, 334, 334)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(addBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 105, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(nomAuteurLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 86, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(18, 18, 18)
-                                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 189, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(134, 134, 134)
-                        .addComponent(searchInput, javax.swing.GroupLayout.PREFERRED_SIZE, 86, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(searchBtn))
-                    .addGroup(layout.createSequentialGroup()
-                        .addContainerGap()
-                        .addComponent(returnBtn1)
-                        .addGap(296, 296, 296)
-                        .addComponent(addDocImg))
-                    .addGroup(layout.createSequentialGroup()
                         .addGap(75, 75, 75)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                .addGroup(layout.createSequentialGroup()
-                                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                        .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                                .addComponent(titreLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                                .addComponent(coteLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                            .addGap(49, 49, 49))
-                                        .addComponent(dateLabel, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 86, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addComponent(etatLabel, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 86, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                        .addComponent(datePicker1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                        .addComponent(titre)
-                                        .addComponent(etat, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                        .addComponent(cote)))
-                                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 230, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addComponent(newAuthorBtn, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 231, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(layout.createSequentialGroup()
-                                .addGap(146, 146, 146)
-                                .addComponent(type, javax.swing.GroupLayout.PREFERRED_SIZE, 149, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addComponent(docIdLabel)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(docId, javax.swing.GroupLayout.PREFERRED_SIZE, 55, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(errorLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 158, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(27, 27, 27)
+                                .addComponent(queryInput, javax.swing.GroupLayout.PREFERRED_SIZE, 109, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(16, 16, 16)
+                                .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(searchBtn1, javax.swing.GroupLayout.PREFERRED_SIZE, 92, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(jScrollPane4)
                             .addGroup(layout.createSequentialGroup()
-                                .addGap(81, 81, 81)
-                                .addComponent(jLayeredPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 277, javax.swing.GroupLayout.PREFERRED_SIZE)))))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(newAuthorBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 231, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addGroup(layout.createSequentialGroup()
+                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                                    .addComponent(titreLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                    .addComponent(coteLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                                .addGap(49, 49, 49))
+                                            .addComponent(dateLabel, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 86, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                            .addComponent(etatLabel, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 86, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                            .addComponent(etat, javax.swing.GroupLayout.Alignment.TRAILING, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                            .addComponent(titreInput, javax.swing.GroupLayout.Alignment.TRAILING)
+                                            .addComponent(datePicker1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                            .addComponent(coteInput, javax.swing.GroupLayout.Alignment.TRAILING))))
+                                .addGap(114, 114, 114)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addGroup(layout.createSequentialGroup()
+                                        .addComponent(nomAuteurLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 59, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addGap(18, 18, 18)
+                                        .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 174, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                    .addComponent(jLayeredPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 280, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addGap(0, 0, Short.MAX_VALUE))))
+                    .addGroup(layout.createSequentialGroup()
+                        .addContainerGap()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(addBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 105, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(returnBtn1)
+                                .addGap(296, 296, 296)
+                                .addComponent(addDocImg)
+                                .addGap(207, 207, 207)))))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(homeBtn1))
             .addGroup(layout.createSequentialGroup()
                 .addGap(311, 311, 311)
-                .addComponent(title, javax.swing.GroupLayout.PREFERRED_SIZE, 129, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addComponent(title, javax.swing.GroupLayout.PREFERRED_SIZE, 129, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(type, javax.swing.GroupLayout.PREFERRED_SIZE, 180, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(85, 85, 85))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(homeBtn1)
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(layout.createSequentialGroup()
@@ -345,47 +372,53 @@ ArrayList<Integer> selectedAuthorsId = new ArrayList<>();
                             .addComponent(returnBtn1))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(title)
-                        .addGap(24, 24, 24)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(cote, javax.swing.GroupLayout.PREFERRED_SIZE, 44, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(coteLabel))
-                        .addGap(10, 10, 10)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(titre, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(titreLabel))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(datePicker1, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(dateLabel))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(etat, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(etatLabel)))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(93, 93, 93)
-                        .addComponent(type, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(15, 15, 15)
+                        .addComponent(type, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jLayeredPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 152, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addComponent(homeBtn1))
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(27, 27, 27)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(searchInput, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(searchBtn))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 103, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(newAuthorBtn)
-                        .addContainerGap(131, Short.MAX_VALUE))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 59, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(nomAuteurLabel))
-                        .addGap(113, 113, 113)
-                        .addComponent(addBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(85, 85, 85))))
+                            .addGroup(layout.createSequentialGroup()
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                    .addComponent(coteInput, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(coteLabel))
+                                .addGap(10, 10, 10)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                    .addComponent(titreInput, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(titreLabel))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                    .addComponent(datePicker1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(dateLabel))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                    .addComponent(etat, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(etatLabel)))
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(jLayeredPane2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addGroup(layout.createSequentialGroup()
+                                        .addGap(17, 17, 17)
+                                        .addComponent(nomAuteurLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                    .addGroup(layout.createSequentialGroup()
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                        .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE)))))))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 51, Short.MAX_VALUE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(newAuthorBtn)
+                    .addComponent(addBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(25, 25, 25)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(queryInput, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(searchBtn1))
+                        .addComponent(errorLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(docId, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(docIdLabel)))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jScrollPane4, javax.swing.GroupLayout.PREFERRED_SIZE, 77, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap())
         );
 
         pack();
@@ -393,14 +426,13 @@ ArrayList<Integer> selectedAuthorsId = new ArrayList<>();
 
     private void typeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_typeActionPerformed
          selectedType = (String) type.getSelectedItem();
-        if("ouvrage".equals(selectedType)){
+                if("ouvrage".equals(selectedType)){
             ouvragePanel.setVisible(true);
             memoirePanel.setVisible(false);
         }else{
             memoirePanel.setVisible(true);
             ouvragePanel.setVisible(false);
         }
-        
     }//GEN-LAST:event_typeActionPerformed
 
     private void addBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addBtnActionPerformed
@@ -410,16 +442,18 @@ ArrayList<Integer> selectedAuthorsId = new ArrayList<>();
     if (docId != -1) {
         addDocAuth(docId);
     } else {
-        JOptionPane.showMessageDialog(null, "Failed to add document. Cannot proceed with adding authors.");
+        JOptionPane.showMessageDialog(null, "Failed to update document. Cannot proceed with adding authors.");
     }
     }//GEN-LAST:event_addBtnActionPerformed
 
     private void licenceBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_licenceBtnActionPerformed
         selectedMemoire = licenceBtn.getText();
+
     }//GEN-LAST:event_licenceBtnActionPerformed
 
     private void mastereBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mastereBtnActionPerformed
         selectedMemoire = mastereBtn.getText();
+
     }//GEN-LAST:event_mastereBtnActionPerformed
 
     private void doctoratBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_doctoratBtnActionPerformed
@@ -429,34 +463,6 @@ ArrayList<Integer> selectedAuthorsId = new ArrayList<>();
     private void editeurActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_editeurActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_editeurActionPerformed
-
-    private void jTable1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTable1MouseClicked
-         int[] selectedRows=jTable1.getSelectedRows();
-        DefaultTableModel model = (DefaultTableModel) jTable1.getModel();
-        for (int rowIndex : selectedRows) {
-                     Object id = model.getValueAt(rowIndex, 0);
-                     Object nom = model.getValueAt(rowIndex, 1);
-                     Object prenom = model.getValueAt(rowIndex, 2);
-                         String fullName = nom + " " + prenom;
-                      if (selectedAuthors.contains((String)fullName)) {
-                             selectedAuthors.remove((String)fullName);
-                            selectedAuthorsId.remove(Integer.valueOf((int) id));
-                         } else {
-                             selectedAuthors.add((String) fullName);
-                             selectedAuthorsId.add((int)id);
-                         }
-                     nomAuteurs.setText(String.join(", ", selectedAuthors));
-                     System.out.println(selectedAuthorsId);
-                }
-    }//GEN-LAST:event_jTable1MouseClicked
-
-    private void searchInputActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_searchInputActionPerformed
-        getAuthors();
-    }//GEN-LAST:event_searchInputActionPerformed
-
-    private void searchBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_searchBtnActionPerformed
-        getAuthors();
-    }//GEN-LAST:event_searchBtnActionPerformed
 
     private void newAuthorBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_newAuthorBtnActionPerformed
           AddAuthorUI addAuthorUI = new AddAuthorUI();
@@ -472,6 +478,69 @@ ArrayList<Integer> selectedAuthorsId = new ArrayList<>();
         new DocumentManagementUI().setVisible(true);
         dispose();
     }//GEN-LAST:event_returnBtn1ActionPerformed
+
+    private void queryInputActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_queryInputActionPerformed
+        performSearch();
+    }//GEN-LAST:event_queryInputActionPerformed
+
+    private void jComboBox1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBox1ActionPerformed
+        selectedCriteria = (String) jComboBox1.getSelectedItem();
+    }//GEN-LAST:event_jComboBox1ActionPerformed
+
+    private void searchBtn1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_searchBtn1ActionPerformed
+        performSearch();
+    }//GEN-LAST:event_searchBtn1ActionPerformed
+
+    private void docTableMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_docTableMouseClicked
+        int selectedRow = docTable.getSelectedRow();
+        DefaultTableModel model = (DefaultTableModel) docTable.getModel();
+        Object id = model.getValueAt(selectedRow, 0);
+        Object cote = model.getValueAt(selectedRow, 1);
+        Object titre = model.getValueAt(selectedRow, 2);
+        Object date_parution = model.getValueAt(selectedRow, 4);
+        Object typeT = model.getValueAt(selectedRow, 5);
+        Object diplome = model.getValueAt(selectedRow, 6);
+        Object editeurT = model.getValueAt(selectedRow, 7);
+        Object isbnT = model.getValueAt(selectedRow, 8);
+        Object disponibilty = model.getValueAt(selectedRow, 9);
+        docId.setText((String)id);
+        coteInput.setText((String)cote);
+        titreInput.setText((String)titre);
+        editeur.setText((String)editeurT);
+        isbn.setText((String)isbnT);
+       
+             SimpleDateFormat inputFormat = new SimpleDateFormat("yyyy-MM-dd");  
+            java.util.Date utilDate;
+     try {
+         utilDate = inputFormat.parse((String)date_parution);
+         SimpleDateFormat outputFormat = new SimpleDateFormat("d MMMM yyyy", Locale.FRENCH);
+            String formattedDate = outputFormat.format(utilDate);
+        datePicker1.setText(formattedDate);
+     } catch (ParseException ex) {
+         Logger.getLogger(UpdateDocumentUI.class.getName()).log(Level.SEVERE, null, ex);
+     }
+             
+        type.setSelectedItem(typeT);
+        etat.setSelectedItem(disponibilty);
+        selectedMemoire=(String)diplome;
+        if (selectedMemoire != null && selectedMemoire.equals("Licence")) {
+                licenceBtn.setSelected(true);
+            } else {
+                licenceBtn.setSelected(false);
+            }
+            if (selectedMemoire != null && selectedMemoire.equals("Mastere")) {
+                mastereBtn.setSelected(true);
+            } else {
+                mastereBtn.setSelected(false);
+            }
+            if (selectedMemoire != null && selectedMemoire.equals("Doctorat")) {
+                doctoratBtn.setSelected(true);
+            } else {
+                doctoratBtn.setSelected(false);
+            }
+
+        getAuthors((String)id);
+    }//GEN-LAST:event_docTableMouseClicked
     private int addDocument(){
        Connection conn=null;
        PreparedStatement statement=null;
@@ -484,8 +553,8 @@ ArrayList<Integer> selectedAuthorsId = new ArrayList<>();
         statement = conn.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS);
     
     // Gather the data from the text fields
-    String coteData = cote.getText();
-    String titreData = titre.getText();
+    String coteData = coteInput.getText();
+    String titreData = titreInput.getText();
     String dateString = datePicker1.getText();  // '1 novembre 2024'
     
     SimpleDateFormat inputFormat = new SimpleDateFormat("d MMMM yyyy", Locale.FRENCH);  
@@ -513,9 +582,7 @@ ArrayList<Integer> selectedAuthorsId = new ArrayList<>();
     }
     
         int affectedRows = statement.executeUpdate();
-    
             if (affectedRows > 0) {
-           
             generatedKeys = statement.getGeneratedKeys();
             if (generatedKeys.next()) {
                 docId = generatedKeys.getInt(1);  
@@ -528,7 +595,7 @@ ArrayList<Integer> selectedAuthorsId = new ArrayList<>();
         } catch (ParseException ex) {
                         JOptionPane.showMessageDialog(null, "Error adding users: " + ex.getMessage());
 
-         Logger.getLogger(AddDocumentUI.class.getName()).log(Level.SEVERE, null, ex);
+         Logger.getLogger(UpdateDocumentUI.class.getName()).log(Level.SEVERE, null, ex);
      }
          return docId;
     }
@@ -544,8 +611,7 @@ ArrayList<Integer> selectedAuthorsId = new ArrayList<>();
         statement.setInt(1, documentId);  
         statement.setInt(2, authorId);      
 
-        // Execute the insert for this row
-        statement.addBatch();  // Use addBatch to batch the inserts for performance
+        statement.addBatch();  
     }
 
     // Execute the batch insert
@@ -555,36 +621,45 @@ ArrayList<Integer> selectedAuthorsId = new ArrayList<>();
             JOptionPane.showMessageDialog(null, "Error adding users: " + e.getMessage());
         } 
     }
-    private void getAuthors(){
+    private void getAuthors(String docId){
 
         Connection conn=null;
        ResultSet resultSet=null;
        PreparedStatement statement=null;
-       String queryStr = (String) searchInput.getText();
         try {
             conn = DBConnection.getConnection();
-            statement = conn.prepareStatement("SELECT * FROM authors WHERE nom_auteur LIKE ? OR prenom_auteur LIKE ?");
-            statement.setString(1,"%" + queryStr + "%" );
-            statement.setString(2,"%" + queryStr + "%" );
+            statement = conn.prepareStatement("SELECT * FROM authors,documents_authors WHERE author_id=code_auteur AND document_id= ?");
+            statement.setString(1,docId);
             resultSet = statement.executeQuery();
             
-            ArrayList<Object[]> data = new ArrayList<>();
+            ArrayList<String> data = new ArrayList<>();
 
             while (resultSet.next()) {
                 int id = resultSet.getInt("code_auteur");
                 String lastName = resultSet.getString("prenom_auteur");
                 String firstName = resultSet.getString("nom_auteur");
-                data.add(new Object[]{id,lastName, firstName});
-            }
-            Object[][] tableData = data.toArray(new Object[0][]);
-      jTable1.setModel(new javax.swing.table.DefaultTableModel(
-                tableData,
-                new String[] {"code_auteur", "Nom","Prenom"} // Column names
-            ));
-      
+                data.add(lastName  +" "+ firstName);
+           }
+                jTextArea1.setText(String.join(", ", data));
+ 
                
         } catch (SQLException e) {
         }
+    }
+         private void performSearch() {
+        String query = queryInput.getText();
+       
+        tableData = new Documents().getDocuments(query, selectedCriteria);
+            if (tableData != null && tableData.length > 0) {
+                    errorLabel.setText(""); 
+                    docTable.setModel(new javax.swing.table.DefaultTableModel(
+                        tableData,
+                        new String[]{"ID","Cote","Titre","Auteur","Date","Type","Diplome","Editeur","ISBN", "Etat"} 
+                    ));
+                } else {
+                errorLabel.setText("No records found");
+                    }    
+            
     }
     /**
      * @param args the command line arguments
@@ -595,34 +670,38 @@ ArrayList<Integer> selectedAuthorsId = new ArrayList<>();
     private javax.swing.JButton addBtn;
     private javax.swing.JLabel addDocImg;
     private javax.swing.ButtonGroup btnGrpMemoire;
-    private javax.swing.JTextField cote;
+    private javax.swing.JTextField coteInput;
     private javax.swing.JLabel coteLabel;
     private javax.swing.JLabel dateLabel;
     private com.github.lgooddatepicker.components.DatePicker datePicker1;
+    private javax.swing.JTextField docId;
+    private javax.swing.JLabel docIdLabel;
+    private javax.swing.JTable docTable;
     private javax.swing.JRadioButton doctoratBtn;
     private javax.swing.JTextField editeur;
     private javax.swing.JLabel editeurLabel1;
+    private javax.swing.JLabel errorLabel;
     private javax.swing.JComboBox<String> etat;
     private javax.swing.JLabel etatLabel;
     private javax.swing.JButton homeBtn1;
     private javax.swing.JTextField isbn;
     private javax.swing.JLabel isbnLabel1;
+    private javax.swing.JComboBox<String> jComboBox1;
     private javax.swing.JLayeredPane jLayeredPane2;
-    private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
-    private javax.swing.JTable jTable1;
+    private javax.swing.JScrollPane jScrollPane4;
+    private javax.swing.JTextArea jTextArea1;
     private javax.swing.JRadioButton licenceBtn;
     private javax.swing.JRadioButton mastereBtn;
     private javax.swing.JPanel memoirePanel;
     private javax.swing.JToggleButton newAuthorBtn;
     private javax.swing.JLabel nomAuteurLabel;
-    private javax.swing.JTextArea nomAuteurs;
     private javax.swing.JPanel ouvragePanel;
+    private javax.swing.JTextField queryInput;
     private javax.swing.JButton returnBtn1;
-    private javax.swing.JButton searchBtn;
-    private javax.swing.JTextField searchInput;
+    private javax.swing.JToggleButton searchBtn1;
     private javax.swing.JLabel title;
-    private javax.swing.JTextField titre;
+    private javax.swing.JTextField titreInput;
     private javax.swing.JLabel titreLabel;
     private javax.swing.JComboBox<String> type;
     // End of variables declaration//GEN-END:variables

@@ -209,19 +209,23 @@ String currentUser = (CurrentUser.instance != null && CurrentUser.instance.getUs
         
 
     }//GEN-LAST:event_returnBtnActionPerformed
-          private void performSearch() {
+      private void performSearch() {
         String query = queryInput.getText();
        
         tableData = new Documents().getDocuments(query, selectedCriteria);
-if (tableData != null && tableData.length > 0) {
-        errorLabel.setText(""); 
-        docTable.setModel(new javax.swing.table.DefaultTableModel(
-            tableData,
-            new String[]{"ID","Cote","Titre","Auteur","Type", "Etat"} 
-        ));
-    } else {
-        errorLabel.setText("No records found");
-            }    
+            if (tableData != null && tableData.length > 0) {
+                    errorLabel.setText(""); 
+                    docTable.setModel(new javax.swing.table.DefaultTableModel(
+                        tableData,
+                        new String[]{"ID","Cote","Titre","Auteur","Date","Type", "Etat"} 
+                    ){
+    public boolean isCellEditable(int row, int column) {
+        return false;
+    }
+});
+                } else {
+                errorLabel.setText("No records found");
+                    }    
     }
     
           

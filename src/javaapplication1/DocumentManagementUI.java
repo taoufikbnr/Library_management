@@ -46,10 +46,15 @@ public class DocumentManagementUI extends javax.swing.JFrame {
         });
 
         modifyDocBtn.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/edit doc 50.png"))); // NOI18N
-        modifyDocBtn.setText("Modify Document");
+        modifyDocBtn.setText("Modifier Document");
+        modifyDocBtn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                modifyDocBtnActionPerformed(evt);
+            }
+        });
 
         delDocBtn.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/delete Doc 50.png"))); // NOI18N
-        delDocBtn.setText("Delete Document");
+        delDocBtn.setText("Supprimer Document");
         delDocBtn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 delDocBtnActionPerformed(evt);
@@ -144,6 +149,11 @@ public class DocumentManagementUI extends javax.swing.JFrame {
         new DeleteDocumentUI().setVisible(true);
         dispose();
     }//GEN-LAST:event_delDocBtnActionPerformed
+
+    private void modifyDocBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_modifyDocBtnActionPerformed
+        new UpdateDocumentUI().setVisible(true);
+        dispose();
+    }//GEN-LAST:event_modifyDocBtnActionPerformed
 
     /**
      * @param args the command line arguments
