@@ -72,7 +72,7 @@ String currentUser = (CurrentUser.instance != null && CurrentUser.instance.getUs
             }
         });
 
-        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "id", "cote", "titre", "auteur", "etat", "type" }));
+        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "id", "cote", "titre", "auteur", "editeur", "etat", "type" }));
         jComboBox1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jComboBox1ActionPerformed(evt);
@@ -126,7 +126,6 @@ String currentUser = (CurrentUser.instance != null && CurrentUser.instance.getUs
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 577, Short.MAX_VALUE)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addGap(0, 0, Short.MAX_VALUE)
                 .addComponent(queryInput, javax.swing.GroupLayout.PREFERRED_SIZE, 109, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -138,7 +137,7 @@ String currentUser = (CurrentUser.instance != null && CurrentUser.instance.getUs
                 .addComponent(returnBtn)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(searchDocImg)
-                .addGap(239, 239, 239)
+                .addGap(234, 234, 234)
                 .addComponent(homeBtn))
             .addGroup(layout.createSequentialGroup()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -146,9 +145,12 @@ String currentUser = (CurrentUser.instance != null && CurrentUser.instance.getUs
                         .addGap(20, 20, 20)
                         .addComponent(errorLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 158, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(206, 206, 206)
+                        .addGap(250, 250, 250)
                         .addComponent(title)))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addGroup(layout.createSequentialGroup()
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 660, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -157,9 +159,9 @@ String currentUser = (CurrentUser.instance != null && CurrentUser.instance.getUs
                     .addComponent(searchDocImg)
                     .addComponent(homeBtn)
                     .addComponent(returnBtn))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(title)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 30, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 24, Short.MAX_VALUE)
                 .addComponent(errorLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
@@ -217,7 +219,7 @@ String currentUser = (CurrentUser.instance != null && CurrentUser.instance.getUs
                     errorLabel.setText(""); 
                     docTable.setModel(new javax.swing.table.DefaultTableModel(
                         tableData,
-                        new String[]{"ID","Cote","Titre","Auteur","Date","Type", "Etat"} 
+                        new String[]{"ID","Cote","Titre","Auteur","Date","Type","Diplome","Editeur","ISBN", "Etat"} 
                     ){
     public boolean isCellEditable(int row, int column) {
         return false;
@@ -225,7 +227,10 @@ String currentUser = (CurrentUser.instance != null && CurrentUser.instance.getUs
 });
                 } else {
                 errorLabel.setText("No records found");
-                    }    
+                    } 
+                TableColumnModel columnModel = docTable.getColumnModel();
+                columnModel.getColumn(0).setPreferredWidth(10);
+                columnModel.getColumn(1).setPreferredWidth(10);
     }
     
           

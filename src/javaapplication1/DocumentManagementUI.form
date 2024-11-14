@@ -106,6 +106,9 @@
           <Image iconType="3" name="/images/delete Doc 50.png"/>
         </Property>
         <Property name="text" type="java.lang.String" value="Supprimer Document"/>
+        <Property name="margin" type="java.awt.Insets" editor="org.netbeans.beaninfo.editors.InsetsEditor">
+          <Insets value="[2, 10, 3, 10]"/>
+        </Property>
       </Properties>
       <Events>
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="delDocBtnActionPerformed"/>
@@ -117,6 +120,9 @@
           <Image iconType="3" name="/images/search Doc 50.png"/>
         </Property>
         <Property name="text" type="java.lang.String" value="Rechercher Document"/>
+        <Property name="margin" type="java.awt.Insets" editor="org.netbeans.beaninfo.editors.InsetsEditor">
+          <Insets value="[2, 5, 3, 5]"/>
+        </Property>
       </Properties>
       <Events>
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="searchDocBtnActionPerformed"/>
@@ -127,7 +133,7 @@
         <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
           <Image iconType="3" name="/images/gerer doc 50.png"/>
         </Property>
-        <Property name="text" type="java.lang.String" value="Document Management"/>
+        <Property name="text" type="java.lang.String" value="G&#xe9;rer Document"/>
       </Properties>
     </Component>
     <Component class="javax.swing.JButton" name="homeBtn">

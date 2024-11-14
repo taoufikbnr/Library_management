@@ -94,6 +94,14 @@ public class Documents {
               "LEFT JOIN authors a ON da.author_id = a.code_auteur " +
               "WHERE d.titre LIKE ?";
             break;
+        case "editeur":
+                 sql = "SELECT d.id, d.cote,d.titre, d.etat,d.type,d.diplome,d.date_parution,d.ISBN,d.editeur, "
+                         + "a.nom_auteur,a.prenom_auteur  " +
+              "FROM documents d " +
+              "LEFT JOIN documents_authors da ON d.id = da.document_id " +
+              "LEFT JOIN authors a ON da.author_id = a.code_auteur " +
+              "WHERE d.editeur LIKE ?";
+            break;
         default:
             sql = "SELECT d.id, d.cote, d.titre, d.etat, d.type,d.diplome,d.date_parution,d.ISBN,d.editeur, " +
                   "a.nom_auteur, a.prenom_auteur " +
@@ -125,15 +133,15 @@ public class Documents {
         while (resultSet.next()) {
             String id = resultSet.getString("id");
             String cote = resultSet.getString("cote");
-            String titre = resultSet.getString("titre");
+            this.titre = resultSet.getString("titre");
             String nomAuteur = resultSet.getString("nom_auteur");
             String prenomAuteur = resultSet.getString("prenom_auteur");
             String date_parution = resultSet.getString("date_parution");
-            String type = resultSet.getString("type");
-            String isbn = resultSet.getString("ISBN");
-            String editeur = resultSet.getString("editeur");
-            String etat = resultSet.getString("etat");
-            String diplome = resultSet.getString("diplome");
+            this.type = resultSet.getString("type");
+            this.isbn = resultSet.getString("ISBN");
+            this.editeur = resultSet.getString("editeur");
+            this.etat = resultSet.getString("etat");
+            this.diplome = resultSet.getString("diplome");
             data.add(new Object[]{id, cote,titre,nomAuteur+" "+prenomAuteur,date_parution,type,diplome,editeur,isbn, etat});
         }
 

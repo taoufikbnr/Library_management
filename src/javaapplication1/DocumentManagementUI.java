@@ -55,6 +55,7 @@ public class DocumentManagementUI extends javax.swing.JFrame {
 
         delDocBtn.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/delete Doc 50.png"))); // NOI18N
         delDocBtn.setText("Supprimer Document");
+        delDocBtn.setMargin(new java.awt.Insets(2, 10, 3, 10));
         delDocBtn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 delDocBtnActionPerformed(evt);
@@ -63,6 +64,7 @@ public class DocumentManagementUI extends javax.swing.JFrame {
 
         searchDocBtn.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/search Doc 50.png"))); // NOI18N
         searchDocBtn.setText("Rechercher Document");
+        searchDocBtn.setMargin(new java.awt.Insets(2, 5, 3, 5));
         searchDocBtn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 searchDocBtnActionPerformed(evt);
@@ -70,7 +72,7 @@ public class DocumentManagementUI extends javax.swing.JFrame {
         });
 
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/gerer doc 50.png"))); // NOI18N
-        jLabel1.setText("Document Management");
+        jLabel1.setText("Gérer Document");
 
         homeBtn.setBackground(new Color(0, 0, 0, 0));
         homeBtn.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/home_icon.png"))); // NOI18N

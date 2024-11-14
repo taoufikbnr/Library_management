@@ -48,7 +48,6 @@
                               <EmptySpace max="-2" attributes="0"/>
                               <Component id="searchBtn1" min="-2" pref="92" max="-2" attributes="0"/>
                           </Group>
-                          <Component id="jScrollPane4" alignment="0" max="32767" attributes="0"/>
                           <Group type="102" alignment="0" attributes="0">
                               <Group type="103" groupAlignment="0" attributes="0">
                                   <Component id="newAuthorBtn" alignment="0" min="-2" pref="231" max="-2" attributes="0"/>
@@ -82,8 +81,8 @@
                                   </Group>
                                   <Component id="jLayeredPane2" alignment="0" min="-2" pref="280" max="-2" attributes="0"/>
                               </Group>
-                              <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
                           </Group>
+                          <Component id="jScrollPane4" min="-2" pref="661" max="-2" attributes="0"/>
                       </Group>
                   </Group>
                   <Group type="102" attributes="0">
@@ -99,7 +98,7 @@
                       </Group>
                   </Group>
               </Group>
-              <EmptySpace max="32767" attributes="0"/>
+              <EmptySpace max="-2" attributes="0"/>
               <Component id="homeBtn1" min="-2" max="-2" attributes="0"/>
           </Group>
           <Group type="102" alignment="0" attributes="0">
@@ -499,13 +498,14 @@
     <Component class="javax.swing.JComboBox" name="jComboBox1">
       <Properties>
         <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
-          <StringArray count="6">
+          <StringArray count="7">
             <StringItem index="0" value="id"/>
             <StringItem index="1" value="cote"/>
             <StringItem index="2" value="titre"/>
             <StringItem index="3" value="auteur"/>
-            <StringItem index="4" value="etat"/>
-            <StringItem index="5" value="type"/>
+            <StringItem index="4" value="editeur"/>
+            <StringItem index="5" value="etat"/>
+            <StringItem index="6" value="type"/>
           </StringArray>
         </Property>
       </Properties>
