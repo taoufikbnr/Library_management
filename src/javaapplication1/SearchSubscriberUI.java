@@ -178,7 +178,6 @@ String selectedCriteria="username";
          int selectedRow=jTable1.getSelectedRow();
         DefaultTableModel model = (DefaultTableModel) jTable1.getModel();
         Object username = model.getValueAt(selectedRow, 0);
-        System.out.println(username);
     
     }//GEN-LAST:event_jTable1MouseClicked
 
@@ -203,7 +202,7 @@ String selectedCriteria="username";
         Object[][] tableData = userSubscriber.getUsers(queryStr, selectedCriteria);
         jTable1.setModel(new javax.swing.table.DefaultTableModel(
             tableData,
-            new String[]{"Id","Nom", "Prénom","CIN","Adresse","Tel"}
+            new String[]{"Id", "Prénom","Nom","CIN","Adresse","Tel"}
                 
         ));
                 TableColumnModel columnModel = jTable1.getColumnModel();

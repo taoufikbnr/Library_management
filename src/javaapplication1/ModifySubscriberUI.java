@@ -35,7 +35,7 @@ String selectedCriteria="nom";
     private void initComponents() {
 
         addSubBtn = new javax.swing.JButton();
-        prenomInput = new javax.swing.JTextField();
+        nomInput = new javax.swing.JTextField();
         nomLabel = new javax.swing.JLabel();
         addUserImg = new javax.swing.JLabel();
         prenomLabel = new javax.swing.JLabel();
@@ -44,7 +44,7 @@ String selectedCriteria="nom";
         telLabel = new javax.swing.JLabel();
         cinInput = new javax.swing.JTextField();
         telInput = new javax.swing.JTextField();
-        nomInput = new javax.swing.JTextField();
+        prenomInput = new javax.swing.JTextField();
         adrInput = new javax.swing.JTextField();
         homeBtn1 = new javax.swing.JButton();
         jButton1 = new javax.swing.JButton();
@@ -68,17 +68,17 @@ String selectedCriteria="nom";
             }
         });
 
-        prenomInput.addActionListener(new java.awt.event.ActionListener() {
+        nomInput.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                prenomInputActionPerformed(evt);
+                nomInputActionPerformed(evt);
             }
         });
 
-        nomLabel.setText("Nom");
+        nomLabel.setText("Prénom");
 
         addUserImg.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/modify user.png"))); // NOI18N
 
-        prenomLabel.setText("Prénom");
+        prenomLabel.setText("Nom");
 
         cinLabel.setText("CIN");
 
@@ -157,6 +157,8 @@ String selectedCriteria="nom";
         }
     });
 
+    docId.setEnabled(false);
+
     jLabel1.setText("ID");
 
     javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -172,15 +174,15 @@ String selectedCriteria="nom";
                     .addGap(70, 70, 70)
                     .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                         .addComponent(cinLabel)
-                        .addComponent(nomLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                             .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 17, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(telLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 21, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                    .addGap(13, 13, 13)
+                            .addComponent(telLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 21, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(nomLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 46, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                     .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                         .addComponent(telInput, javax.swing.GroupLayout.DEFAULT_SIZE, 160, Short.MAX_VALUE)
                         .addComponent(cinInput)
-                        .addComponent(nomInput)
+                        .addComponent(prenomInput)
                         .addComponent(docId, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE))))
             .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -198,14 +200,14 @@ String selectedCriteria="nom";
                                 .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
                                     .addComponent(prenomLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 49, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                    .addComponent(prenomInput))
+                                    .addComponent(nomInput))
                                 .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
                                     .addComponent(adrLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 49, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                                     .addComponent(adrInput, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE)))))
                     .addGap(57, 57, 57))))
         .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-            .addContainerGap(40, Short.MAX_VALUE)
+            .addContainerGap(63, Short.MAX_VALUE)
             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                 .addGroup(layout.createSequentialGroup()
                     .addComponent(query, javax.swing.GroupLayout.PREFERRED_SIZE, 71, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -227,9 +229,9 @@ String selectedCriteria="nom";
             .addGap(45, 45, 45)
             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                 .addComponent(nomLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addComponent(prenomInput, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(nomInput, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addComponent(prenomLabel)
-                .addComponent(nomInput, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addComponent(prenomInput, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE))
             .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                 .addComponent(cinLabel)
@@ -257,28 +259,31 @@ String selectedCriteria="nom";
     }// </editor-fold>//GEN-END:initComponents
 
     private void addSubBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addSubBtnActionPerformed
-        String nom = nomInput.getText();
-        String prenom = prenomInput.getText();
+        String id = docId.getText();
+        String nom = prenomInput.getText();
+        String prenom = nomInput.getText();
         String cin = cinInput.getText();
         String adresse = adrInput.getText();
-        int tel = Integer.parseInt(cinInput.getText());
-       if(nom.isEmpty() || prenom.isEmpty() || prenom.isEmpty() || cin.isEmpty() || adresse.isEmpty() || cinInput.getText().isEmpty() ){
+        String tel = telInput.getText();
+       if(id.isEmpty() || nom.isEmpty() || prenom.isEmpty() || prenom.isEmpty() || prenom.isEmpty() || 
+         cin.isEmpty() || adresse.isEmpty() || telInput.getText().isEmpty() ){
         JOptionPane.showMessageDialog(this,"All fields are required.");
         }else{
-        new Subscriber(nom,prenom,cin,adresse,tel).addUser();
-        nomInput.setText("");
+        new Subscriber(nom,prenom,cin,adresse,Integer.parseInt(tel)).updateUser(id);
+        docId.setText("");
         prenomInput.setText("");
+        nomInput.setText("");
         cinInput.setText("");
         adrInput.setText("");
-        cinInput.setText("");
+        telInput.setText("");
         JOptionPane.showMessageDialog(this,"Abonné modifié aves succes");
         
          }
         
     }//GEN-LAST:event_addSubBtnActionPerformed
 
-    private void prenomInputActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_prenomInputActionPerformed
-    }//GEN-LAST:event_prenomInputActionPerformed
+    private void nomInputActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_nomInputActionPerformed
+    }//GEN-LAST:event_nomInputActionPerformed
 
     private void homeBtn1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_homeBtn1ActionPerformed
         new AdminDashboardUI().setVisible(true);
@@ -295,15 +300,15 @@ String selectedCriteria="nom";
         DefaultTableModel model = (DefaultTableModel) docTable.getModel();
         
         Object id = model.getValueAt(selectedRow, 0);
-        Object nom = model.getValueAt(selectedRow, 1);
-        Object prenom = model.getValueAt(selectedRow, 2);
+        Object prenom = model.getValueAt(selectedRow, 1);
+        Object nom = model.getValueAt(selectedRow, 2);
         Object cin = model.getValueAt(selectedRow, 3);
         Object adresse = model.getValueAt(selectedRow, 4);
         Object tel = model.getValueAt(selectedRow, 5);
         
         docId.setText(Integer.toString((int)id));
-        nomInput.setText((String)nom);
         prenomInput.setText((String)prenom);
+        nomInput.setText((String)nom);
         cinInput.setText((String)cin);
         adrInput.setText((String)adresse);
         telInput.setText(Integer.toString((int)tel));
@@ -330,7 +335,7 @@ String selectedCriteria="nom";
         Object[][] tableData = userSubscriber.getUsers(queryStr, selectedCriteria);
         docTable.setModel(new javax.swing.table.DefaultTableModel(
             tableData,
-            new String[]{"Id","Nom", "Prénom","CIN","Adresse","Tel"}
+            new String[]{"Id","Prenom","Nom","CIN","Adresse","Tel"}
                 
         ));
                 TableColumnModel columnModel = docTable.getColumnModel();

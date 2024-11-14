@@ -74,7 +74,7 @@ public class Subscriber {
                 String cin = resultSet.getString("cin");
                 String adresse = resultSet.getString("adresse");
                 int tel = resultSet.getInt("tel");
-                data.add(new Object[]{id,nom, prenom,cin,adresse,tel});
+                data.add(new Object[]{id, prenom,nom,cin,adresse,tel});
             }
             
             return data.toArray(new Object[0][]);
@@ -147,7 +147,25 @@ public class Subscriber {
             } catch (SQLException e) {
                 e.printStackTrace();
             }
-        }      
-    
+        }       
 }  
+      public void updateUser(String id){
+          Connection conn;
+          PreparedStatement statement;
+   
+          try {
+              conn = DBConnection.getConnection();
+            statement = conn.prepareStatement("UPDATE subscribers set prenom=?,nom=?,cin=?,adresse=?,tel=? WHERE id=?");
+            statement.setString(1,this.nom);
+            statement.setString(2,this.prenom);
+            statement.setString(3,this.cin);
+            statement.setString(4,this.adresse);
+            statement.setInt(5,this.tel);
+            statement.setString(6,id);
+            statement.executeUpdate();  
+          } catch (SQLException e) {
+          }
+          
+      }
+      
 }
