@@ -22,6 +22,7 @@ import javax.swing.JOptionPane;
  */
 public class Documents {
         
+        int cote;
         String titre;
         String date;
         String etat;
@@ -30,7 +31,8 @@ public class Documents {
         String editeur;
         String diplome;
         String theme;
-        public Documents(String titre,String date,String etat,String type,String editeur,String isbn,String diplome,String theme ){
+        public Documents(int cote,String titre,String date,String etat,String type,String editeur,String isbn,String diplome,String theme ){
+            this.cote=cote;
             this.titre=titre;
             this.date=date;
             this.etat=etat;
@@ -42,6 +44,68 @@ public class Documents {
         }
         public Documents(){
         }
+        
+        
+  public int addDocument(){
+       Connection conn=null;
+       PreparedStatement statement=null;
+       ResultSet generatedKeys = null;
+        int docId = -1;
+        
+        try {
+      conn = DBConnection.getConnection();
+      String sql = "INSERT INTO documents (cote, titre, date_parution,etat,type, isbn, editeur, diplome,theme) VALUES (?,?,?,?,?,?,?,?,?)";
+        statement = conn.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS);
+    
+
+    
+    SimpleDateFormat inputFormat = new SimpleDateFormat("d MMMM yyyy", Locale.FRENCH);  
+    java.util.Date utilDate = inputFormat.parse(this.date);             
+    java.sql.Date sqlDate = new java.sql.Date(utilDate.getTime());  
+  
+
+    // Set the common fields
+    statement.setInt(1, cote);
+    statement.setString(2, this.titre);
+    statement.setDate(3, sqlDate); 
+    statement.setString(4, (String) this.etat);
+    statement.setString(5, this.type);
+    
+    // Depending on the selected type, set additional fields
+    if ("ouvrage".equals( this.type)) {
+        statement.setString(6, this.isbn); 
+        statement.setString(7, this.editeur); 
+        statement.setString(8, null); 
+    } else {
+        // Set diplome for the other case
+        statement.setString(6, null); 
+        statement.setString(7, null); 
+        statement.setString(8, this.diplome); 
+    }
+    statement.setString(9, this.theme);
+    
+        int affectedRows = statement.executeUpdate();
+    
+            if (affectedRows > 0) {
+           
+            generatedKeys = statement.getGeneratedKeys();
+            if (generatedKeys.next()) {
+                docId = generatedKeys.getInt(1);  
+            }
+        }
+    
+        } catch (SQLException e) {
+            e.printStackTrace();
+            JOptionPane.showMessageDialog(null, "Error adding users: " + e.getMessage());
+        } catch (ParseException ex) {
+                        JOptionPane.showMessageDialog(null, "Error adding users: " + ex.getMessage());
+
+         Logger.getLogger(AddDocumentUI.class.getName()).log(Level.SEVERE, null, ex);
+     }
+         return docId;
+    }      
+        
+        
  public Object[][] getDocuments(String query, String selectedCriteria) {
     PreparedStatement statement = null;
     ResultSet resultSet = null;

@@ -32,7 +32,7 @@ ArrayList<Integer> selectedAuthorsId = new ArrayList<>();
      */
     public AddDocumentUI() {
         initComponents();
-            type.setSelectedItem("ouvrage");
+         type.setSelectedItem("ouvrage");
         setLocationRelativeTo(null); 
         getAuthors();
 
@@ -171,9 +171,9 @@ ArrayList<Integer> selectedAuthorsId = new ArrayList<>();
             }
         });
 
-        isbnLabel1.setText("ISBN");
+        isbnLabel1.setText("Editeur");
 
-        editeurLabel1.setText("Editeur");
+        editeurLabel1.setText("ISBN");
 
         javax.swing.GroupLayout ouvragePanelLayout = new javax.swing.GroupLayout(ouvragePanel);
         ouvragePanel.setLayout(ouvragePanelLayout);
@@ -415,7 +415,26 @@ ArrayList<Integer> selectedAuthorsId = new ArrayList<>();
     }//GEN-LAST:event_typeActionPerformed
 
     private void addBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addBtnActionPerformed
-      int docId = addDocument();
+      int docId =-1;
+        int coteData = Integer.parseInt((String)cote.getText());
+        String titreData = titre.getText();
+        String dateString = datePicker1.getText();
+        String etatData = (String) etat.getSelectedItem();
+        String typeData = (String) type.getSelectedItem();
+        String isbnData = isbn.getText();
+        String editeurData = editeur.getText();
+        String themeData = theme.getText();
+        
+       if(titreData.isEmpty() || dateString.isEmpty()){
+        JOptionPane.showMessageDialog(this,"All fields are required.");
+        }else if("ouvrage".equals(typeData) && (isbnData.isEmpty() || editeurData.isEmpty()) ){
+            JOptionPane.showMessageDialog(this,"L'ISBN et l'éditeur sont obligatoires.");
+        }else if("memoire".equals(typeData) && (selectedMemoire.isEmpty()) ){
+            JOptionPane.showMessageDialog(this,"Veuillez sélectionner le diplôme");
+        }else{
+        docId = new Documents(coteData,titreData,dateString,etatData,typeData,editeurData,isbnData,selectedMemoire,themeData).addDocument();
+         }
+    
 
     
     if (docId != -1) {
@@ -483,68 +502,7 @@ ArrayList<Integer> selectedAuthorsId = new ArrayList<>();
         new DocumentManagementUI().setVisible(true);
         dispose();
     }//GEN-LAST:event_returnBtn1ActionPerformed
-    private int addDocument(){
-       Connection conn=null;
-       PreparedStatement statement=null;
-       ResultSet generatedKeys = null;
-        int docId = -1;
-        
-        try {
-      conn = DBConnection.getConnection();
-      String sql = "INSERT INTO documents (cote, titre, date_parution,etat,type, isbn, editeur, diplome,theme) VALUES (?,?,?,?,?,?,?,?,?)";
-        statement = conn.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS);
     
-    // Gather the data from the text fields
-    String coteData = cote.getText();
-    String titreData = titre.getText();
-    String themeData = theme.getText();
-    String dateString = datePicker1.getText();  // '1 novembre 2024'
-    
-    SimpleDateFormat inputFormat = new SimpleDateFormat("d MMMM yyyy", Locale.FRENCH);  
-    java.util.Date utilDate = inputFormat.parse(dateString);             
-    java.sql.Date sqlDate = new java.sql.Date(utilDate.getTime());  
-  
-
-    // Set the common fields
-    statement.setString(1, coteData);
-    statement.setString(2, titreData);
-    statement.setDate(3, sqlDate); 
-    statement.setString(4, (String) etat.getSelectedItem());
-    statement.setString(5, selectedType);
-    
-    // Depending on the selected type, set additional fields
-    if ("ouvrage".equals(selectedType)) {
-        statement.setString(6, isbn.getText()); 
-        statement.setString(7, editeur.getText()); 
-        statement.setString(8, null); 
-    } else {
-        // Set diplome for the other case
-        statement.setString(6, null); 
-        statement.setString(7, null); 
-        statement.setString(8, selectedMemoire); 
-    }
-    statement.setString(9, themeData);
-    
-        int affectedRows = statement.executeUpdate();
-    
-            if (affectedRows > 0) {
-           
-            generatedKeys = statement.getGeneratedKeys();
-            if (generatedKeys.next()) {
-                docId = generatedKeys.getInt(1);  
-            }
-        }
-    
-        } catch (SQLException e) {
-            e.printStackTrace();
-            JOptionPane.showMessageDialog(null, "Error adding users: " + e.getMessage());
-        } catch (ParseException ex) {
-                        JOptionPane.showMessageDialog(null, "Error adding users: " + ex.getMessage());
-
-         Logger.getLogger(AddDocumentUI.class.getName()).log(Level.SEVERE, null, ex);
-     }
-         return docId;
-    }
     private void addDocAuth(int documentId){
      Connection conn=null;
       PreparedStatement statement=null;

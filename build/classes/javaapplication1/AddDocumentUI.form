@@ -411,12 +411,12 @@
             </Component>
             <Component class="javax.swing.JLabel" name="isbnLabel1">
               <Properties>
-                <Property name="text" type="java.lang.String" value="ISBN"/>
+                <Property name="text" type="java.lang.String" value="Editeur"/>
               </Properties>
             </Component>
             <Component class="javax.swing.JLabel" name="editeurLabel1">
               <Properties>
-                <Property name="text" type="java.lang.String" value="Editeur"/>
+                <Property name="text" type="java.lang.String" value="ISBN"/>
               </Properties>
             </Component>
           </SubComponents>

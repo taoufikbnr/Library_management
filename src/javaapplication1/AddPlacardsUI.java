@@ -70,7 +70,7 @@ public class AddPlacardsUI extends JFrame {
 
         plLabel.setText("Libelle Placards");
 
-        img.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/add_author (50).png"))); // NOI18N
+        img.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/gerer exemplaire.png"))); // NOI18N
 
         returnBtn1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/return_icon.png"))); // NOI18N
         returnBtn1.setAlignmentY(0.0F);

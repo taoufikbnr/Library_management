@@ -435,6 +435,7 @@ ArrayList<Integer> selectedAuthorsId = new ArrayList<>();
 
     private void addBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addBtnActionPerformed
         String id = docId.getText();
+        int cote = Integer.parseInt((String)coteInput.getText());
         String titreData = titreInput.getText();
         String dateString = datePicker1.getText();
         String etatData = (String) etat.getSelectedItem();
@@ -450,7 +451,7 @@ ArrayList<Integer> selectedAuthorsId = new ArrayList<>();
         }else if("memoire".equals(typeData) && (selectedMemoire.isEmpty()) ){
             JOptionPane.showMessageDialog(this,"Veuillez sélectionner le diplôme");
         }else{
-        new Documents(titreData,dateString,etatData,typeData,editeurData,isbnData,selectedMemoire,themeData).updateDocument(id);
+        new Documents(cote,titreData,dateString,etatData,typeData,editeurData,isbnData,selectedMemoire,themeData).updateDocument(id);
         JOptionPane.showMessageDialog(this,"Abonné modifié aves succes");
         performSearch();
          }
