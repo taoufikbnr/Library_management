@@ -12,7 +12,7 @@ import javax.swing.table.TableColumnModel;
  *
  * @author lenovo
  */
-public class SearchDocumentUI extends javax.swing.JFrame {
+public class SearchExemplaire extends javax.swing.JFrame {
 String selectedCriteria="";
 Object[][] tableData = null;
 String currentUser = (CurrentUser.instance != null && CurrentUser.instance.getUsername() != null) ? CurrentUser.instance.getUsername() : null;
@@ -20,7 +20,7 @@ String currentUser = (CurrentUser.instance != null && CurrentUser.instance.getUs
     /**
      * Creates new form SearchDocumentUI
      */
-    public SearchDocumentUI() {
+    public SearchExemplaire() {
         initComponents();
         setLocationRelativeTo(null);
         performSearch();
@@ -83,8 +83,8 @@ String currentUser = (CurrentUser.instance != null && CurrentUser.instance.getUs
             }
         });
 
-        homeBtn.setBackground(new Color(0, 0, 0, 0));
         homeBtn.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/home_icon.png"))); // NOI18N
+        homeBtn.setBackground(new Color(0, 0, 0, 0));
         homeBtn.setBorder(null);
         homeBtn.setBorderPainted(false);
         homeBtn.setFocusPainted(false);
@@ -113,9 +113,9 @@ String currentUser = (CurrentUser.instance != null && CurrentUser.instance.getUs
 
         searchDocImg.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/search Doc 50.png"))); // NOI18N
 
+        title.setText("Rechercher Document");
         title.setFont(new java.awt.Font("sansserif", 3, 12)); // NOI18N
         title.setForeground(new java.awt.Color(0, 0, 204));
-        title.setText("Rechercher Document");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);

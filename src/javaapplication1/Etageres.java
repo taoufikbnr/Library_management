@@ -21,7 +21,7 @@ public class Etageres {
         this.placard_id=placardId;
     }
     public void addEtagere(){
-                Connection conn=null;
+        Connection conn=null;
         PreparedStatement statement=null;
         try {
             conn=DBConnection.getConnection();

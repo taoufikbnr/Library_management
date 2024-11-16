@@ -155,12 +155,12 @@
       <Properties>
         <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
           <StringArray count="8">
-            <StringItem index="0" value="id"/>
-            <StringItem index="1" value="cote"/>
-            <StringItem index="2" value="titre"/>
-            <StringItem index="3" value="auteur"/>
-            <StringItem index="4" value="theme"/>
-            <StringItem index="5" value="editeur"/>
+            <StringItem index="0" value="Selectionner"/>
+            <StringItem index="1" value="id"/>
+            <StringItem index="2" value="cote"/>
+            <StringItem index="3" value="titre"/>
+            <StringItem index="4" value="auteur"/>
+            <StringItem index="5" value="theme"/>
             <StringItem index="6" value="etat"/>
             <StringItem index="7" value="type"/>
           </StringArray>

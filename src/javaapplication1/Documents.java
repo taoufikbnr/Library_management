@@ -54,7 +54,7 @@ public class Documents {
                   "FROM documents d " +
                   "LEFT JOIN documents_authors da ON d.id = da.document_id " +
                   "LEFT JOIN authors a ON da.author_id = a.code_auteur " +
-                  "WHERE d.id LIKE ?";
+                  "WHERE d.id = ?";
             break;
         case "cote":
             sql = "SELECT d.id, d.cote, d.titre, d.etat, d.type,d.diplome,d.date_parution,d.ISBN,d.editeur,d.theme,  " +
@@ -62,7 +62,7 @@ public class Documents {
                   "FROM documents d " +
                   "LEFT JOIN documents_authors da ON d.id = da.document_id " +
                   "LEFT JOIN authors a ON da.author_id = a.code_auteur " +
-                  "WHERE d.cote LIKE ?";
+                  "WHERE d.cote = ?";
             break;
         case "etat":
             sql = "SELECT d.id, d.cote, d.titre, d.etat, d.type,d.diplome,d.date_parution,d.ISBN,d.editeur,d.theme,   " +
@@ -123,13 +123,13 @@ public class Documents {
     }
 
     Object[][] tableData = null;
-        String searchQuery = "%" + query + "%";
+        String searchQuery = selectedCriteria.equals("id") || selectedCriteria.equals("cote")?query:"%" + query + "%";
 
     try {
         // Connexion à la base de données
         conn = DBConnection.getConnection();
         statement = conn.prepareStatement(sql);
-          if (selectedCriteria.equals("auteur")) {
+         if (selectedCriteria.equals("auteur")) {
             statement.setString(1, searchQuery);  
             statement.setString(2, searchQuery);  
         } else {

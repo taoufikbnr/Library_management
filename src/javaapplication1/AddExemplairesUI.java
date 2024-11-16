@@ -25,6 +25,7 @@ Object[][] tableData = null;
         initComponents();
         setLocationRelativeTo(null);
         performSearch();
+        fetchPlacards();
     }
 
     /**
@@ -45,9 +46,15 @@ Object[][] tableData = null;
         searchBtn = new javax.swing.JToggleButton();
         jLabel2 = new javax.swing.JLabel();
         docIdInput = new javax.swing.JTextField();
-        deleteBtn = new javax.swing.JButton();
         delUserImg = new javax.swing.JLabel();
         title = new javax.swing.JLabel();
+        jScrollPane2 = new javax.swing.JScrollPane();
+        jTable1 = new javax.swing.JTable();
+        jLabel1 = new javax.swing.JLabel();
+        placardIdInput = new javax.swing.JTextField();
+        etagereIdInput = new javax.swing.JTextField();
+        jLabel3 = new javax.swing.JLabel();
+        addExpBtn = new javax.swing.JToggleButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -91,7 +98,7 @@ Object[][] tableData = null;
             }
         });
 
-        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "id", "cote", "titre", "auteur", "etat", "type" }));
+        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Selectionner", "id", "cote", "titre", "auteur", "theme", "etat", "type" }));
         jComboBox1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jComboBox1ActionPerformed(evt);
@@ -109,19 +116,7 @@ Object[][] tableData = null;
 
         jLabel2.setText("ID document");
 
-        deleteBtn.setBackground(new java.awt.Color(255, 0, 0));
-        deleteBtn.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
-        deleteBtn.setForeground(new java.awt.Color(255, 255, 255));
-        deleteBtn.setText("supprimer");
-        deleteBtn.setBorderPainted(false);
-        deleteBtn.setFocusPainted(false);
-        deleteBtn.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
-        deleteBtn.setMargin(new java.awt.Insets(0, 0, 0, 0));
-        deleteBtn.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                deleteBtnActionPerformed(evt);
-            }
-        });
+        docIdInput.setEditable(false);
 
         delUserImg.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/gerer exemplaire.png"))); // NOI18N
 
@@ -129,37 +124,83 @@ Object[][] tableData = null;
         title.setForeground(new java.awt.Color(0, 0, 204));
         title.setText("Ajouter Exemplaire");
 
+        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null}
+            },
+            new String [] {
+                "Title 1", "Title 2", "Title 3", "Title 4"
+            }
+        ));
+        jTable1.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jTable1MouseClicked(evt);
+            }
+        });
+        jScrollPane2.setViewportView(jTable1);
+
+        jLabel1.setText("Placard");
+
+        placardIdInput.setEditable(false);
+
+        etagereIdInput.setEditable(false);
+
+        jLabel3.setText("Etagère");
+
+        addExpBtn.setBackground(new java.awt.Color(0, 204, 51));
+        addExpBtn.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        addExpBtn.setForeground(new java.awt.Color(255, 255, 255));
+        addExpBtn.setText("Ajouter");
+        addExpBtn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                addExpBtnActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 577, Short.MAX_VALUE)
+            .addComponent(jScrollPane1)
             .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 78, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(docIdInput, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(deleteBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 67, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(queryInput, javax.swing.GroupLayout.PREFERRED_SIZE, 76, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(searchBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 92, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap())
-            .addGroup(layout.createSequentialGroup()
-                .addGap(20, 20, 20)
-                .addComponent(errorLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 158, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(59, 59, 59)
+                .addGap(284, 284, 284)
                 .addComponent(title)
                 .addGap(0, 0, Short.MAX_VALUE))
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(returnBtn)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(delUserImg)
-                .addGap(257, 257, 257))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(returnBtn)
+                        .addGap(264, 264, 264)
+                        .addComponent(delUserImg)
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(errorLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 158, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGroup(layout.createSequentialGroup()
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 78, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 53, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                    .addComponent(placardIdInput, javax.swing.GroupLayout.DEFAULT_SIZE, 105, Short.MAX_VALUE)
+                                    .addComponent(docIdInput)
+                                    .addComponent(etagereIdInput)))
+                            .addComponent(addExpBtn, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 105, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 139, Short.MAX_VALUE)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jScrollPane2, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 363, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                                .addComponent(queryInput, javax.swing.GroupLayout.PREFERRED_SIZE, 76, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(searchBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 92, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addContainerGap())))))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -168,27 +209,39 @@ Object[][] tableData = null;
                     .addGroup(layout.createSequentialGroup()
                         .addGap(8, 8, 8)
                         .addComponent(returnBtn))
-                    .addComponent(delUserImg))
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 18, Short.MAX_VALUE)
-                        .addComponent(errorLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED))
-                    .addGroup(layout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(delUserImg)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(title)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                        .addComponent(title)))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 94, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(66, 66, 66))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(docIdInput, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel2))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(placardIdInput, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel1))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(etagereIdInput, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel3))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(addExpBtn)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)))
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                         .addComponent(searchBtn)
                         .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addComponent(queryInput, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(jLabel2)
-                        .addComponent(docIdInput, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(deleteBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addComponent(errorLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 184, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
         );
 
@@ -214,25 +267,35 @@ Object[][] tableData = null;
          docIdInput.setText((String)id);
     }//GEN-LAST:event_docTableMouseClicked
 
-    private void deleteBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_deleteBtnActionPerformed
- int response = JOptionPane.showConfirmDialog(
-        this,
-        "Are you sure you want to delete this user?", // message
-        "Confirm Delete", // title
-        JOptionPane.YES_NO_OPTION, 
-        JOptionPane.WARNING_MESSAGE 
-    );
-
-    if (response == JOptionPane.YES_OPTION) {
-        String docId = docIdInput.getText();
-        new Subscriber().deleteUser(docId); 
-        performSearch();
-    }    }//GEN-LAST:event_deleteBtnActionPerformed
-
     private void returnBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_returnBtnActionPerformed
         new AdminDashboardUI().setVisible(true);
         dispose();
     }//GEN-LAST:event_returnBtnActionPerformed
+
+    private void jTable1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTable1MouseClicked
+        int selectedRow=jTable1.getSelectedRow();
+        DefaultTableModel model = (DefaultTableModel) jTable1.getModel();
+        Object plId = model.getValueAt(selectedRow,0);
+        Object etId = model.getValueAt(selectedRow,2);
+        int placardIdValue = Integer.parseInt(plId.toString());
+        int etagereIdValue = Integer.parseInt(etId.toString());
+        placardIdInput.setText(Integer.toString(placardIdValue));
+        etagereIdInput.setText(Integer.toString(etagereIdValue));
+
+    }//GEN-LAST:event_jTable1MouseClicked
+
+    private void addExpBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addExpBtnActionPerformed
+        String docId = docIdInput.getText();
+        String etagereId = etagereIdInput.getText();
+        if(docId.isEmpty()){
+            JOptionPane.showMessageDialog(null, "Veuillez choisir un document","Alert",JOptionPane.WARNING_MESSAGE);
+        }else if(etagereId.isEmpty()){
+            JOptionPane.showMessageDialog(null, "Veuillez choisir un etagere","Alert",JOptionPane.WARNING_MESSAGE);
+        }else           {
+            new Exemplaires(Integer.parseInt(docId),Integer.parseInt(etagereId)).addExemplaire();
+            JOptionPane.showMessageDialog(null, "Exemplaire ajouté avec succes");
+        }
+    }//GEN-LAST:event_addExpBtnActionPerformed
 
     private void performSearch() {
         String query = queryInput.getText();
@@ -242,30 +305,44 @@ if (tableData != null && tableData.length > 0) {
         errorLabel.setText(""); 
         docTable.setModel(new javax.swing.table.DefaultTableModel(
             tableData,
-            new String[]{"ID","Cote","Titre","Auteur","Type", "Etat"} 
+            new String[]{"ID","Cote","Titre","Auteur","Theme","Date","Type","Diplome","Editeur","ISBN", "Etat"} 
         ));
     } else {
         errorLabel.setText("No records found");
             }    
                 TableColumnModel columnModel = docTable.getColumnModel();
-                columnModel.getColumn(0).setPreferredWidth(5);
-                columnModel.getColumn(1).setPreferredWidth(5);
+                columnModel.getColumn(0).setPreferredWidth(20);
+                columnModel.getColumn(1).setPreferredWidth(20);
     }   
-          
+    
+    
+       private void fetchPlacards(){
+        tableData = new Placards().getPlacards();
+                  jTable1.setModel(new javax.swing.table.DefaultTableModel(
+                  tableData,
+                new String[] {"num placard", "Libelle Placard","num etagere","Libelle etagere"} 
+            )); 
+    }     
     /**
      * @param args the command line arguments
      */
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JToggleButton addExpBtn;
     private javax.swing.JLabel delUserImg;
-    private javax.swing.JButton deleteBtn;
     private javax.swing.JTextField docIdInput;
     private javax.swing.JTable docTable;
     private javax.swing.JLabel errorLabel;
+    private javax.swing.JTextField etagereIdInput;
     private javax.swing.JComboBox<String> jComboBox1;
+    private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
     private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JScrollPane jScrollPane2;
+    private javax.swing.JTable jTable1;
+    private javax.swing.JTextField placardIdInput;
     private javax.swing.JTextField queryInput;
     private javax.swing.JButton returnBtn;
     private javax.swing.JToggleButton searchBtn;

@@ -39,14 +39,16 @@ public class Placards {
         Object[][] tableData=null;
         try {
             conn=DBConnection.getConnection();
-            statement = conn.prepareStatement("SELECT * FROM placards");
+            statement = conn.prepareStatement("SELECT p.numPl,e.numEt,e.libelleEt,p.libellePl FROM placards p,etageres e");
             resultSet = statement.executeQuery();
              ArrayList<Object[]> data = new ArrayList<>();
 
             while (resultSet.next()) {
-                int id = resultSet.getInt("numPl");
+                this.numPl = resultSet.getInt("numPl");
+                int numEt = resultSet.getInt("numEt");
                 this.libellePl = resultSet.getString("libellePl");
-                data.add(new Object[]{id,libellePl});
+                String libelleEt = resultSet.getString("libelleEt");
+                data.add(new Object[]{numPl,libellePl,numEt,libelleEt});
             }
             tableData = data.toArray(new Object[0][]);
         } catch (SQLException e) {
