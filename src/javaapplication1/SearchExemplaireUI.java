@@ -6,22 +6,32 @@ package javaapplication1;
 import java.sql.*;
 import java.util.ArrayList;
 import java.awt.*;
+import javax.swing.JFrame;
 import javax.swing.table.TableColumnModel;
 
 /**
  *
  * @author lenovo
  */
-public class SearchExemplaire extends javax.swing.JFrame {
-String selectedCriteria="";
+public class SearchExemplaireUI extends javax.swing.JFrame {
+String docId;
 Object[][] tableData = null;
-String currentUser = (CurrentUser.instance != null && CurrentUser.instance.getUsername() != null) ? CurrentUser.instance.getUsername() : null;
 
     /**
      * Creates new form SearchDocumentUI
+     * @param docId
      */
-    public SearchExemplaire() {
+    public SearchExemplaireUI(String docId) {
+       
         initComponents();
+        setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE); 
+        setLocationRelativeTo(null);
+        this.docId=docId;
+        performSearch();
+    }
+    public SearchExemplaireUI() {
+        initComponents();
+        setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE); 
         setLocationRelativeTo(null);
         performSearch();
     }
@@ -37,10 +47,7 @@ String currentUser = (CurrentUser.instance != null && CurrentUser.instance.getUs
 
         jScrollPane1 = new javax.swing.JScrollPane();
         docTable = new javax.swing.JTable();
-        queryInput = new javax.swing.JTextField();
-        jComboBox1 = new javax.swing.JComboBox<>();
         errorLabel = new javax.swing.JLabel();
-        searchBtn = new javax.swing.JToggleButton();
         homeBtn = new javax.swing.JButton();
         returnBtn = new javax.swing.JButton();
         searchDocImg = new javax.swing.JLabel();
@@ -61,30 +68,10 @@ String currentUser = (CurrentUser.instance != null && CurrentUser.instance.getUs
         docTable.setAutoResizeMode(javax.swing.JTable.AUTO_RESIZE_LAST_COLUMN);
         jScrollPane1.setViewportView(docTable);
 
-        queryInput.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                queryInputActionPerformed(evt);
-            }
-        });
-
-        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Selectionner", "id", "cote", "titre", "auteur", "theme", "etat", "type" }));
-        jComboBox1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jComboBox1ActionPerformed(evt);
-            }
-        });
-
         errorLabel.setForeground(new java.awt.Color(255, 0, 0));
 
-        searchBtn.setText("Search");
-        searchBtn.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                searchBtnActionPerformed(evt);
-            }
-        });
-
-        homeBtn.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/home_icon.png"))); // NOI18N
         homeBtn.setBackground(new Color(0, 0, 0, 0));
+        homeBtn.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/home_icon.png"))); // NOI18N
         homeBtn.setBorder(null);
         homeBtn.setBorderPainted(false);
         homeBtn.setFocusPainted(false);
@@ -113,39 +100,32 @@ String currentUser = (CurrentUser.instance != null && CurrentUser.instance.getUs
 
         searchDocImg.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/search Doc 50.png"))); // NOI18N
 
-        title.setText("Rechercher Document");
         title.setFont(new java.awt.Font("sansserif", 3, 12)); // NOI18N
         title.setForeground(new java.awt.Color(0, 0, 204));
+        title.setText("Exemplaire ");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addGap(0, 0, Short.MAX_VALUE)
-                .addComponent(queryInput, javax.swing.GroupLayout.PREFERRED_SIZE, 109, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(16, 16, 16)
-                .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(searchBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 92, javax.swing.GroupLayout.PREFERRED_SIZE))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addComponent(returnBtn)
-                .addGap(245, 245, 245)
-                .addComponent(searchDocImg)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(0, 0, Short.MAX_VALUE)
+                        .addComponent(title))
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(returnBtn)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(searchDocImg)))
+                .addGap(258, 258, 258)
                 .addComponent(homeBtn))
             .addGroup(layout.createSequentialGroup()
+                .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 701, Short.MAX_VALUE)
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(20, 20, 20)
-                        .addComponent(errorLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 158, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(250, 250, 250)
-                        .addComponent(title)))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-            .addGroup(layout.createSequentialGroup()
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 660, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 0, Short.MAX_VALUE))
+                        .addComponent(errorLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 158, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(0, 0, Short.MAX_VALUE))))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -156,78 +136,51 @@ String currentUser = (CurrentUser.instance != null && CurrentUser.instance.getUs
                     .addGroup(layout.createSequentialGroup()
                         .addContainerGap()
                         .addComponent(searchDocImg)))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGap(18, 18, 18)
                 .addComponent(title)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 24, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 41, Short.MAX_VALUE)
                 .addComponent(errorLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(queryInput, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(searchBtn))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 184, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 217, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap())
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void queryInputActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_queryInputActionPerformed
-          performSearch();
-    }//GEN-LAST:event_queryInputActionPerformed
-
-    private void jComboBox1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBox1ActionPerformed
-            selectedCriteria = (String) jComboBox1.getSelectedItem();
-    }//GEN-LAST:event_jComboBox1ActionPerformed
-
-    private void searchBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_searchBtnActionPerformed
-       performSearch();
-    }//GEN-LAST:event_searchBtnActionPerformed
-
     private void homeBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_homeBtnActionPerformed
-            if(currentUser!=null){
-            new AdminDashboardUI().setVisible(true);
-            dispose(); 
-        }else{
-              new Welcome().setVisible(true);
-              dispose();
-        }
+ 
  
     }//GEN-LAST:event_homeBtnActionPerformed
 
     private void returnBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_returnBtnActionPerformed
-      if(currentUser!=null){
-        new DocumentManagementUI().setVisible(true);
-        dispose();
-        }else{
-        homeBtn.setVisible(false);   
-        new Welcome().setVisible(true);
-        dispose();
-        }
+
         
 
     }//GEN-LAST:event_returnBtnActionPerformed
       private void performSearch() {
-        String query = queryInput.getText();
-       
-        tableData = new Documents().getDocuments(query, selectedCriteria);
+        System.out.println(docId);
+        tableData = new Exemplaires().getExemplaires(this.docId);
             if (tableData != null && tableData.length > 0) {
                     errorLabel.setText(""); 
                     docTable.setModel(new javax.swing.table.DefaultTableModel(
                         tableData,
-                        new String[]{"ID","Cote","Titre","Auteur","Theme","Date","Type","Diplome","Editeur","ISBN", "Etat"} 
+                        new String[]{"ID","Doc","Cote","Titre","Auteur","Placard","Etagere","Statut"} 
                     ){
-    public boolean isCellEditable(int row, int column) {
-        return false;
-    }
-});
+                        public boolean isCellEditable(int row, int column) {
+                            return false;
+                        }
+                    });
                 } else {
                 errorLabel.setText("No records found");
+                        docTable.setModel(new javax.swing.table.DefaultTableModel(
+            new Object[][]{},
+            new String[]{"ID","Doc", "Cote", "Titre", "Auteur", "Placard", "Etagere", "Statut"}
+        ));
                     } 
                 TableColumnModel columnModel = docTable.getColumnModel();
-                columnModel.getColumn(0).setPreferredWidth(10);
-                columnModel.getColumn(1).setPreferredWidth(10);
+                columnModel.getColumn(0).setPreferredWidth(20);
+                columnModel.getColumn(1).setPreferredWidth(20);
     }
     
           
@@ -240,11 +193,8 @@ String currentUser = (CurrentUser.instance != null && CurrentUser.instance.getUs
     private javax.swing.JTable docTable;
     private javax.swing.JLabel errorLabel;
     private javax.swing.JButton homeBtn;
-    private javax.swing.JComboBox<String> jComboBox1;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTextField queryInput;
     private javax.swing.JButton returnBtn;
-    private javax.swing.JToggleButton searchBtn;
     private javax.swing.JLabel searchDocImg;
     private javax.swing.JLabel title;
     // End of variables declaration//GEN-END:variables

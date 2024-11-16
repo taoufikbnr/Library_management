@@ -6,6 +6,8 @@ package javaapplication1;
 import java.sql.*;
 import java.util.ArrayList;
 import java.awt.*;
+import javax.swing.JOptionPane;
+import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableColumnModel;
 
 /**
@@ -45,6 +47,7 @@ String currentUser = (CurrentUser.instance != null && CurrentUser.instance.getUs
         returnBtn = new javax.swing.JButton();
         searchDocImg = new javax.swing.JLabel();
         title = new javax.swing.JLabel();
+        checkExpBtn = new javax.swing.JToggleButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -117,12 +120,26 @@ String currentUser = (CurrentUser.instance != null && CurrentUser.instance.getUs
         title.setForeground(new java.awt.Color(0, 0, 204));
         title.setText("Rechercher Document");
 
+        checkExpBtn.setBackground(new java.awt.Color(0, 0, 0));
+        checkExpBtn.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        checkExpBtn.setForeground(new java.awt.Color(255, 255, 255));
+        checkExpBtn.setText("Voir Exemplaire");
+        checkExpBtn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                checkExpBtnActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addGap(0, 0, Short.MAX_VALUE)
+                .addContainerGap()
+                .addComponent(errorLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 158, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(checkExpBtn)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(queryInput, javax.swing.GroupLayout.PREFERRED_SIZE, 109, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(16, 16, 16)
                 .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -130,18 +147,13 @@ String currentUser = (CurrentUser.instance != null && CurrentUser.instance.getUs
                 .addComponent(searchBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 92, javax.swing.GroupLayout.PREFERRED_SIZE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addComponent(returnBtn)
-                .addGap(245, 245, 245)
+                .addGap(259, 259, 259)
                 .addComponent(searchDocImg)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(homeBtn))
             .addGroup(layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(20, 20, 20)
-                        .addComponent(errorLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 158, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(250, 250, 250)
-                        .addComponent(title)))
+                .addGap(250, 250, 250)
+                .addComponent(title)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
             .addGroup(layout.createSequentialGroup()
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 660, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -151,20 +163,23 @@ String currentUser = (CurrentUser.instance != null && CurrentUser.instance.getUs
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(homeBtn)
-                    .addComponent(returnBtn)
                     .addGroup(layout.createSequentialGroup()
-                        .addContainerGap()
-                        .addComponent(searchDocImg)))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(homeBtn)
+                            .addComponent(returnBtn))
+                        .addGap(12, 12, 12))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addComponent(searchDocImg)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)))
                 .addComponent(title)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 24, Short.MAX_VALUE)
-                .addComponent(errorLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(queryInput, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(searchBtn))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 49, Short.MAX_VALUE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(queryInput, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(searchBtn)
+                        .addComponent(checkExpBtn))
+                    .addComponent(errorLabel, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 184, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18))
@@ -208,6 +223,18 @@ String currentUser = (CurrentUser.instance != null && CurrentUser.instance.getUs
         
 
     }//GEN-LAST:event_returnBtnActionPerformed
+
+    private void checkExpBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_checkExpBtnActionPerformed
+        int selectedRow = docTable.getSelectedRow(); 
+           
+    if (selectedRow != -1) {
+         DefaultTableModel model = (DefaultTableModel) docTable.getModel();
+         Object id = model.getValueAt(selectedRow, 0);
+        new SearchExemplaireUI((String)id).setVisible(true);
+    } else {
+        JOptionPane.showMessageDialog(this, "Please select a row first.");
+    }
+    }//GEN-LAST:event_checkExpBtnActionPerformed
       private void performSearch() {
         String query = queryInput.getText();
        
@@ -226,8 +253,8 @@ String currentUser = (CurrentUser.instance != null && CurrentUser.instance.getUs
                 errorLabel.setText("No records found");
                     } 
                 TableColumnModel columnModel = docTable.getColumnModel();
-                columnModel.getColumn(0).setPreferredWidth(10);
-                columnModel.getColumn(1).setPreferredWidth(10);
+                columnModel.getColumn(0).setPreferredWidth(20);
+                columnModel.getColumn(1).setPreferredWidth(20);
     }
     
           
@@ -237,6 +264,7 @@ String currentUser = (CurrentUser.instance != null && CurrentUser.instance.getUs
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JToggleButton checkExpBtn;
     private javax.swing.JTable docTable;
     private javax.swing.JLabel errorLabel;
     private javax.swing.JButton homeBtn;
