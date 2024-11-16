@@ -43,7 +43,6 @@ Object[][] tableData = null;
         jComboBox1 = new javax.swing.JComboBox<>();
         errorLabel = new javax.swing.JLabel();
         searchBtn = new javax.swing.JToggleButton();
-        homeBtn = new javax.swing.JButton();
         jLabel2 = new javax.swing.JLabel();
         docIdInput = new javax.swing.JTextField();
         deleteBtn = new javax.swing.JButton();
@@ -108,18 +107,6 @@ Object[][] tableData = null;
             }
         });
 
-        homeBtn.setBackground(new Color(0, 0, 0, 0));
-        homeBtn.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/home_icon.png"))); // NOI18N
-        homeBtn.setBorder(null);
-        homeBtn.setBorderPainted(false);
-        homeBtn.setFocusPainted(false);
-        homeBtn.setSelectedIcon(new javax.swing.ImageIcon(getClass().getResource("/images/home icon 50.png"))); // NOI18N
-        homeBtn.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                homeBtnActionPerformed(evt);
-            }
-        });
-
         jLabel2.setText("ID document");
 
         deleteBtn.setBackground(new java.awt.Color(255, 0, 0));
@@ -136,11 +123,11 @@ Object[][] tableData = null;
             }
         });
 
-        delUserImg.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/delete Doc 50.png"))); // NOI18N
+        delUserImg.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/gerer exemplaire.png"))); // NOI18N
 
         title.setFont(new java.awt.Font("sansserif", 3, 12)); // NOI18N
         title.setForeground(new java.awt.Color(0, 0, 204));
-        title.setText("Supprimer Document");
+        title.setText("Ajouter Exemplaire");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -172,16 +159,15 @@ Object[][] tableData = null;
                 .addComponent(returnBtn)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(delUserImg)
-                .addGap(207, 207, 207)
-                .addComponent(homeBtn))
+                .addGap(257, 257, 257))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addComponent(homeBtn)
-                        .addComponent(returnBtn, javax.swing.GroupLayout.Alignment.TRAILING))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(8, 8, 8)
+                        .addComponent(returnBtn))
                     .addComponent(delUserImg))
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
@@ -221,11 +207,6 @@ Object[][] tableData = null;
        performSearch();
     }//GEN-LAST:event_searchBtnActionPerformed
 
-    private void homeBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_homeBtnActionPerformed
-            new AdminDashboardUI().setVisible(true);
-            dispose(); 
-    }//GEN-LAST:event_homeBtnActionPerformed
-
     private void docTableMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_docTableMouseClicked
          int selectedRow = docTable.getSelectedRow(); 
          DefaultTableModel model = (DefaultTableModel) docTable.getModel();
@@ -249,7 +230,7 @@ Object[][] tableData = null;
     }    }//GEN-LAST:event_deleteBtnActionPerformed
 
     private void returnBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_returnBtnActionPerformed
-        new DocumentManagementUI().setVisible(true);
+        new AdminDashboardUI().setVisible(true);
         dispose();
     }//GEN-LAST:event_returnBtnActionPerformed
 
@@ -282,7 +263,6 @@ if (tableData != null && tableData.length > 0) {
     private javax.swing.JTextField docIdInput;
     private javax.swing.JTable docTable;
     private javax.swing.JLabel errorLabel;
-    private javax.swing.JButton homeBtn;
     private javax.swing.JComboBox<String> jComboBox1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JScrollPane jScrollPane1;

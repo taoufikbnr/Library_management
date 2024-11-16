@@ -66,6 +66,7 @@ public class AdminDashboardUI extends javax.swing.JFrame {
         title.setForeground(new java.awt.Color(0, 51, 153));
         title.setText("Welcome " + currentUser);
 
+        addPretBtn.setBackground(new java.awt.Color(204, 255, 204));
         addPretBtn.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/gerer pret 50.png"))); // NOI18N
         addPretBtn.setText("Gérer  Prêt");
         addPretBtn.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
@@ -75,6 +76,7 @@ public class AdminDashboardUI extends javax.swing.JFrame {
             }
         });
 
+        addSubBtn.setBackground(new java.awt.Color(204, 255, 204));
         addSubBtn.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/gerer abonne.png"))); // NOI18N
         addSubBtn.setText("Gérer Abonné");
         addSubBtn.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
@@ -84,6 +86,7 @@ public class AdminDashboardUI extends javax.swing.JFrame {
             }
         });
 
+        addDocBtn.setBackground(new java.awt.Color(204, 255, 204));
         addDocBtn.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/gerer doc 50.png"))); // NOI18N
         addDocBtn.setText("Gérer Document");
         addDocBtn.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
@@ -105,6 +108,7 @@ public class AdminDashboardUI extends javax.swing.JFrame {
             }
         });
 
+        addAuthorBtn.setBackground(new java.awt.Color(204, 255, 204));
         addAuthorBtn.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/add_author (50).png"))); // NOI18N
         addAuthorBtn.setText("Ajouter Auteur");
         addAuthorBtn.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
@@ -114,8 +118,9 @@ public class AdminDashboardUI extends javax.swing.JFrame {
             }
         });
 
-        addPlBtn.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/gerer pret 50.png"))); // NOI18N
-        addPlBtn.setText("Gérer  Prêt");
+        addPlBtn.setBackground(new java.awt.Color(204, 255, 204));
+        addPlBtn.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/gerer placard.png"))); // NOI18N
+        addPlBtn.setText("Gérer  Placard");
         addPlBtn.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         addPlBtn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -123,8 +128,9 @@ public class AdminDashboardUI extends javax.swing.JFrame {
             }
         });
 
-        addExpBtn.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/gerer pret 50.png"))); // NOI18N
-        addExpBtn.setText("Gérer  Prêt");
+        addExpBtn.setBackground(new java.awt.Color(204, 255, 204));
+        addExpBtn.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/gerer exemplaire.png"))); // NOI18N
+        addExpBtn.setText("Gérer Exemplaire");
         addExpBtn.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         addExpBtn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -144,15 +150,16 @@ public class AdminDashboardUI extends javax.swing.JFrame {
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addContainerGap(75, Short.MAX_VALUE)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(addPretBtn, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 187, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(addSubBtn, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 187, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(addExpBtn, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 187, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(35, 35, 35)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(addPlBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 187, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(addDocBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 187, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(addAuthorBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 187, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(addSubBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addComponent(addExpBtn, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(addPretBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addGap(9, 9, 9)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(addAuthorBtn, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(addPlBtn, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(addDocBtn, javax.swing.GroupLayout.DEFAULT_SIZE, 200, Short.MAX_VALUE))
                 .addGap(75, 75, 75))
         );
         layout.setVerticalGroup(
@@ -209,11 +216,13 @@ public class AdminDashboardUI extends javax.swing.JFrame {
     }//GEN-LAST:event_addAuthorBtnActionPerformed
 
     private void addPlBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addPlBtnActionPerformed
-        // TODO add your handling code here:
+       new AddPlacardsUI().setVisible(true);
+       dispose();
     }//GEN-LAST:event_addPlBtnActionPerformed
 
     private void addExpBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addExpBtnActionPerformed
-        // TODO add your handling code here:
+        new AddExemplairesUI().setVisible(true);
+        dispose();
     }//GEN-LAST:event_addExpBtnActionPerformed
 
     /**
