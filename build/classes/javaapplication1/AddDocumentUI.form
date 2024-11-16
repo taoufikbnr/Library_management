@@ -70,17 +70,15 @@
                       <Component id="jScrollPane1" alignment="1" min="-2" pref="230" max="-2" attributes="0"/>
                       <Group type="102" alignment="1" attributes="0">
                           <Group type="103" groupAlignment="0" attributes="0">
-                              <Group type="103" groupAlignment="0" attributes="0">
-                                  <Group type="102" alignment="1" attributes="0">
-                                      <Group type="103" groupAlignment="0" attributes="0">
-                                          <Component id="titreLabel" min="-2" pref="37" max="-2" attributes="0"/>
-                                          <Component id="coteLabel" min="-2" pref="37" max="-2" attributes="0"/>
-                                      </Group>
-                                      <EmptySpace min="-2" pref="49" max="-2" attributes="0"/>
+                              <Group type="102" alignment="1" attributes="0">
+                                  <Group type="103" groupAlignment="0" attributes="0">
+                                      <Component id="titreLabel" min="-2" pref="37" max="-2" attributes="0"/>
+                                      <Component id="coteLabel" min="-2" pref="37" max="-2" attributes="0"/>
                                   </Group>
-                                  <Component id="dateLabel" alignment="1" min="-2" pref="86" max="-2" attributes="0"/>
+                                  <EmptySpace min="-2" pref="49" max="-2" attributes="0"/>
                               </Group>
-                              <Component id="themeLabel" min="-2" pref="37" max="-2" attributes="0"/>
+                              <Component id="dateLabel" alignment="1" min="-2" pref="86" max="-2" attributes="0"/>
+                              <Component id="themeLabel" alignment="0" min="-2" pref="50" max="-2" attributes="0"/>
                           </Group>
                           <EmptySpace max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="0" attributes="0">
