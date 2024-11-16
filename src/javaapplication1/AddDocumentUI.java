@@ -48,7 +48,7 @@ ArrayList<Integer> selectedAuthorsId = new ArrayList<>();
     private void initComponents() {
 
         btnGrpMemoire = new javax.swing.ButtonGroup();
-        cote = new javax.swing.JTextField();
+        theme = new javax.swing.JTextField();
         titre = new javax.swing.JTextField();
         etat = new javax.swing.JComboBox<>();
         type = new javax.swing.JComboBox<>();
@@ -80,13 +80,11 @@ ArrayList<Integer> selectedAuthorsId = new ArrayList<>();
         returnBtn1 = new javax.swing.JButton();
         title = new javax.swing.JLabel();
         addDocImg = new javax.swing.JLabel();
+        cote = new javax.swing.JTextField();
+        themeLabel = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setBackground(new java.awt.Color(0, 0, 0));
-
-        cote.setText("1");
-
-        titre.setText("titre");
 
         etat.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "disponible", "non disponible" }));
 
@@ -165,7 +163,7 @@ ArrayList<Integer> selectedAuthorsId = new ArrayList<>();
         });
         memoirePanel.add(doctoratBtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 50, -1, -1));
 
-        jLayeredPane2.add(memoirePanel, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 220, 100));
+        jLayeredPane2.add(memoirePanel, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 220, 80));
 
         editeur.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -209,7 +207,7 @@ ArrayList<Integer> selectedAuthorsId = new ArrayList<>();
                 .addGap(24, 24, 24))
         );
 
-        jLayeredPane2.add(ouvragePanel, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 300, -1));
+        jLayeredPane2.add(ouvragePanel, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 300, 110));
 
         etatLabel.setText("Etat");
 
@@ -269,11 +267,13 @@ ArrayList<Integer> selectedAuthorsId = new ArrayList<>();
             }
         });
 
+        title.setText("Ajouter Document");
         title.setFont(new java.awt.Font("sansserif", 3, 12)); // NOI18N
         title.setForeground(new java.awt.Color(0, 0, 204));
-        title.setText("Ajouter Document");
 
         addDocImg.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/add Doc 50.png"))); // NOI18N
+
+        themeLabel.setText("Theme");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -298,45 +298,54 @@ ArrayList<Integer> selectedAuthorsId = new ArrayList<>();
                         .addContainerGap()
                         .addComponent(returnBtn1)
                         .addGap(296, 296, 296)
-                        .addComponent(addDocImg))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(75, 75, 75)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                .addGroup(layout.createSequentialGroup()
-                                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                        .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                                .addComponent(titreLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                                .addComponent(coteLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                            .addGap(49, 49, 49))
-                                        .addComponent(dateLabel, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 86, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addComponent(etatLabel, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 86, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                        .addComponent(datePicker1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                        .addComponent(titre)
-                                        .addComponent(etat, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                        .addComponent(cote)))
-                                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 230, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addComponent(newAuthorBtn, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 231, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(layout.createSequentialGroup()
-                                .addGap(146, 146, 146)
-                                .addComponent(type, javax.swing.GroupLayout.PREFERRED_SIZE, 149, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(layout.createSequentialGroup()
-                                .addGap(81, 81, 81)
-                                .addComponent(jLayeredPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 277, javax.swing.GroupLayout.PREFERRED_SIZE)))))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(addDocImg)))
+                .addGap(28, 28, 28)
                 .addComponent(homeBtn1))
             .addGroup(layout.createSequentialGroup()
                 .addGap(311, 311, 311)
                 .addComponent(title, javax.swing.GroupLayout.PREFERRED_SIZE, 129, javax.swing.GroupLayout.PREFERRED_SIZE))
+            .addGroup(layout.createSequentialGroup()
+                .addGap(75, 75, 75)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 230, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGroup(layout.createSequentialGroup()
+                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                            .addComponent(titreLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                            .addComponent(coteLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                        .addGap(49, 49, 49))
+                                    .addComponent(dateLabel, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 86, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addComponent(themeLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                .addComponent(datePicker1, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                    .addComponent(titre)
+                                    .addComponent(theme, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(cote, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE)))))
+                    .addComponent(newAuthorBtn, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 231, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(146, 146, 146)
+                        .addComponent(type, javax.swing.GroupLayout.PREFERRED_SIZE, 149, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(70, 70, 70)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(layout.createSequentialGroup()
+                                .addGap(12, 12, 12)
+                                .addComponent(etatLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(etat, javax.swing.GroupLayout.PREFERRED_SIZE, 181, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(jLayeredPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 277, javax.swing.GroupLayout.PREFERRED_SIZE)))))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(homeBtn1)
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(layout.createSequentialGroup()
@@ -347,29 +356,32 @@ ArrayList<Integer> selectedAuthorsId = new ArrayList<>();
                         .addComponent(title)
                         .addGap(24, 24, 24)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(cote, javax.swing.GroupLayout.PREFERRED_SIZE, 44, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(coteLabel))
+                            .addComponent(coteLabel)
+                            .addComponent(cote, javax.swing.GroupLayout.PREFERRED_SIZE, 44, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(10, 10, 10)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(titre, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(titreLabel))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(datePicker1, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(dateLabel))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                            .addComponent(theme, javax.swing.GroupLayout.PREFERRED_SIZE, 44, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(themeLabel))
+                        .addGap(12, 12, 12)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(etat, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(etatLabel)))
+                            .addComponent(datePicker1, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(dateLabel)))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(93, 93, 93)
                         .addComponent(type, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jLayeredPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 152, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addComponent(homeBtn1))
+                        .addComponent(jLayeredPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 119, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(etat, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(etatLabel))))
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(27, 27, 27)
+                        .addGap(58, 58, 58)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(searchInput, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(searchBtn))
@@ -377,7 +389,7 @@ ArrayList<Integer> selectedAuthorsId = new ArrayList<>();
                         .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 103, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(newAuthorBtn)
-                        .addContainerGap(131, Short.MAX_VALUE))
+                        .addContainerGap(92, Short.MAX_VALUE))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -409,6 +421,7 @@ ArrayList<Integer> selectedAuthorsId = new ArrayList<>();
     
     if (docId != -1) {
         addDocAuth(docId);
+       JOptionPane.showMessageDialog(this, "Document ajouté avec succes!");
     } else {
         JOptionPane.showMessageDialog(null, "Failed to add document. Cannot proceed with adding authors.");
     }
@@ -480,12 +493,13 @@ ArrayList<Integer> selectedAuthorsId = new ArrayList<>();
         
         try {
       conn = DBConnection.getConnection();
-      String sql = "INSERT INTO documents (cote, titre, date_parution,etat,type, isbn, editeur, diplome) VALUES (?,?,?,?,?,?,?,?)";
+      String sql = "INSERT INTO documents (cote, titre, date_parution,etat,type, isbn, editeur, diplome,theme) VALUES (?,?,?,?,?,?,?,?,?)";
         statement = conn.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS);
     
     // Gather the data from the text fields
     String coteData = cote.getText();
     String titreData = titre.getText();
+    String themeData = theme.getText();
     String dateString = datePicker1.getText();  // '1 novembre 2024'
     
     SimpleDateFormat inputFormat = new SimpleDateFormat("d MMMM yyyy", Locale.FRENCH);  
@@ -511,6 +525,7 @@ ArrayList<Integer> selectedAuthorsId = new ArrayList<>();
         statement.setString(7, null); 
         statement.setString(8, selectedMemoire); 
     }
+    statement.setString(9, themeData);
     
         int affectedRows = statement.executeUpdate();
     
@@ -621,6 +636,8 @@ ArrayList<Integer> selectedAuthorsId = new ArrayList<>();
     private javax.swing.JButton returnBtn1;
     private javax.swing.JButton searchBtn;
     private javax.swing.JTextField searchInput;
+    private javax.swing.JTextField theme;
+    private javax.swing.JLabel themeLabel;
     private javax.swing.JLabel title;
     private javax.swing.JTextField titre;
     private javax.swing.JLabel titreLabel;

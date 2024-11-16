@@ -13,13 +13,13 @@ import javax.swing.table.TableColumnModel;
  *
  * @author lenovo
  */
-public class ModifySubscriberUI extends javax.swing.JFrame {
+public class UpdateSubscriberUI extends javax.swing.JFrame {
 String selectedCriteria="nom";
 
     /**
      * Creates new form AddSubsriberUI
      */
-    public ModifySubscriberUI() {
+    public UpdateSubscriberUI() {
         initComponents();
         setLocationRelativeTo(null);
         performSearch();

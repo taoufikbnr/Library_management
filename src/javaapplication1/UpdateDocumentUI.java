@@ -73,7 +73,6 @@ ArrayList<Integer> selectedAuthorsId = new ArrayList<>();
         isbnLabel = new javax.swing.JLabel();
         etatLabel = new javax.swing.JLabel();
         nomAuteurLabel = new javax.swing.JLabel();
-        newAuthorBtn = new javax.swing.JToggleButton();
         homeBtn1 = new javax.swing.JButton();
         returnBtn1 = new javax.swing.JButton();
         title = new javax.swing.JLabel();
@@ -88,6 +87,8 @@ ArrayList<Integer> selectedAuthorsId = new ArrayList<>();
         docTable = new javax.swing.JTable();
         jScrollPane2 = new javax.swing.JScrollPane();
         jTextArea1 = new javax.swing.JTextArea();
+        themeInput = new javax.swing.JTextField();
+        jLabel1 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setBackground(new java.awt.Color(0, 0, 0));
@@ -203,15 +204,6 @@ ArrayList<Integer> selectedAuthorsId = new ArrayList<>();
 
         nomAuteurLabel.setText("Auteur(s)");
 
-        newAuthorBtn.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/add_author (50).png"))); // NOI18N
-        newAuthorBtn.setText("Nouveau Auteur");
-        newAuthorBtn.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        newAuthorBtn.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                newAuthorBtnActionPerformed(evt);
-            }
-        });
-
         homeBtn1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/home_icon.png"))); // NOI18N
         homeBtn1.setBackground(new Color(0, 0, 0, 0));
         homeBtn1.setBorder(null);
@@ -252,7 +244,7 @@ ArrayList<Integer> selectedAuthorsId = new ArrayList<>();
             }
         });
 
-        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "id", "cote", "titre", "auteur", "editeur", "etat", "type" }));
+        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "id", "cote", "titre", "auteur", "theme", "editeur", "etat", "type" }));
         jComboBox1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jComboBox1ActionPerformed(evt);
@@ -293,6 +285,8 @@ ArrayList<Integer> selectedAuthorsId = new ArrayList<>();
         jTextArea1.setRows(5);
         jScrollPane2.setViewportView(jTextArea1);
 
+        jLabel1.setText("Theme");
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -314,32 +308,31 @@ ArrayList<Integer> selectedAuthorsId = new ArrayList<>();
                                 .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addComponent(searchBtn1, javax.swing.GroupLayout.PREFERRED_SIZE, 92, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(jScrollPane4, javax.swing.GroupLayout.PREFERRED_SIZE, 661, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addGroup(layout.createSequentialGroup()
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(newAuthorBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 231, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addGroup(layout.createSequentialGroup()
+                                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                                    .addComponent(titreLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                                    .addComponent(coteLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                                .addGap(49, 49, 49))
-                                            .addComponent(dateLabel, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 86, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                            .addComponent(etatLabel, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 86, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                            .addComponent(etat, javax.swing.GroupLayout.Alignment.TRAILING, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                            .addComponent(titreInput, javax.swing.GroupLayout.Alignment.TRAILING)
-                                            .addComponent(datePicker1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                            .addComponent(coteInput, javax.swing.GroupLayout.Alignment.TRAILING))))
+                                            .addComponent(titreLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                            .addComponent(coteLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                        .addGap(49, 49, 49))
+                                    .addComponent(dateLabel, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 86, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(etatLabel, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 86, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 53, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                    .addComponent(themeInput)
+                                    .addComponent(etat, javax.swing.GroupLayout.Alignment.TRAILING, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                    .addComponent(titreInput, javax.swing.GroupLayout.Alignment.TRAILING)
+                                    .addComponent(datePicker1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                    .addComponent(coteInput, javax.swing.GroupLayout.Alignment.TRAILING))
                                 .addGap(114, 114, 114)
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addGroup(layout.createSequentialGroup()
                                         .addComponent(nomAuteurLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 59, javax.swing.GroupLayout.PREFERRED_SIZE)
                                         .addGap(18, 18, 18)
                                         .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 174, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                    .addComponent(jLayeredPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 280, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                            .addComponent(jScrollPane4, javax.swing.GroupLayout.PREFERRED_SIZE, 661, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                    .addComponent(jLayeredPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 280, javax.swing.GroupLayout.PREFERRED_SIZE)))))
                     .addGroup(layout.createSequentialGroup()
                         .addContainerGap()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
@@ -351,14 +344,14 @@ ArrayList<Integer> selectedAuthorsId = new ArrayList<>();
                                 .addGap(207, 207, 207)))))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(homeBtn1))
-            .addGroup(layout.createSequentialGroup()
-                .addGap(311, 311, 311)
-                .addComponent(title, javax.swing.GroupLayout.PREFERRED_SIZE, 129, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 0, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(type, javax.swing.GroupLayout.PREFERRED_SIZE, 180, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(85, 85, 85))
+            .addGroup(layout.createSequentialGroup()
+                .addGap(311, 311, 311)
+                .addComponent(title, javax.swing.GroupLayout.PREFERRED_SIZE, 129, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -378,22 +371,6 @@ ArrayList<Integer> selectedAuthorsId = new ArrayList<>();
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(layout.createSequentialGroup()
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                    .addComponent(coteInput, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(coteLabel))
-                                .addGap(10, 10, 10)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                    .addComponent(titreInput, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(titreLabel))
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                    .addComponent(datePicker1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(dateLabel))
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                    .addComponent(etat, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(etatLabel)))
-                            .addGroup(layout.createSequentialGroup()
                                 .addComponent(jLayeredPane2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addGroup(layout.createSequentialGroup()
@@ -401,12 +378,33 @@ ArrayList<Integer> selectedAuthorsId = new ArrayList<>();
                                         .addComponent(nomAuteurLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE))
                                     .addGroup(layout.createSequentialGroup()
                                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                        .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE)))))))
+                                        .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                            .addGroup(layout.createSequentialGroup()
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addGroup(layout.createSequentialGroup()
+                                        .addGap(65, 65, 65)
+                                        .addComponent(themeInput, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                    .addGroup(layout.createSequentialGroup()
+                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                            .addComponent(coteInput, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                            .addComponent(coteLabel))
+                                        .addGap(10, 10, 10)
+                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                            .addComponent(titreInput, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                            .addComponent(titreLabel))
+                                        .addGap(18, 18, 18)
+                                        .addComponent(jLabel1)))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                    .addComponent(datePicker1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(dateLabel))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                    .addComponent(etat, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(etatLabel))))))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(newAuthorBtn)
-                    .addComponent(addBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(25, 25, 25)
+                .addComponent(addBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(49, 49, 49)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
@@ -444,15 +442,18 @@ ArrayList<Integer> selectedAuthorsId = new ArrayList<>();
         String typeData = (String) type.getSelectedItem();
         String isbnData = isbn.getText();
         String editeurData = editeur.getText();
+        String themeData = themeInput.getText();
         
        if(id.isEmpty() || titreData.isEmpty() || dateString.isEmpty()){
         JOptionPane.showMessageDialog(this,"All fields are required.");
         }else if("ouvrage".equals(typeData) && (isbnData.isEmpty() || editeurData.isEmpty()) ){
-            JOptionPane.showMessageDialog(this,"All fields are required.");
+            JOptionPane.showMessageDialog(this,"L'ISBN et l'éditeur sont obligatoires.");
+        }else if("memoire".equals(typeData) && (selectedMemoire.isEmpty()) ){
+            JOptionPane.showMessageDialog(this,"Veuillez sélectionner le diplôme");
         }else{
-        new Documents(titreData,dateString,etatData,typeData,editeurData,isbnData,selectedMemoire).updateDocument(id);
+        new Documents(titreData,dateString,etatData,typeData,editeurData,isbnData,selectedMemoire,themeData).updateDocument(id);
         JOptionPane.showMessageDialog(this,"Abonné modifié aves succes");
-        
+        performSearch();
          }
         
 
@@ -475,11 +476,6 @@ ArrayList<Integer> selectedAuthorsId = new ArrayList<>();
     private void editeurActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_editeurActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_editeurActionPerformed
-
-    private void newAuthorBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_newAuthorBtnActionPerformed
-          AddAuthorUI addAuthorUI = new AddAuthorUI();
-    addAuthorUI.setVisible(true);
-    }//GEN-LAST:event_newAuthorBtnActionPerformed
 
     private void homeBtn1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_homeBtn1ActionPerformed
        new AdminDashboardUI().setVisible(true);
@@ -509,17 +505,19 @@ ArrayList<Integer> selectedAuthorsId = new ArrayList<>();
         Object id = model.getValueAt(selectedRow, 0);
         Object cote = model.getValueAt(selectedRow, 1);
         Object titre = model.getValueAt(selectedRow, 2);
-        Object date_parution = model.getValueAt(selectedRow, 4);
-        Object typeT = model.getValueAt(selectedRow, 5);
-        Object diplome = model.getValueAt(selectedRow, 6);
-        Object editeurT = model.getValueAt(selectedRow, 7);
-        Object isbnT = model.getValueAt(selectedRow, 8);
-        Object disponibilty = model.getValueAt(selectedRow, 9);
+        Object theme = model.getValueAt(selectedRow, 4);
+        Object date_parution = model.getValueAt(selectedRow, 5);
+        Object typeT = model.getValueAt(selectedRow, 6);
+        Object diplome = model.getValueAt(selectedRow, 7);
+        Object editeurT = model.getValueAt(selectedRow, 8);
+        Object isbnT = model.getValueAt(selectedRow, 9);
+        Object disponibilty = model.getValueAt(selectedRow, 10);
         docId.setText((String)id);
         coteInput.setText((String)cote);
         titreInput.setText((String)titre);
         editeur.setText((String)editeurT);
         isbn.setText((String)isbnT);
+        themeInput.setText((String)theme);
        
              SimpleDateFormat inputFormat = new SimpleDateFormat("yyyy-MM-dd");  
             java.util.Date utilDate;
@@ -588,7 +586,7 @@ ArrayList<Integer> selectedAuthorsId = new ArrayList<>();
                     errorLabel.setText(""); 
                     docTable.setModel(new javax.swing.table.DefaultTableModel(
                         tableData,
-                        new String[]{"ID","Cote","Titre","Auteur","Date","Type","Diplome","Editeur","ISBN", "Etat"} 
+                        new String[]{"ID","Cote","Titre","Auteur","Theme","Date","Type","Diplome","Editeur","ISBN", "Etat"} 
                     ));
                 } else {
                 errorLabel.setText("No records found");
@@ -623,6 +621,7 @@ ArrayList<Integer> selectedAuthorsId = new ArrayList<>();
     private javax.swing.JTextField isbn;
     private javax.swing.JLabel isbnLabel;
     private javax.swing.JComboBox<String> jComboBox1;
+    private javax.swing.JLabel jLabel1;
     private javax.swing.JLayeredPane jLayeredPane2;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JScrollPane jScrollPane4;
@@ -630,12 +629,12 @@ ArrayList<Integer> selectedAuthorsId = new ArrayList<>();
     private javax.swing.JRadioButton licenceBtn;
     private javax.swing.JRadioButton mastereBtn;
     private javax.swing.JPanel memoirePanel;
-    private javax.swing.JToggleButton newAuthorBtn;
     private javax.swing.JLabel nomAuteurLabel;
     private javax.swing.JPanel ouvragePanel;
     private javax.swing.JTextField queryInput;
     private javax.swing.JButton returnBtn1;
     private javax.swing.JToggleButton searchBtn1;
+    private javax.swing.JTextField themeInput;
     private javax.swing.JLabel title;
     private javax.swing.JTextField titreInput;
     private javax.swing.JLabel titreLabel;

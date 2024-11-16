@@ -48,29 +48,27 @@
                               <EmptySpace max="-2" attributes="0"/>
                               <Component id="searchBtn1" min="-2" pref="92" max="-2" attributes="0"/>
                           </Group>
+                          <Component id="jScrollPane4" min="-2" pref="661" max="-2" attributes="0"/>
                           <Group type="102" alignment="0" attributes="0">
                               <Group type="103" groupAlignment="0" attributes="0">
-                                  <Component id="newAuthorBtn" alignment="0" min="-2" pref="231" max="-2" attributes="0"/>
-                                  <Group type="102" alignment="0" attributes="0">
+                                  <Group type="102" alignment="1" attributes="0">
                                       <Group type="103" groupAlignment="0" attributes="0">
-                                          <Group type="102" alignment="1" attributes="0">
-                                              <Group type="103" groupAlignment="0" attributes="0">
-                                                  <Component id="titreLabel" min="-2" pref="37" max="-2" attributes="0"/>
-                                                  <Component id="coteLabel" min="-2" pref="37" max="-2" attributes="0"/>
-                                              </Group>
-                                              <EmptySpace min="-2" pref="49" max="-2" attributes="0"/>
-                                          </Group>
-                                          <Component id="dateLabel" alignment="1" min="-2" pref="86" max="-2" attributes="0"/>
-                                          <Component id="etatLabel" alignment="1" min="-2" pref="86" max="-2" attributes="0"/>
+                                          <Component id="titreLabel" min="-2" pref="37" max="-2" attributes="0"/>
+                                          <Component id="coteLabel" min="-2" pref="37" max="-2" attributes="0"/>
                                       </Group>
-                                      <EmptySpace max="-2" attributes="0"/>
-                                      <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                                          <Component id="etat" alignment="1" max="32767" attributes="0"/>
-                                          <Component id="titreInput" alignment="1" max="32767" attributes="0"/>
-                                          <Component id="datePicker1" alignment="1" max="32767" attributes="0"/>
-                                          <Component id="coteInput" alignment="1" max="32767" attributes="0"/>
-                                      </Group>
+                                      <EmptySpace min="-2" pref="49" max="-2" attributes="0"/>
                                   </Group>
+                                  <Component id="dateLabel" alignment="1" min="-2" pref="86" max="-2" attributes="0"/>
+                                  <Component id="etatLabel" alignment="1" min="-2" pref="86" max="-2" attributes="0"/>
+                                  <Component id="jLabel1" alignment="0" min="-2" pref="53" max="-2" attributes="0"/>
+                              </Group>
+                              <EmptySpace max="-2" attributes="0"/>
+                              <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                                  <Component id="themeInput" max="32767" attributes="0"/>
+                                  <Component id="etat" alignment="1" max="32767" attributes="0"/>
+                                  <Component id="titreInput" alignment="1" max="32767" attributes="0"/>
+                                  <Component id="datePicker1" alignment="1" max="32767" attributes="0"/>
+                                  <Component id="coteInput" alignment="1" max="32767" attributes="0"/>
                               </Group>
                               <EmptySpace min="-2" pref="114" max="-2" attributes="0"/>
                               <Group type="103" groupAlignment="0" attributes="0">
@@ -82,7 +80,6 @@
                                   <Component id="jLayeredPane2" alignment="0" min="-2" pref="280" max="-2" attributes="0"/>
                               </Group>
                           </Group>
-                          <Component id="jScrollPane4" min="-2" pref="661" max="-2" attributes="0"/>
                       </Group>
                   </Group>
                   <Group type="102" attributes="0">
@@ -101,15 +98,15 @@
               <EmptySpace max="-2" attributes="0"/>
               <Component id="homeBtn1" min="-2" max="-2" attributes="0"/>
           </Group>
-          <Group type="102" alignment="0" attributes="0">
-              <EmptySpace min="-2" pref="311" max="-2" attributes="0"/>
-              <Component id="title" min="-2" pref="129" max="-2" attributes="0"/>
-              <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
-          </Group>
           <Group type="102" alignment="1" attributes="0">
               <EmptySpace max="32767" attributes="0"/>
               <Component id="type" min="-2" pref="180" max="-2" attributes="0"/>
               <EmptySpace min="-2" pref="85" max="-2" attributes="0"/>
+          </Group>
+          <Group type="102" alignment="0" attributes="0">
+              <EmptySpace min="-2" pref="311" max="-2" attributes="0"/>
+              <Component id="title" min="-2" pref="129" max="-2" attributes="0"/>
+              <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
@@ -133,27 +130,6 @@
                       <EmptySpace max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="0" attributes="0">
                           <Group type="102" alignment="0" attributes="0">
-                              <Group type="103" groupAlignment="3" attributes="0">
-                                  <Component id="coteInput" alignment="3" min="-2" max="-2" attributes="0"/>
-                                  <Component id="coteLabel" alignment="3" min="-2" max="-2" attributes="0"/>
-                              </Group>
-                              <EmptySpace min="-2" pref="10" max="-2" attributes="0"/>
-                              <Group type="103" groupAlignment="3" attributes="0">
-                                  <Component id="titreInput" alignment="3" min="-2" max="-2" attributes="0"/>
-                                  <Component id="titreLabel" alignment="3" min="-2" max="-2" attributes="0"/>
-                              </Group>
-                              <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                              <Group type="103" groupAlignment="3" attributes="0">
-                                  <Component id="datePicker1" alignment="3" min="-2" max="-2" attributes="0"/>
-                                  <Component id="dateLabel" alignment="3" min="-2" max="-2" attributes="0"/>
-                              </Group>
-                              <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                              <Group type="103" groupAlignment="3" attributes="0">
-                                  <Component id="etat" alignment="3" min="-2" max="-2" attributes="0"/>
-                                  <Component id="etatLabel" alignment="3" min="-2" max="-2" attributes="0"/>
-                              </Group>
-                          </Group>
-                          <Group type="102" alignment="0" attributes="0">
                               <Component id="jLayeredPane2" min="-2" max="-2" attributes="0"/>
                               <Group type="103" groupAlignment="0" attributes="0">
                                   <Group type="102" attributes="0">
@@ -166,15 +142,43 @@
                                   </Group>
                               </Group>
                           </Group>
+                          <Group type="102" attributes="0">
+                              <Group type="103" groupAlignment="0" attributes="0">
+                                  <Group type="102" attributes="0">
+                                      <EmptySpace min="-2" pref="65" max="-2" attributes="0"/>
+                                      <Component id="themeInput" min="-2" max="-2" attributes="0"/>
+                                  </Group>
+                                  <Group type="102" alignment="0" attributes="0">
+                                      <Group type="103" groupAlignment="3" attributes="0">
+                                          <Component id="coteInput" alignment="3" min="-2" max="-2" attributes="0"/>
+                                          <Component id="coteLabel" alignment="3" min="-2" max="-2" attributes="0"/>
+                                      </Group>
+                                      <EmptySpace min="-2" pref="10" max="-2" attributes="0"/>
+                                      <Group type="103" groupAlignment="3" attributes="0">
+                                          <Component id="titreInput" alignment="3" min="-2" max="-2" attributes="0"/>
+                                          <Component id="titreLabel" alignment="3" min="-2" max="-2" attributes="0"/>
+                                      </Group>
+                                      <EmptySpace type="separate" max="-2" attributes="0"/>
+                                      <Component id="jLabel1" min="-2" max="-2" attributes="0"/>
+                                  </Group>
+                              </Group>
+                              <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                              <Group type="103" groupAlignment="3" attributes="0">
+                                  <Component id="datePicker1" alignment="3" min="-2" max="-2" attributes="0"/>
+                                  <Component id="dateLabel" alignment="3" min="-2" max="-2" attributes="0"/>
+                              </Group>
+                              <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                              <Group type="103" groupAlignment="3" attributes="0">
+                                  <Component id="etat" alignment="3" min="-2" max="-2" attributes="0"/>
+                                  <Component id="etatLabel" alignment="3" min="-2" max="-2" attributes="0"/>
+                              </Group>
+                          </Group>
                       </Group>
                   </Group>
               </Group>
               <EmptySpace type="unrelated" max="32767" attributes="0"/>
-              <Group type="103" groupAlignment="0" attributes="0">
-                  <Component id="newAuthorBtn" min="-2" max="-2" attributes="0"/>
-                  <Component id="addBtn" min="-2" pref="33" max="-2" attributes="0"/>
-              </Group>
-              <EmptySpace min="-2" pref="25" max="-2" attributes="0"/>
+              <Component id="addBtn" min="-2" pref="33" max="-2" attributes="0"/>
+              <EmptySpace min="-2" pref="49" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="1" attributes="0">
                   <Group type="103" groupAlignment="0" attributes="0">
                       <Group type="103" groupAlignment="3" attributes="0">
@@ -418,18 +422,6 @@
         <Property name="text" type="java.lang.String" value="Auteur(s)"/>
       </Properties>
     </Component>
-    <Component class="javax.swing.JToggleButton" name="newAuthorBtn">
-      <Properties>
-        <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-          <Image iconType="3" name="/images/add_author (50).png"/>
-        </Property>
-        <Property name="text" type="java.lang.String" value="Nouveau Auteur"/>
-        <Property name="horizontalAlignment" type="int" value="2"/>
-      </Properties>
-      <Events>
-        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="newAuthorBtnActionPerformed"/>
-      </Events>
-    </Component>
     <Component class="javax.swing.JButton" name="homeBtn1">
       <Properties>
         <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
@@ -498,14 +490,15 @@
     <Component class="javax.swing.JComboBox" name="jComboBox1">
       <Properties>
         <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
-          <StringArray count="7">
+          <StringArray count="8">
             <StringItem index="0" value="id"/>
             <StringItem index="1" value="cote"/>
             <StringItem index="2" value="titre"/>
             <StringItem index="3" value="auteur"/>
-            <StringItem index="4" value="editeur"/>
-            <StringItem index="5" value="etat"/>
-            <StringItem index="6" value="type"/>
+            <StringItem index="4" value="theme"/>
+            <StringItem index="5" value="editeur"/>
+            <StringItem index="6" value="etat"/>
+            <StringItem index="7" value="type"/>
           </StringArray>
         </Property>
       </Properties>
@@ -584,5 +577,12 @@
         </Component>
       </SubComponents>
     </Container>
+    <Component class="javax.swing.JTextField" name="themeInput">
+    </Component>
+    <Component class="javax.swing.JLabel" name="jLabel1">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Theme"/>
+      </Properties>
+    </Component>
   </SubComponents>
 </Form>

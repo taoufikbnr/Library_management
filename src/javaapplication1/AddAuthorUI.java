@@ -50,6 +50,7 @@ public class AddAuthorUI extends JFrame {
 
         addAuthorBtn.setText("Enregistrer");
         addAuthorBtn.setBackground(new java.awt.Color(0, 153, 51));
+        addAuthorBtn.setForeground(new java.awt.Color(255, 255, 255));
         addAuthorBtn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 addAuthorBtnActionPerformed(evt);

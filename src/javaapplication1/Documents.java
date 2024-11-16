@@ -29,7 +29,8 @@ public class Documents {
         String isbn;
         String editeur;
         String diplome;
-        public Documents(String titre,String date,String etat,String type,String editeur,String isbn,String diplome ){
+        String theme;
+        public Documents(String titre,String date,String etat,String type,String editeur,String isbn,String diplome,String theme ){
             this.titre=titre;
             this.date=date;
             this.etat=etat;
@@ -37,6 +38,7 @@ public class Documents {
             this.isbn=isbn;
             this.editeur=editeur;
             this.diplome=diplome;
+            this.theme=theme;
         }
         public Documents(){
         }
@@ -47,7 +49,7 @@ public class Documents {
     String sql;
     switch (selectedCriteria) {
         case "id":
-            sql = "SELECT d.id, d.cote, d.titre, d.etat, d.type,d.diplome,d.date_parution,d.ISBN,d.editeur, " +
+            sql = "SELECT d.id, d.cote, d.titre, d.etat, d.type,d.diplome,d.date_parution,d.ISBN,d.editeur,d.theme, " +
                   "a.nom_auteur, a.prenom_auteur " +
                   "FROM documents d " +
                   "LEFT JOIN documents_authors da ON d.id = da.document_id " +
@@ -55,7 +57,7 @@ public class Documents {
                   "WHERE d.id LIKE ?";
             break;
         case "cote":
-            sql = "SELECT d.id, d.cote, d.titre, d.etat, d.type,d.diplome,d.date_parution,d.ISBN,d.editeur, " +
+            sql = "SELECT d.id, d.cote, d.titre, d.etat, d.type,d.diplome,d.date_parution,d.ISBN,d.editeur,d.theme,  " +
                   "a.nom_auteur, a.prenom_auteur " +
                   "FROM documents d " +
                   "LEFT JOIN documents_authors da ON d.id = da.document_id " +
@@ -63,7 +65,7 @@ public class Documents {
                   "WHERE d.cote LIKE ?";
             break;
         case "etat":
-            sql = "SELECT d.id, d.cote, d.titre, d.etat, d.type,d.diplome,d.date_parution,d.ISBN,d.editeur,  " +
+            sql = "SELECT d.id, d.cote, d.titre, d.etat, d.type,d.diplome,d.date_parution,d.ISBN,d.editeur,d.theme,   " +
                   "a.nom_auteur, a.prenom_auteur " +
                   "FROM documents d " +
                   "LEFT JOIN documents_authors da ON d.id = da.document_id " +
@@ -71,7 +73,7 @@ public class Documents {
                   "WHERE d.etat LIKE ?";
             break;
         case "auteur":
-        sql = "SELECT d.id, d.cote,d.titre, d.etat,d.type,d.diplome,d.date_parution,d.ISBN,d.editeur, "
+        sql = "SELECT d.id, d.cote,d.titre, d.etat,d.type,d.diplome,d.date_parution,d.ISBN,d.editeur,d.theme, "
                 + "a.nom_auteur,a.prenom_auteur  " +
               "FROM documents d " +
               "LEFT JOIN documents_authors da ON d.id = da.document_id " +
@@ -79,7 +81,7 @@ public class Documents {
               "WHERE (a.nom_auteur LIKE ? OR a.prenom_auteur LIKE ?)";
             break;
         case "type":
-        sql = "SELECT d.id, d.cote,d.titre, d.etat,d.type,d.diplome,d.date_parution,d.ISBN,d.editeur, "
+        sql = "SELECT d.id, d.cote,d.titre, d.etat,d.type,d.diplome,d.date_parution,d.ISBN,d.editeur,d.theme,  "
                 + "a.nom_auteur,a.prenom_auteur  " +
               "FROM documents d " +
               "LEFT JOIN documents_authors da ON d.id = da.document_id " +
@@ -87,15 +89,23 @@ public class Documents {
               "WHERE d.type LIKE ?";
             break;
         case "titre":
-                 sql = "SELECT d.id, d.cote,d.titre, d.etat,d.type,d.diplome,d.date_parution,d.ISBN,d.editeur, "
+                 sql = "SELECT d.id, d.cote,d.titre, d.etat,d.type,d.diplome,d.date_parution,d.ISBN,d.editeur,d.theme,  "
                          + "a.nom_auteur,a.prenom_auteur  " +
               "FROM documents d " +
               "LEFT JOIN documents_authors da ON d.id = da.document_id " +
               "LEFT JOIN authors a ON da.author_id = a.code_auteur " +
               "WHERE d.titre LIKE ?";
             break;
+        case "theme":
+                 sql = "SELECT d.id, d.cote,d.titre, d.etat,d.type,d.diplome,d.date_parution,d.ISBN,d.editeur,d.theme,  "
+                         + "a.nom_auteur,a.prenom_auteur  " +
+              "FROM documents d " +
+              "LEFT JOIN documents_authors da ON d.id = da.document_id " +
+              "LEFT JOIN authors a ON da.author_id = a.code_auteur " +
+              "WHERE d.theme LIKE ?";
+            break;
         case "editeur":
-                 sql = "SELECT d.id, d.cote,d.titre, d.etat,d.type,d.diplome,d.date_parution,d.ISBN,d.editeur, "
+                 sql = "SELECT d.id, d.cote,d.titre, d.etat,d.type,d.diplome,d.date_parution,d.ISBN,d.editeur,d.theme,  "
                          + "a.nom_auteur,a.prenom_auteur  " +
               "FROM documents d " +
               "LEFT JOIN documents_authors da ON d.id = da.document_id " +
@@ -103,7 +113,7 @@ public class Documents {
               "WHERE d.editeur LIKE ?";
             break;
         default:
-            sql = "SELECT d.id, d.cote, d.titre, d.etat, d.type,d.diplome,d.date_parution,d.ISBN,d.editeur, " +
+            sql = "SELECT d.id, d.cote, d.titre, d.etat, d.type,d.diplome,d.date_parution,d.ISBN,d.editeur,d.theme,  " +
                   "a.nom_auteur, a.prenom_auteur " +
                   "FROM documents d " +
                   "LEFT JOIN documents_authors da ON d.id = da.document_id " +
@@ -142,7 +152,8 @@ public class Documents {
             this.editeur = resultSet.getString("editeur");
             this.etat = resultSet.getString("etat");
             this.diplome = resultSet.getString("diplome");
-            data.add(new Object[]{id, cote,titre,nomAuteur+" "+prenomAuteur,date_parution,type,diplome,editeur,isbn, etat});
+            this.theme = resultSet.getString("theme");
+            data.add(new Object[]{id, cote,titre,nomAuteur+" "+prenomAuteur,theme,date_parution,type,diplome,editeur,isbn, etat});
         }
 
         // Conversion de la liste en tableau 2D
@@ -171,7 +182,7 @@ public class Documents {
         
         try {
       conn = DBConnection.getConnection();
-      String sql = "UPDATE documents SET  titre=?, date_parution=?,etat=?,type=?, isbn=?, editeur=?, diplome=? WHERE id=?";
+      String sql = "UPDATE documents SET  titre=?, date_parution=?,etat=?,type=?, isbn=?, editeur=?, diplome=?,theme=? WHERE id=?";
         statement = conn.prepareStatement(sql);
     
     
@@ -195,7 +206,8 @@ public class Documents {
         statement.setString(6, null); 
         statement.setString(7, this.diplome); 
     }
-        statement.setString(8, id);
+        statement.setString(8, this.theme);
+        statement.setString(9, id);
 
         statement.executeUpdate();
 

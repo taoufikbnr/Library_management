@@ -92,7 +92,7 @@ Object[][] tableData = null;
             }
         });
 
-        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "id", "cote", "titre", "auteur", "etat", "type" }));
+        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "id", "cote", "titre", "auteur", "theme", "editeur", "etat", "type" }));
         jComboBox1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jComboBox1ActionPerformed(evt);
@@ -261,7 +261,7 @@ if (tableData != null && tableData.length > 0) {
         errorLabel.setText(""); 
         docTable.setModel(new javax.swing.table.DefaultTableModel(
             tableData,
-            new String[]{"ID","Cote","Titre","Auteur","Type", "Etat"} 
+            new String[]{"ID","Cote","Titre","Auteur","Theme","Date","Type","Diplome","Editeur","ISBN", "Etat"} 
         ));
     } else {
         errorLabel.setText("No records found");

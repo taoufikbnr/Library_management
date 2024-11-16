@@ -145,7 +145,7 @@ public class SubscriberManagementUI extends javax.swing.JFrame {
     }//GEN-LAST:event_homeBtnActionPerformed
 
     private void modifySubBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_modifySubBtnActionPerformed
-           new ModifySubscriberUI().setVisible(true);
+           new UpdateSubscriberUI().setVisible(true);
            dispose();
     }//GEN-LAST:event_modifySubBtnActionPerformed
 

@@ -67,7 +67,7 @@ String currentUser = (CurrentUser.instance != null && CurrentUser.instance.getUs
             }
         });
 
-        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "id", "cote", "titre", "auteur", "editeur", "etat", "type" }));
+        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "id", "cote", "titre", "auteur", "theme", "editeur", "etat", "type" }));
         jComboBox1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jComboBox1ActionPerformed(evt);
@@ -216,7 +216,7 @@ String currentUser = (CurrentUser.instance != null && CurrentUser.instance.getUs
                     errorLabel.setText(""); 
                     docTable.setModel(new javax.swing.table.DefaultTableModel(
                         tableData,
-                        new String[]{"ID","Cote","Titre","Auteur","Date","Type","Diplome","Editeur","ISBN", "Etat"} 
+                        new String[]{"ID","Cote","Titre","Auteur","Theme","Date","Type","Diplome","Editeur","ISBN", "Etat"} 
                     ){
     public boolean isCellEditable(int row, int column) {
         return false;
