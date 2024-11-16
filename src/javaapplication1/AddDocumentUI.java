@@ -458,7 +458,6 @@ ArrayList<Integer> selectedAuthorsId = new ArrayList<>();
                              selectedAuthorsId.add((int)id);
                          }
                      nomAuteurs.setText(String.join(", ", selectedAuthors));
-                     System.out.println(selectedAuthorsId);
                 }
     }//GEN-LAST:event_jTable1MouseClicked
 

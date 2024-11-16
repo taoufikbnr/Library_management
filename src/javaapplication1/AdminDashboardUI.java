@@ -44,6 +44,8 @@ public class AdminDashboardUI extends javax.swing.JFrame {
         addDocBtn = new javax.swing.JButton();
         homeBtn = new javax.swing.JButton();
         addAuthorBtn = new javax.swing.JButton();
+        addPlBtn = new javax.swing.JButton();
+        addExpBtn = new javax.swing.JButton();
 
         jTable1.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -112,6 +114,24 @@ public class AdminDashboardUI extends javax.swing.JFrame {
             }
         });
 
+        addPlBtn.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/gerer pret 50.png"))); // NOI18N
+        addPlBtn.setText("Gérer  Prêt");
+        addPlBtn.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        addPlBtn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                addPlBtnActionPerformed(evt);
+            }
+        });
+
+        addExpBtn.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/gerer pret 50.png"))); // NOI18N
+        addExpBtn.setText("Gérer  Prêt");
+        addExpBtn.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        addExpBtn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                addExpBtnActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -124,11 +144,13 @@ public class AdminDashboardUI extends javax.swing.JFrame {
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addContainerGap(75, Short.MAX_VALUE)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(addPretBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 187, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(addSubBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 187, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(addPretBtn, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 187, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(addSubBtn, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 187, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(addExpBtn, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 187, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(35, 35, 35)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(addPlBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 187, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(addDocBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 187, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(addAuthorBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 187, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(75, 75, 75))
@@ -151,7 +173,11 @@ public class AdminDashboardUI extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(addPretBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 61, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(addAuthorBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 61, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(53, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 18, Short.MAX_VALUE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(addPlBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 61, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(addExpBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 61, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap())
         );
 
         pack();
@@ -182,6 +208,14 @@ public class AdminDashboardUI extends javax.swing.JFrame {
        dispose();
     }//GEN-LAST:event_addAuthorBtnActionPerformed
 
+    private void addPlBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addPlBtnActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_addPlBtnActionPerformed
+
+    private void addExpBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addExpBtnActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_addExpBtnActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -189,6 +223,8 @@ public class AdminDashboardUI extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton addAuthorBtn;
     private javax.swing.JButton addDocBtn;
+    private javax.swing.JButton addExpBtn;
+    private javax.swing.JButton addPlBtn;
     private javax.swing.JButton addPretBtn;
     private javax.swing.JButton addSubBtn;
     private javax.swing.JButton homeBtn;
