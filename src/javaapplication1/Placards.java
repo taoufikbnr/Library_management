@@ -39,7 +39,8 @@ public class Placards {
         Object[][] tableData=null;
         try {
             conn=DBConnection.getConnection();
-            statement = conn.prepareStatement("SELECT p.numPl,e.numEt,e.libelleEt,p.libellePl FROM placards p,etageres e");
+            statement = conn.prepareStatement("SELECT p.numPl,e.numEt,e.libelleEt,p.libellePl FROM placards p LEFT JOIN etageres e "
+                    + "ON p.numpl=e.placard_id");
             resultSet = statement.executeQuery();
              ArrayList<Object[]> data = new ArrayList<>();
 
