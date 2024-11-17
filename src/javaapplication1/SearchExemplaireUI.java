@@ -159,7 +159,7 @@ Object[][] tableData = null;
 
     }//GEN-LAST:event_returnBtnActionPerformed
       private void performSearch() {
-        System.out.println(docId);
+        
         tableData = new Exemplaires().getExemplaires(this.docId);
             if (tableData != null && tableData.length > 0) {
                     errorLabel.setText(""); 

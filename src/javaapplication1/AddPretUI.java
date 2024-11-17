@@ -204,10 +204,9 @@ Object[][] subTableData = null;
     layout.setHorizontalGroup(
         layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
         .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+            .addContainerGap()
             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                .addGroup(layout.createSequentialGroup()
-                    .addGap(0, 0, Short.MAX_VALUE)
-                    .addComponent(title))
+                .addComponent(title)
                 .addGroup(layout.createSequentialGroup()
                     .addComponent(returnBtn)
                     .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -258,10 +257,11 @@ Object[][] subTableData = null;
         .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addComponent(homeBtn)
-                .addComponent(returnBtn)
                 .addGroup(layout.createSequentialGroup()
                     .addContainerGap()
-                    .addComponent(searchDocImg)))
+                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addComponent(returnBtn)
+                        .addComponent(searchDocImg))))
             .addGap(18, 18, 18)
             .addComponent(title)
             .addGap(16, 16, 16)
@@ -299,15 +299,13 @@ Object[][] subTableData = null;
     }// </editor-fold>//GEN-END:initComponents
 
     private void homeBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_homeBtnActionPerformed
-        new Welcome().setVisible(true);
+        new AdminDashboardUI().setVisible(true);
         dispose();
- 
     }//GEN-LAST:event_homeBtnActionPerformed
 
     private void returnBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_returnBtnActionPerformed
-
-        
-
+        new PretManagementUI().setVisible(true);
+        dispose();  
     }//GEN-LAST:event_returnBtnActionPerformed
 
     private void queryInputActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_queryInputActionPerformed

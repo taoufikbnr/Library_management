@@ -86,7 +86,6 @@ public class Exemplaires {
             data.add(new Object[]{exId,id, cote,titre,nomAuteur+" "+prenomAuteur,placard,etagere,statut});;
         }
 
-        // Conversion de la liste en tableau 2D
         tableData = data.toArray(new Object[0][]);
 
     } catch (SQLException e) {

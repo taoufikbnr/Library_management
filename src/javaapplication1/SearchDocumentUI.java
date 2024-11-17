@@ -245,10 +245,10 @@ String currentUser = (CurrentUser.instance != null && CurrentUser.instance.getUs
                         tableData,
                         new String[]{"ID","Cote","Titre","Auteur","Theme","Date","Type","Diplome","Editeur","ISBN", "Etat"} 
                     ){
-    public boolean isCellEditable(int row, int column) {
-        return false;
-    }
-});
+                            public boolean isCellEditable(int row, int column) {
+                                return false;
+                            }
+                        });
                 } else {
                 errorLabel.setText("No records found");
                     } 

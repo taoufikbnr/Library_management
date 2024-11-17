@@ -195,7 +195,7 @@ public class AdminDashboardUI extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void addPretBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addPretBtnActionPerformed
-        new AddDocumentUI().setVisible(true);
+        new PretManagementUI().setVisible(true);
         dispose();
     }//GEN-LAST:event_addPretBtnActionPerformed
 
