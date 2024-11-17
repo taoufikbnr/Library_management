@@ -20,7 +20,7 @@ import javax.swing.table.TableColumnModel;
  * @author lenovo
  */
 public class SearchSubscriberUI extends javax.swing.JFrame {
-String selectedCriteria="username";
+String selectedCriteria="id";
 /**
      * Creates new form SearchBook
      */
@@ -75,7 +75,7 @@ String selectedCriteria="username";
     });
     jScrollPane1.setViewportView(jTable1);
 
-    jButton1.setText("Search");
+    jButton1.setText("Rechercher");
     jButton1.addActionListener(new java.awt.event.ActionListener() {
         public void actionPerformed(java.awt.event.ActionEvent evt) {
             jButton1ActionPerformed(evt);

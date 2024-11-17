@@ -44,7 +44,7 @@ public class Exemplaires {
     }
     
     
-    public Object[][] getExemplaires(String docId) {
+    public Object[][] getExemplaires(String query) {
     PreparedStatement statement = null;
     ResultSet resultSet = null;
     Connection conn = null;
@@ -57,7 +57,7 @@ public class Exemplaires {
              "INNER JOIN exemplaires e ON d.id = e.document_id " + 
              "LEFT JOIN etageres et ON et.id = e.etagere_id " + 
              "LEFT JOIN placards pl ON pl.numPl = et.placard_id " +  
-             "WHERE d.id = ?"; 
+             "WHERE (d.id = ? OR d.cote=? OR d.titre LIKE ?) AND statut = 'disponible'"; 
 
 
     Object[][] tableData = null;
@@ -66,7 +66,9 @@ public class Exemplaires {
         conn = DBConnection.getConnection();
         statement = conn.prepareStatement(sql);
   
-            statement.setString(1, docId); 
+            statement.setString(1, query); 
+            statement.setString(2, query); 
+            statement.setString(3, "%"+query+"%"); 
         resultSet = statement.executeQuery();
 
         ArrayList<Object[]> data = new ArrayList<>();
