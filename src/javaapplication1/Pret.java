@@ -48,8 +48,6 @@ public class Pret {
             PreparedStatement statement=null;
             ResultSet resultSet=null;
             Object[][] tableData=null;
-
-
            
         try {
             conn=DBConnection.getConnection();
@@ -90,5 +88,75 @@ public class Pret {
         } catch (SQLException e) {
             System.out.println(e.getMessage());
         }     
+    }
+        public Object[][] getPretsRetard(String query,String selectedCriteria) throws ParseException{
+            Connection conn=null;
+            PreparedStatement statement=null;
+            ResultSet resultSet=null;
+            Object[][] tableData=null;
+           
+        try {
+            conn=DBConnection.getConnection();
+            String sql="";
+            switch (selectedCriteria) {
+                case "tous":
+                    sql = "SELECT s.id AS subId, p.numPr, p.created_at, p.dateRetour, s.cin, "
+    + "d.type "
+    + "FROM pret p "
+    + "LEFT JOIN subscribers s ON p.subscriber_id = s.id "
+    + "LEFT JOIN exemplaires e ON p.exemplaire_id = e.numEx "
+    + "LEFT JOIN documents d ON e.document_id = d.id "
+    + "WHERE s.cin LIKE ? ";
+                    break;
+                case "retard":
+                    sql = "SELECT s.id AS subId, p.numPr, p.created_at, p.dateRetour, s.cin, "
+                    + "d.type "
+                    + "FROM pret p "
+                    + "LEFT JOIN subscribers s ON p.subscriber_id = s.id "
+                    + "LEFT JOIN exemplaires e ON p.exemplaire_id = e.numEx "
+                    + "LEFT JOIN documents d ON e.document_id = d.id "
+                    + "WHERE s.cin LIKE ? "
+                    + "AND ("
+                    + "    (p.dateRetour IS NOT NULL AND DATEDIFF(p.dateRetour, p.created_at) > 3 AND d.type = 'ouvrage') "
+                    + "    OR "
+                    + "    (p.dateRetour IS NOT NULL AND DATEDIFF(p.dateRetour, p.created_at) > 1 AND d.type = 'memoire') "
+                    + "    OR "
+                    + "    (p.dateRetour IS NULL AND DATEDIFF(CURRENT_DATE, p.created_at) > 3 AND d.type = 'ouvrage') "
+                    + "    OR "
+                    + "    (p.dateRetour IS NULL AND DATEDIFF(CURRENT_DATE, p.created_at) > 1 AND d.type = 'memoire') "
+                    + ")";
+                    break;
+                default:
+            sql = "SELECT s.id AS subId,p.numPr, p.created_at, p.dateRetour, s.cin, "
+            + "d.type "
+            + "FROM pret p "
+            + "LEFT JOIN subscribers s ON p.subscriber_id = s.id "
+            + "LEFT JOIN exemplaires e ON p.exemplaire_id= e.numEx "
+            + "LEFT JOIN documents d ON e.document_id = d.id "
+            + "WHERE s.cin LIKE ? AND (d.type = 'ouvrage' AND DATEDIFF(CURRENT_DATE, p.created_at) > 3) "
+            + "OR (d.type = 'memoire' AND DATEDIFF(CURRENT_DATE, p.created_at) > 1))";
+                    break;
+            }
+            
+            statement = conn.prepareStatement(sql);
+            statement.setString(1, "%"+query+"%");
+            resultSet = statement.executeQuery();
+            
+             ArrayList<Object[]> data = new ArrayList<>();
+  
+        while (resultSet.next()) {
+            String numPr = resultSet.getString("numPr");
+            String cin = resultSet.getString("cin");
+            String dateR = resultSet.getString("dateRetour");
+            String date = resultSet.getString("created_at");
+            String type = resultSet.getString("type");
+            data.add(new Object[]{numPr,cin,type, date,dateR});
+        }
+
+        tableData = data.toArray(new Object[0][]);
+        } catch (SQLException e) {
+            System.out.println(e.getMessage());
+        } 
+        return tableData;
     }
 }
