@@ -28,13 +28,13 @@ public class Pret {
     public void addPret() throws ParseException{
             Connection conn=null;
             PreparedStatement statement=null;
-            SimpleDateFormat inputFormat = new SimpleDateFormat("d MMMM yyyy", Locale.FRENCH);  
-           java.util.Date utilDate = inputFormat.parse(this.dateRetour);             
-           java.sql.Date sqlDate = new java.sql.Date(utilDate.getTime());  
+//            SimpleDateFormat inputFormat = new SimpleDateFormat("d MMMM yyyy", Locale.FRENCH);  
+//           java.util.Date utilDate = inputFormat.parse(this.dateRetour);             
+//           java.sql.Date sqlDate = new java.sql.Date(utilDate.getTime());  
            
         try {
             conn=DBConnection.getConnection();
-            statement = conn.prepareStatement("INSERT INTO pret (document_id,extagere_id) VALUES (?,?)");
+            statement = conn.prepareStatement("INSERT INTO pret (exemplaire_id,subscriber_id) VALUES (?,?)");
             statement.setInt(1, this.documentId);
             statement.setInt(2,this.subscriberId);
             statement.executeUpdate();

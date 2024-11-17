@@ -33,7 +33,7 @@ public class Exemplaires {
         PreparedStatement statement=null;
         try {
             conn=DBConnection.getConnection();
-            statement = conn.prepareStatement("INSERT INTO exemplaires (document_id,etagere_id,statut) VALUES (?,?,?)");
+            statement = conn.prepareStatement("INSERT INTO exemplaires (exemplaire_id,etagere_id,statut) VALUES (?,?,?)");
             statement.setInt(1, this.documentId);
             statement.setInt(2, this.etagereId);
             statement.setString(3, this.statut);
@@ -50,14 +50,14 @@ public class Exemplaires {
     Connection conn = null;
   String sql = "SELECT d.id, d.cote, d.titre, d.etat, " +
              "a.nom_auteur, a.prenom_auteur, " +
-             "et.numEt, pl.numPl, e.statut,e.numEx " +
+             "et.numEt, pl.numPl, e.statut,e.numEx,e.statut " +
              "FROM documents d " +
-             "INNER JOIN documents_authors da ON d.id = da.document_id " + 
-             "INNER JOIN authors a ON da.author_id = a.code_auteur " + 
+             "LEFT  JOIN documents_authors da ON d.id = da.document_id " + 
+             "LEFT JOIN authors a ON da.author_id = a.code_auteur " + 
              "INNER JOIN exemplaires e ON d.id = e.document_id " + 
              "LEFT JOIN etageres et ON et.id = e.etagere_id " + 
              "LEFT JOIN placards pl ON pl.numPl = et.placard_id " +  
-             "WHERE (d.id = ? OR d.cote=? OR d.titre LIKE ?) AND statut = 'disponible'"; 
+             "WHERE (d.id = ? OR d.cote=? OR d.titre LIKE ?) AND statut='disponible'"; 
 
 
     Object[][] tableData = null;
@@ -106,4 +106,19 @@ public class Exemplaires {
 
     return tableData;
 }
+    public void setStatut(String statut,int numEx){
+        this.statut = statut;
+        PreparedStatement statement = null;
+        ResultSet resultSet = null;
+        Connection conn = null;
+        try {
+            
+             conn = DBConnection.getConnection();
+        statement = conn.prepareStatement("UPDATE exemplaires SET  statut = ? WHERE numEx = ?");
+        statement.setString(1, statut);
+        statement.setInt(2, numEx);
+        statement.executeUpdate();
+        } catch (SQLException e) {
+        }
+    }
 }

@@ -358,10 +358,12 @@ Object[][] subTableData = null;
         }else{
             try {
                 new Pret(Integer.parseInt(docId),Integer.parseInt(subId)).addPret();
+                new Exemplaires().setStatut("prete", Integer.parseInt(subId));
+                performSearchExemplaires();
+            JOptionPane.showMessageDialog(this,"Pret enregistré.");
             } catch (ParseException ex) {
                 Logger.getLogger(AddPretUI.class.getName()).log(Level.SEVERE, null, ex);
             }
-            JOptionPane.showMessageDialog(this,"L'ISBN et l'éditeur sont obligatoires.");
         }
 
 
@@ -374,6 +376,7 @@ Object[][] subTableData = null;
                     docTable.setModel(new javax.swing.table.DefaultTableModel(
                         expTableData,
                         new String[]{"ID","Doc","Cote","Titre","Auteur","Placard","Etagere","Statut"} 
+//                        new String[]{"ID","Doc","Cote","Titre","rara"} 
                     ){
                         public boolean isCellEditable(int row, int column) {
                             return false;
