@@ -48,8 +48,6 @@ Object[][] tableData = null;
         jScrollPane1 = new javax.swing.JScrollPane();
         docTable = new javax.swing.JTable();
         errorLabel = new javax.swing.JLabel();
-        homeBtn = new javax.swing.JButton();
-        returnBtn = new javax.swing.JButton();
         searchDocImg = new javax.swing.JLabel();
         title = new javax.swing.JLabel();
 
@@ -70,34 +68,6 @@ Object[][] tableData = null;
 
         errorLabel.setForeground(new java.awt.Color(255, 0, 0));
 
-        homeBtn.setBackground(new Color(0, 0, 0, 0));
-        homeBtn.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/home_icon.png"))); // NOI18N
-        homeBtn.setBorder(null);
-        homeBtn.setBorderPainted(false);
-        homeBtn.setFocusPainted(false);
-        homeBtn.setSelectedIcon(new javax.swing.ImageIcon(getClass().getResource("/images/home icon 50.png"))); // NOI18N
-        homeBtn.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                homeBtnActionPerformed(evt);
-            }
-        });
-
-        returnBtn.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/return_icon.png"))); // NOI18N
-        returnBtn.setAlignmentY(0.0F);
-        returnBtn.setBorderPainted(false);
-        returnBtn.setFocusPainted(false);
-        returnBtn.setFocusable(false);
-        returnBtn.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
-        returnBtn.setMargin(new java.awt.Insets(0, 0, 0, 0));
-        returnBtn.setRequestFocusEnabled(false);
-        returnBtn.setRolloverEnabled(false);
-        returnBtn.setVerifyInputWhenFocusTarget(false);
-        returnBtn.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                returnBtnActionPerformed(evt);
-            }
-        });
-
         searchDocImg.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/search Doc 50.png"))); // NOI18N
 
         title.setFont(new java.awt.Font("sansserif", 3, 12)); // NOI18N
@@ -109,16 +79,11 @@ Object[][] tableData = null;
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addGap(0, 0, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(0, 0, Short.MAX_VALUE)
-                        .addComponent(title))
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(returnBtn)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(searchDocImg)))
-                .addGap(258, 258, 258)
-                .addComponent(homeBtn))
+                    .addComponent(title)
+                    .addComponent(searchDocImg))
+                .addGap(308, 308, 308))
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -130,12 +95,8 @@ Object[][] tableData = null;
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(homeBtn)
-                    .addComponent(returnBtn)
-                    .addGroup(layout.createSequentialGroup()
-                        .addContainerGap()
-                        .addComponent(searchDocImg)))
+                .addContainerGap()
+                .addComponent(searchDocImg)
                 .addGap(18, 18, 18)
                 .addComponent(title)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 41, Short.MAX_VALUE)
@@ -147,17 +108,6 @@ Object[][] tableData = null;
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
-
-    private void homeBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_homeBtnActionPerformed
- 
- 
-    }//GEN-LAST:event_homeBtnActionPerformed
-
-    private void returnBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_returnBtnActionPerformed
-
-        
-
-    }//GEN-LAST:event_returnBtnActionPerformed
       private void performSearch() {
         
         tableData = new Exemplaires().getExemplaires(this.docId);
@@ -192,9 +142,7 @@ Object[][] tableData = null;
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JTable docTable;
     private javax.swing.JLabel errorLabel;
-    private javax.swing.JButton homeBtn;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JButton returnBtn;
     private javax.swing.JLabel searchDocImg;
     private javax.swing.JLabel title;
     // End of variables declaration//GEN-END:variables

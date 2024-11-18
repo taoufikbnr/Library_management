@@ -27,4 +27,7 @@ public class CurrentUser {
     public static void setCurrentUser(String username) {
         instance = new CurrentUser(username);
     }
+      public static void logout() {
+        instance = null;
+    }
 }

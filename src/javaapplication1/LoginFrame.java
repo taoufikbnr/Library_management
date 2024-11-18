@@ -207,7 +207,6 @@ public class LoginFrame extends javax.swing.JFrame {
     String usernameD = username.getText();
     if (usernameD.isEmpty()) {
         JOptionPane.showMessageDialog(this, "Username cannot be empty");
-        // Disable the submit button since username is required
         return ; // Exit if username is empty
     } else {
         // Enable the submit button if the username is not empty
@@ -217,7 +216,7 @@ public class LoginFrame extends javax.swing.JFrame {
     private void passwordActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_passwordActionPerformed
         String passwordData = new String(password.getPassword());
         if(passwordData.isEmpty()){
-                    JOptionPane.showMessageDialog(this,"Password Field is empty");
+                    JOptionPane.showMessageDialog(this,"Le champ Mot de passe est obligatoire");
         }else{
         
             login();
@@ -226,8 +225,9 @@ public class LoginFrame extends javax.swing.JFrame {
 
     private void loginBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_loginBtnActionPerformed
                 String passwordData = new String(password.getPassword());
-        if(passwordData.isEmpty()){
-                    JOptionPane.showMessageDialog(this,"Password Field is empty");
+                String usernameData = username.getText();
+        if(passwordData.isEmpty() || usernameData.isEmpty()){
+                    JOptionPane.showMessageDialog(this,"Le champ username et password sont obligatoires");
         }else{
         
             login();
@@ -272,7 +272,7 @@ public class LoginFrame extends javax.swing.JFrame {
                 CurrentUser.setCurrentUser(usernameD);
             dispose();
             new AdminDashboardUI().setVisible(true);
-            JOptionPane.showMessageDialog(this, "Connection successful");
+            JOptionPane.showMessageDialog(this, "Connection avec succes");
         } else {
             JOptionPane.showMessageDialog(this, "Invalid credentials");
         }
