@@ -171,7 +171,7 @@ public class AddAuthorUI extends JFrame {
          statement.setString(2, firstNameInput.getText());
         int rowsAffected = statement.executeUpdate();
             if (rowsAffected > 0) {
-             JOptionPane.showMessageDialog(this, "Author added successfully!");
+             JOptionPane.showMessageDialog(this, "Author ajoute avec succes!");
             lastNameInput.setText(""); 
             firstNameInput.setText("");
         }

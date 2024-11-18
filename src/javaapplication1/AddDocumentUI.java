@@ -426,14 +426,23 @@ ArrayList<Integer> selectedAuthorsId = new ArrayList<>();
         String themeData = theme.getText();
         
        if(titreData.isEmpty() || dateString.isEmpty()){
-        JOptionPane.showMessageDialog(this,"All fields are required.");
+        JOptionPane.showMessageDialog(this,"Tous les champs sont obligatoires.");
         }else if("ouvrage".equals(typeData) && (isbnData.isEmpty() || editeurData.isEmpty()) ){
             JOptionPane.showMessageDialog(this,"L'ISBN et l'éditeur sont obligatoires.");
         }else if("memoire".equals(typeData) && (selectedMemoire.isEmpty()) ){
             JOptionPane.showMessageDialog(this,"Veuillez sélectionner le diplôme");
         }else{
         docId = new Documents(coteData,titreData,dateString,etatData,typeData,editeurData,isbnData,selectedMemoire,themeData).addDocument();
-         }
+         
+       titre.setText("");
+        datePicker1.setText("");
+        etat.getSelectedItem();
+       type.getSelectedItem();
+        isbn.setText("");
+       editeur.setText("");
+       theme.setText("");
+       nomAuteurs.setText("");
+        }
     
 
     
@@ -441,7 +450,7 @@ ArrayList<Integer> selectedAuthorsId = new ArrayList<>();
         addDocAuth(docId);
        JOptionPane.showMessageDialog(this, "Document ajouté avec succes!");
     } else {
-        JOptionPane.showMessageDialog(null, "Failed to add document. Cannot proceed with adding authors.");
+        JOptionPane.showMessageDialog(null, "Impossible d'ajouter le document. Impossible de procéder à l'ajout d'auteurs.");
     }
     }//GEN-LAST:event_addBtnActionPerformed
 
@@ -523,7 +532,7 @@ ArrayList<Integer> selectedAuthorsId = new ArrayList<>();
     statement.executeBatch();
         } catch (SQLException e) {
             e.printStackTrace();
-            JOptionPane.showMessageDialog(null, "Error adding users: " + e.getMessage());
+            JOptionPane.showMessageDialog(null, "Error ajout abonné: " + e.getMessage());
         } 
     }
     private void getAuthors(){

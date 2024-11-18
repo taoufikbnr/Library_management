@@ -235,7 +235,7 @@ String selectedCriteria="nom";
     }//GEN-LAST:event_homeBtn1ActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        new SubscriberManagementUI().setVisible(true);
+        new PretManagementUI().setVisible(true);
         dispose();
     }//GEN-LAST:event_jButton1ActionPerformed
 

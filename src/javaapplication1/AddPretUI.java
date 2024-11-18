@@ -374,7 +374,6 @@ Object[][] subTableData = null;
                     docTable.setModel(new javax.swing.table.DefaultTableModel(
                         expTableData,
                         new String[]{"ID","Doc","Cote","Titre","Auteur","Placard","Etagere","Statut"} 
-//                        new String[]{"ID","Doc","Cote","Titre","rara"} 
                     ){
                         public boolean isCellEditable(int row, int column) {
                             return false;

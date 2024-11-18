@@ -13,14 +13,7 @@ import javax.swing.table.DefaultTableModel;
  */
 public class AddPlacardsUI extends JFrame {
         Object[][] tableData=null;
-//    
-//    public AddPlacardsUI(String previousPage){
-//        this.previousPage=previousPage;
-//        initComponents();
-//        setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);  
-//       setLocationRelativeTo(null); 
-//       performSearch();
-//    }
+
     /**
      * Creates new form AddAuthorUI
      */
@@ -228,6 +221,7 @@ public class AddPlacardsUI extends JFrame {
 
         }else{
         new Placards((String)plInput.getText()).addPlacard();
+        plInput.setText("");
         performSearch();
         JOptionPane.showMessageDialog(null, "Placard ajouté");
         }
@@ -241,25 +235,23 @@ public class AddPlacardsUI extends JFrame {
     }//GEN-LAST:event_returnBtn1ActionPerformed
 
     private void addEtagereBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addEtagereBtnActionPerformed
-          PreparedStatement statement = null;
             ResultSet resultSet = null;
-            Connection conn = null;
       if(etagereInput.getText().isEmpty() || placardId.getText().isEmpty() || numEtagereInput.getText().isEmpty()){
                 JOptionPane.showMessageDialog(null, "Id placards ou libelle etagere manquant","Alert",JOptionPane.WARNING_MESSAGE);}
       else{
           
           try {
-            conn = DBConnection.getConnection();
-            statement=conn.prepareStatement("SELECT * FROM etageres WHERE numEt = ? AND placard_id = ?");
-            statement.setString(1, (String)numEtagereInput.getText());
-            statement.setString(2, (String)placardId.getText());
-            resultSet = statement.executeQuery();
+              
+            resultSet= new Etageres().getEtageres((String)numEtagereInput.getText(),(String)placardId.getText());
+            
                  if(resultSet.next()){
                  JOptionPane.showMessageDialog(null, "Num etagere existe déja");
                  }  
                  else{
                     new Etageres((String)etagereInput.getText(),Integer.parseInt(placardId.getText()),
                             Integer.parseInt(numEtagereInput.getText())).addEtagere();
+                    etagereInput.setText("");
+                    numEtagereInput.setText("");
                     JOptionPane.showMessageDialog(null, "Etagere ajouté");
                  }
         } catch (SQLException e) {

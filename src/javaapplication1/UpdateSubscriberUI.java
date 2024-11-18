@@ -279,7 +279,7 @@ String selectedCriteria="nom";
         String tel = telInput.getText();
        if(id.isEmpty() || nom.isEmpty() || prenom.isEmpty() || prenom.isEmpty() || prenom.isEmpty() || 
          cin.isEmpty() || adresse.isEmpty() || telInput.getText().isEmpty() ){
-        JOptionPane.showMessageDialog(this,"All fields are required.");
+        JOptionPane.showMessageDialog(this,"Tous les champs sont obligatoires.");
         }else{
         new Subscriber(nom,prenom,cin,adresse,Integer.parseInt(tel)).updateUser(id);
         docId.setText("");

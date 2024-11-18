@@ -232,7 +232,7 @@ String currentUser = (CurrentUser.instance != null && CurrentUser.instance.getUs
          Object id = model.getValueAt(selectedRow, 0);
         new SearchExemplaireUI((String)id).setVisible(true);
     } else {
-        JOptionPane.showMessageDialog(this, "Please select a row first.");
+        JOptionPane.showMessageDialog(this, "Veuillez sélectionner un document.");
     }
     }//GEN-LAST:event_checkExpBtnActionPerformed
       private void performSearch() {

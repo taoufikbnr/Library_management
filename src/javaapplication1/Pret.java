@@ -97,16 +97,16 @@ public class Pret {
            
         try {
             conn=DBConnection.getConnection();
-            String sql="";
+            String sql;
             switch (selectedCriteria) {
                 case "tous":
                     sql = "SELECT s.id AS subId, p.numPr, p.created_at, p.dateRetour, s.cin, "
-    + "d.type "
-    + "FROM pret p "
-    + "LEFT JOIN subscribers s ON p.subscriber_id = s.id "
-    + "LEFT JOIN exemplaires e ON p.exemplaire_id = e.numEx "
-    + "LEFT JOIN documents d ON e.document_id = d.id "
-    + "WHERE s.cin LIKE ? ";
+                + "d.type "
+                + "FROM pret p "
+                + "LEFT JOIN subscribers s ON p.subscriber_id = s.id "
+                + "LEFT JOIN exemplaires e ON p.exemplaire_id = e.numEx "
+                + "LEFT JOIN documents d ON e.document_id = d.id "
+                + "WHERE s.cin LIKE ? ";
                     break;
                 case "retard":
                     sql = "SELECT s.id AS subId, p.numPr, p.created_at, p.dateRetour, s.cin, "
@@ -127,14 +127,13 @@ public class Pret {
                     + ")";
                     break;
                 default:
-            sql = "SELECT s.id AS subId,p.numPr, p.created_at, p.dateRetour, s.cin, "
-            + "d.type "
-            + "FROM pret p "
-            + "LEFT JOIN subscribers s ON p.subscriber_id = s.id "
-            + "LEFT JOIN exemplaires e ON p.exemplaire_id= e.numEx "
-            + "LEFT JOIN documents d ON e.document_id = d.id "
-            + "WHERE s.cin LIKE ? AND (d.type = 'ouvrage' AND DATEDIFF(CURRENT_DATE, p.created_at) > 3) "
-            + "OR (d.type = 'memoire' AND DATEDIFF(CURRENT_DATE, p.created_at) > 1))";
+               sql = "SELECT s.id AS subId, p.numPr, p.created_at, p.dateRetour, s.cin, "
+                + "d.type "
+                + "FROM pret p "
+                + "LEFT JOIN subscribers s ON p.subscriber_id = s.id "
+                + "LEFT JOIN exemplaires e ON p.exemplaire_id = e.numEx "
+                + "LEFT JOIN documents d ON e.document_id = d.id "
+                + "WHERE s.cin LIKE ? ";
                     break;
             }
             

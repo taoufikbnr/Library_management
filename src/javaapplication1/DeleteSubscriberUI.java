@@ -225,7 +225,7 @@ Object[][] tableData = null;
             }
         int response = JOptionPane.showConfirmDialog(
         this,
-        "Are you sure you want to delete this subscriber?", // message
+        "Etes-vous sûr de vouloir supprimer cet abonné?", // message
         "Confirm Delete", // title
         JOptionPane.YES_NO_OPTION, 
         JOptionPane.WARNING_MESSAGE 

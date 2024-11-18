@@ -236,8 +236,8 @@ Object[][] tableData = null;
     private void deleteBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_deleteBtnActionPerformed
  int response = JOptionPane.showConfirmDialog(
         this,
-        "Are you sure you want to delete this user?", // message
-        "Confirm Delete", // title
+        "Etes-vous sûr de vouloir supprimer cet document ?", // message
+        "Confirmer la suppression", // title
         JOptionPane.YES_NO_OPTION, 
         JOptionPane.WARNING_MESSAGE 
     );

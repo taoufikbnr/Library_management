@@ -197,7 +197,7 @@ public class AddSubscriberUI extends javax.swing.JFrame {
         String adresse = adrInput.getText();
         String tel = telInput.getText();
        if(nom.isEmpty() || prenom.isEmpty() || prenom.isEmpty() || cin.isEmpty() || adresse.isEmpty() || cinInput.getText().isEmpty() ){
-        JOptionPane.showMessageDialog(this,"All fields are required.");
+        JOptionPane.showMessageDialog(this,"Tous les champs sont obligatoires.");
         }else{
         new Subscriber(nom,prenom,cin,adresse,Integer.parseInt(tel)).addUser();
         nomInput.setText("");

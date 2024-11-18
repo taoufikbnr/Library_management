@@ -445,7 +445,7 @@ ArrayList<Integer> selectedAuthorsId = new ArrayList<>();
         String themeData = themeInput.getText();
         
        if(id.isEmpty() || titreData.isEmpty() || dateString.isEmpty()){
-        JOptionPane.showMessageDialog(this,"All fields are required.");
+        JOptionPane.showMessageDialog(this,"Tous les champs sont obligatoires.");
         }else if("ouvrage".equals(typeData) && (isbnData.isEmpty() || editeurData.isEmpty()) ){
             JOptionPane.showMessageDialog(this,"L'ISBN et l'éditeur sont obligatoires.");
         }else if("memoire".equals(typeData) && (selectedMemoire.isEmpty()) ){
