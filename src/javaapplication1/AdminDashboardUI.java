@@ -11,7 +11,7 @@ import java.awt.*;
  * @author lenovo
  */
 public class AdminDashboardUI extends javax.swing.JFrame {
-    String currentUser=CurrentUser.instance.getUsername();
+    String currentUser=Librarian.instance.getUsername();
     String user;
     /**
      * Creates new form AdminDashboard
@@ -97,7 +97,7 @@ public class AdminDashboardUI extends javax.swing.JFrame {
         });
 
         homeBtn.setBackground(new Color(0, 0, 0, 0));
-        homeBtn.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/home_icon.png"))); // NOI18N
+        homeBtn.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/logout.png"))); // NOI18N
         homeBtn.setBorder(null);
         homeBtn.setBorderPainted(false);
         homeBtn.setFocusPainted(false);
@@ -209,7 +209,7 @@ public class AdminDashboardUI extends javax.swing.JFrame {
         dispose();    }//GEN-LAST:event_addDocBtnActionPerformed
 
     private void homeBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_homeBtnActionPerformed
-       CurrentUser. logout();
+       Librarian. logout();
        new Welcome().setVisible(true);
        dispose();
     }//GEN-LAST:event_homeBtnActionPerformed

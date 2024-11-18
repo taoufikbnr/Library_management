@@ -12,6 +12,8 @@ import javax.swing.SwingUtilities;
 import javax.swing.*;
 import java.sql.*;
 import java.awt.*;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 /**
  *
  * @author lenovo
@@ -240,59 +242,27 @@ public class LoginFrame extends javax.swing.JFrame {
 
     }//GEN-LAST:event_returnBtnActionPerformed
     
-    public void login(){
-     Connection conn = null;
-    PreparedStatement statement = null;
-    ResultSet resultSet = null;
-
-    // Get username and password from input fields
-    String usernameD = username.getText();
-    String passwordData = new String(password.getPassword());
-
-    
-          if (usernameD.isEmpty()) {
-        return; 
-    }
-           if(passwordData.isEmpty()){
-        JOptionPane.showMessageDialog(this,"Password Field is empty");
-                    return;
-
-        }
-
+   public void login() {
     try {
-        conn = DBConnection.getConnection();
+        String usernameD = username.getText();
+        String passwordData = new String(password.getPassword());
 
-        statement = conn.prepareStatement("SELECT * FROM librarian WHERE username = ? AND password = ?");
-        statement.setString(1, usernameD);
-        statement.setString(2, passwordData);
+        // Check authentication
+        boolean isAuthenticated = new Librarian().login(usernameD, passwordData);
 
-        resultSet = statement.executeQuery();
-
-        if (resultSet.next()) {
-                CurrentUser.setCurrentUser(usernameD);
+        if (isAuthenticated) {
+            Librarian.setCurrentUser(usernameD);
             dispose();
             new AdminDashboardUI().setVisible(true);
-            JOptionPane.showMessageDialog(this, "Connection avec succes");
+            JOptionPane.showMessageDialog(this, "Connection avec succès");
         } else {
             JOptionPane.showMessageDialog(this, "Invalid credentials");
         }
-    } catch (SQLException e) {
-        e.printStackTrace(); // Print the exception for debugging
-        JOptionPane.showMessageDialog(this, "Database error: " + e.getMessage());
-    } catch (Exception e) {
-        e.printStackTrace(); // Print the exception for debugging
-        JOptionPane.showMessageDialog(this, "Error: " + e.getMessage());
-    } finally {
-        // Clean up resources
-        try {
-            if (resultSet != null) resultSet.close();
-            if (statement != null) statement.close();
-            if (conn != null) conn.close();
-        } catch (SQLException e) {
-            e.printStackTrace();
-        }
+    } catch (Exception ex) {
+        Logger.getLogger(LoginFrame.class.getName()).log(Level.SEVERE, null, ex);
+        JOptionPane.showMessageDialog(this, "An error occurred: " + ex.getMessage());
     }
-    }
+}
     
     /**
      * @param args the command line arguments

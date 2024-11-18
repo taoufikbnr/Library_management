@@ -17,7 +17,7 @@ import javax.swing.table.TableColumnModel;
 public class SearchDocumentUI extends javax.swing.JFrame {
 String selectedCriteria="";
 Object[][] tableData = null;
-String currentUser = (CurrentUser.instance != null && CurrentUser.instance.getUsername() != null) ? CurrentUser.instance.getUsername() : null;
+String currentUser = (Librarian.instance != null && Librarian.instance.getUsername() != null) ? Librarian.instance.getUsername() : null;
 
     /**
      * Creates new form SearchDocumentUI

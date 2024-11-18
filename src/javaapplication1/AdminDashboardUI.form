@@ -175,7 +175,7 @@
           <Connection code="new Color(0, 0, 0, 0)" type="code"/>
         </Property>
         <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-          <Image iconType="3" name="/images/home_icon.png"/>
+          <Image iconType="3" name="/images/logout.png"/>
         </Property>
         <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
           <Border info="null"/>
