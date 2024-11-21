@@ -262,7 +262,7 @@ if (tableData != null && tableData.length > 0) {
         errorLabel.setText(""); 
         docTable.setModel(new javax.swing.table.DefaultTableModel(
             tableData,
-            new String[]{"Id", "Prénom","Nom","CIN","Adresse","Tel"}
+            new String[]{"Id", "Prénom","Nom","CIN","Adresse","Tel","Date Ab"}
         ));
     } else {
         errorLabel.setText("No records found");

@@ -74,7 +74,9 @@ public class Subscriber {
                 String cin = resultSet.getString("cin");
                 String adresse = resultSet.getString("adresse");
                 int tel = resultSet.getInt("tel");
-                data.add(new Object[]{id, prenom,nom,cin,adresse,tel});
+                String dateAb = resultSet.getString("created_at");
+                String dateOnly = dateAb.split(" ")[0];
+                data.add(new Object[]{id, prenom,nom,cin,adresse,tel,dateOnly});
             }
             
             return data.toArray(new Object[0][]);

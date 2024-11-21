@@ -347,7 +347,7 @@ String selectedCriteria="nom";
         Object[][] tableData = userSubscriber.getUsers(queryStr, selectedCriteria);
         docTable.setModel(new javax.swing.table.DefaultTableModel(
             tableData,
-            new String[]{"Id","Prenom","Nom","CIN","Adresse","Tel"}
+            new String[]{"Id","Prenom","Nom","CIN","Adresse","Tel","Date Ab"}
                 
         ));
                 TableColumnModel columnModel = docTable.getColumnModel();

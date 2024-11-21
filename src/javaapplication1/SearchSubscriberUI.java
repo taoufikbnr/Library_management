@@ -223,7 +223,7 @@ String selectedCriteria="id";
         Object[][] tableData = userSubscriber.getUsers(queryStr, selectedCriteria);
         jTable1.setModel(new javax.swing.table.DefaultTableModel(
             tableData,
-            new String[]{"Id", "Prénom","Nom","CIN","Adresse","Tel"}
+            new String[]{"Id", "Prénom","Nom","CIN","Adresse","Tel","Date abonnement"}
                 
         ));
                 TableColumnModel columnModel = jTable1.getColumnModel();
