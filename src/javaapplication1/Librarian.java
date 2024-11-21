@@ -4,6 +4,7 @@
  */
 package javaapplication1;
 
+import utils.PasswordEncryption;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -48,13 +49,16 @@ public class Librarian {
     try {
         conn = DBConnection.getConnection();
 
-        statement = conn.prepareStatement("SELECT * FROM librarian WHERE username = ? AND password = ?");
+        statement = conn.prepareStatement("SELECT * FROM librarian WHERE username = ?");
         statement.setString(1, usernameData);
-        statement.setString(2, passwordData);
-
         resultSet = statement.executeQuery();
+        if(resultSet.next()){
+         String  hashedPassword =resultSet.getString("password");
+            if (PasswordEncryption.verifyPassword(passwordData, hashedPassword)) {
+                        isAuthenticated = true;
+                } 
+            }
 
-        isAuthenticated = resultSet.next();
 
     } catch (SQLException e) {
         e.printStackTrace(); // Print the exception for debugging
