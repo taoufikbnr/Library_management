@@ -178,7 +178,6 @@ public class AddAuthorUI extends JFrame {
         } catch (SQLException e) {
             System.out.println(e.getMessage());
         }finally {
-        // Ensure resources are closed to avoid memory leaks
         try {
             if (statement != null) statement.close();
             if (conn != null) conn.close();

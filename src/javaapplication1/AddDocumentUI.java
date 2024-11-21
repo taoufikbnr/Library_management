@@ -165,12 +165,6 @@ ArrayList<Integer> selectedAuthorsId = new ArrayList<>();
 
         jLayeredPane2.add(memoirePanel, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 220, 80));
 
-        editeur.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                editeurActionPerformed(evt);
-            }
-        });
-
         isbnLabel1.setText("Editeur");
 
         editeurLabel1.setText("ISBN");
@@ -466,10 +460,6 @@ ArrayList<Integer> selectedAuthorsId = new ArrayList<>();
         selectedMemoire = doctoratBtn.getText();
     }//GEN-LAST:event_doctoratBtnActionPerformed
 
-    private void editeurActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_editeurActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_editeurActionPerformed
-
     private void jTable1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTable1MouseClicked
          int[] selectedRows=jTable1.getSelectedRows();
         DefaultTableModel model = (DefaultTableModel) jTable1.getModel();
@@ -559,7 +549,7 @@ ArrayList<Integer> selectedAuthorsId = new ArrayList<>();
             Object[][] tableData = data.toArray(new Object[0][]);
       jTable1.setModel(new javax.swing.table.DefaultTableModel(
                 tableData,
-                new String[] {"code_auteur", "Nom","Prenom"} // Column names
+                new String[] {"code_auteur", "Nom","Prenom"} 
             ));
       
                

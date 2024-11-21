@@ -94,12 +94,6 @@ public class LoginFrame extends javax.swing.JFrame {
             }
         });
 
-        username.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                usernameActionPerformed(evt);
-            }
-        });
-
         jLabel2.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         jLabel2.setText("password");
 
@@ -204,17 +198,6 @@ public class LoginFrame extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void usernameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_usernameActionPerformed
-
-    String usernameD = username.getText();
-    if (usernameD.isEmpty()) {
-        JOptionPane.showMessageDialog(this, "Username cannot be empty");
-        return ; // Exit if username is empty
-    } else {
-        // Enable the submit button if the username is not empty
-   
-    }    }//GEN-LAST:event_usernameActionPerformed
-
     private void passwordActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_passwordActionPerformed
         String passwordData = new String(password.getPassword());
         if(passwordData.isEmpty()){
@@ -247,7 +230,6 @@ public class LoginFrame extends javax.swing.JFrame {
         String usernameD = username.getText();
         String passwordData = new String(password.getPassword());
 
-        // Check authentication
         boolean isAuthenticated = new Librarian().login(usernameD, passwordData);
 
         if (isAuthenticated) {

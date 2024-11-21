@@ -19,9 +19,7 @@ String selectedCriteria="";
 Object[][] tableData = null;
 String currentUser = (Librarian.instance != null && Librarian.instance.getUsername() != null) ? Librarian.instance.getUsername() : null;
 
-    /**
-     * Creates new form SearchDocumentUI
-     */
+   
     public SearchDocumentUI() {
         initComponents();
         setLocationRelativeTo(null);

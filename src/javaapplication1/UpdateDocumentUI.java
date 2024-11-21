@@ -156,12 +156,6 @@ ArrayList<Integer> selectedAuthorsId = new ArrayList<>();
 
         jLayeredPane2.add(memoirePanel, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 220, 80));
 
-        editeur.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                editeurActionPerformed(evt);
-            }
-        });
-
         editeurLabel.setText("Editeur");
 
         isbnLabel.setText("ISBN");
@@ -472,10 +466,6 @@ ArrayList<Integer> selectedAuthorsId = new ArrayList<>();
     private void doctoratBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_doctoratBtnActionPerformed
         selectedMemoire = doctoratBtn.getText();
     }//GEN-LAST:event_doctoratBtnActionPerformed
-
-    private void editeurActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_editeurActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_editeurActionPerformed
 
     private void homeBtn1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_homeBtn1ActionPerformed
        new AdminDashboardUI().setVisible(true);

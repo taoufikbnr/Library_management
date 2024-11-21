@@ -64,20 +64,17 @@ public class Documents {
     java.sql.Date sqlDate = new java.sql.Date(utilDate.getTime());  
   
 
-    // Set the common fields
     statement.setInt(1, cote);
     statement.setString(2, this.titre);
     statement.setDate(3, sqlDate); 
     statement.setString(4, (String) this.etat);
     statement.setString(5, this.type);
     
-    // Depending on the selected type, set additional fields
     if ("ouvrage".equals( this.type)) {
         statement.setString(6, this.isbn); 
         statement.setString(7, this.editeur); 
         statement.setString(8, null); 
     } else {
-        // Set diplome for the other case
         statement.setString(6, null); 
         statement.setString(7, null); 
         statement.setString(8, this.diplome); 
@@ -190,7 +187,6 @@ public class Documents {
         String searchQuery = selectedCriteria.equals("id") || selectedCriteria.equals("cote")?query:"%" + query + "%";
 
     try {
-        // Connexion à la base de données
         conn = DBConnection.getConnection();
         statement = conn.prepareStatement(sql);
          if (selectedCriteria.equals("auteur")) {
@@ -203,7 +199,6 @@ public class Documents {
 
         ArrayList<Object[]> data = new ArrayList<>();
 
-        // Parcours des résultats
         while (resultSet.next()) {
             String id = resultSet.getString("id");
             String cote = resultSet.getString("cote");
@@ -224,11 +219,9 @@ public class Documents {
         tableData = data.toArray(new Object[0][]);
 
     } catch (SQLException e) {
-        // Gestion des erreurs SQL
         System.out.println("Error: " + e.getMessage());
         e.printStackTrace();
     } finally {
-        // Fermeture des ressources dans un bloc finally
         try {
             if (resultSet != null) resultSet.close();
             if (statement != null) statement.close();
@@ -259,13 +252,11 @@ public class Documents {
     statement.setString(3, this.etat);
     statement.setString(4, this.type);
     
-    // Depending on the selected type, set additional fields
     if ("ouvrage".equals(this.type)) {
         statement.setString(5, this.isbn); 
         statement.setString(6, this.editeur); 
         statement.setString(7, null); 
     } else {
-        // Set diplome for the other case
         statement.setString(5, null); 
         statement.setString(6, null); 
         statement.setString(7, this.diplome); 

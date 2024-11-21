@@ -140,9 +140,6 @@
       </Events>
     </Component>
     <Component class="javax.swing.JTextField" name="prenomInput">
-      <Events>
-        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="prenomInputActionPerformed"/>
-      </Events>
     </Component>
     <Component class="javax.swing.JLabel" name="nomLabel">
       <Properties>

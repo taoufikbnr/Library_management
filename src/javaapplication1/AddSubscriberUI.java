@@ -58,12 +58,6 @@ public class AddSubscriberUI extends javax.swing.JFrame {
             }
         });
 
-        prenomInput.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                prenomInputActionPerformed(evt);
-            }
-        });
-
         nomLabel.setText("Nom");
 
         addUserImg.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/add_user.png"))); // NOI18N
@@ -211,9 +205,6 @@ public class AddSubscriberUI extends javax.swing.JFrame {
          }
         
     }//GEN-LAST:event_addSubBtnActionPerformed
-
-    private void prenomInputActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_prenomInputActionPerformed
-    }//GEN-LAST:event_prenomInputActionPerformed
 
     private void homeBtn1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_homeBtn1ActionPerformed
         new AdminDashboardUI().setVisible(true);

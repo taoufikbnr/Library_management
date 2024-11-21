@@ -61,10 +61,10 @@ public class Librarian {
 
 
     } catch (SQLException e) {
-        e.printStackTrace(); // Print the exception for debugging
+        e.printStackTrace(); 
         JOptionPane.showMessageDialog(null, "Database error: " + e.getMessage());
     } catch (Exception e) {
-        e.printStackTrace(); // Print the exception for debugging
+        e.printStackTrace(); 
         JOptionPane.showMessageDialog(null, "Error: " + e.getMessage());
     } finally {
         // Clean up resources

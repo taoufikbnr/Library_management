@@ -120,12 +120,6 @@ public class AddPlacardsUI extends JFrame {
 
         jLabel2.setText("N etagere");
 
-        numEtagereInput.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                numEtagereInputActionPerformed(evt);
-            }
-        });
-
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -267,10 +261,6 @@ public class AddPlacardsUI extends JFrame {
         placardId.setText(Integer.toString(placardIdValue));
         
     }//GEN-LAST:event_jTable1MouseClicked
-
-    private void numEtagereInputActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_numEtagereInputActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_numEtagereInputActionPerformed
 
     private void performSearch(){
         tableData = new Placards().getPlacards();
