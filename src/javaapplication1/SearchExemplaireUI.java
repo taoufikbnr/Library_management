@@ -110,7 +110,7 @@ Object[][] tableData = null;
     }// </editor-fold>//GEN-END:initComponents
       private void performSearch() {
         
-        tableData = new Exemplaires().getExemplaires(this.docId);
+        tableData = new Exemplaires().getExemplaires(this.docId,"all");
             if (tableData != null && tableData.length > 0) {
                     errorLabel.setText(""); 
                     docTable.setModel(new javax.swing.table.DefaultTableModel(

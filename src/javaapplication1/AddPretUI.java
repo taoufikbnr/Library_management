@@ -368,7 +368,7 @@ Object[][] subTableData = null;
     }//GEN-LAST:event_addBtnActionPerformed
       private void performSearchExemplaires() {
         String queryStr= queryInput.getText();
-          expTableData = new Exemplaires().getExemplaires(queryStr);
+          expTableData = new Exemplaires().getExemplaires(queryStr,"pret");
             if (expTableData != null && expTableData.length > 0) {
                      
                     docTable.setModel(new javax.swing.table.DefaultTableModel(
