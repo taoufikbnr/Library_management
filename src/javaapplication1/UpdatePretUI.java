@@ -53,10 +53,10 @@ String selectedCriteria="nom";
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("RT | Enregistrer Retour Prêt");
 
+        addSubBtn.setText("Enregistrer Retour");
         addSubBtn.setBackground(new java.awt.Color(0, 153, 51));
         addSubBtn.setFont(new java.awt.Font("Segoe UI", 2, 14)); // NOI18N
         addSubBtn.setForeground(new java.awt.Color(255, 255, 255));
-        addSubBtn.setText("Enregistrer Retour");
         addSubBtn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 addSubBtnActionPerformed(evt);
@@ -67,8 +67,8 @@ String selectedCriteria="nom";
 
         updateUserImg.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/update pret.png"))); // NOI18N
 
-        homeBtn1.setBackground(new Color(0, 0, 0, 0));
         homeBtn1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/home_icon.png"))); // NOI18N
+        homeBtn1.setBackground(new Color(0, 0, 0, 0));
         homeBtn1.setBorder(null);
         homeBtn1.setBorderPainted(false);
         homeBtn1.setFocusPainted(false);
@@ -81,6 +81,7 @@ String selectedCriteria="nom";
 
         jButton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/return_icon.png"))); // NOI18N
         jButton1.setAlignmentY(0.0F);
+        jButton1.setBackground(new Color(0, 0, 0, 0));
         jButton1.setBorderPainted(false);
         jButton1.setFocusPainted(false);
         jButton1.setFocusable(false);
@@ -139,29 +140,26 @@ String selectedCriteria="nom";
         }
     });
 
-    title.setFont(new java.awt.Font("sansserif", 3, 12)); // NOI18N
     title.setText("Enregistrer Retour Pret");
+    title.setFont(new java.awt.Font("sansserif", 3, 12)); // NOI18N
 
     javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
     getContentPane().setLayout(layout);
     layout.setHorizontalGroup(
         layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
         .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-            .addContainerGap(75, Short.MAX_VALUE)
+            .addContainerGap(244, Short.MAX_VALUE)
             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                        .addGroup(layout.createSequentialGroup()
-                            .addComponent(query, javax.swing.GroupLayout.PREFERRED_SIZE, 71, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGap(18, 18, 18)
-                            .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                            .addComponent(jButton2))
-                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 535, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGap(27, 27, 27))
-                .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                     .addComponent(title, javax.swing.GroupLayout.PREFERRED_SIZE, 151, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGap(242, 242, 242))))
+                    .addGap(242, 242, 242))
+                .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                    .addComponent(query, javax.swing.GroupLayout.PREFERRED_SIZE, 71, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGap(18, 18, 18)
+                    .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                    .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 82, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addContainerGap())))
         .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                 .addGroup(layout.createSequentialGroup()
@@ -182,6 +180,7 @@ String selectedCriteria="nom";
             .addGap(167, 167, 167)
             .addComponent(homeBtn1)
             .addContainerGap())
+        .addComponent(jScrollPane1, javax.swing.GroupLayout.Alignment.TRAILING)
     );
     layout.setVerticalGroup(
         layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -207,6 +206,8 @@ String selectedCriteria="nom";
             .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
             .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 91, javax.swing.GroupLayout.PREFERRED_SIZE))
     );
+
+    homeBtn1.setOpaque(false);
 
     pack();
     }// </editor-fold>//GEN-END:initComponents

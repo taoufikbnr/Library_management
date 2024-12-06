@@ -65,6 +65,7 @@ String selectedCriteria="tous";
             }
         });
 
+        jButton1.setBackground(new Color(0, 0, 0, 0));
         jButton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/return_icon.png"))); // NOI18N
         jButton1.setAlignmentY(0.0F);
         jButton1.setBorderPainted(false);
@@ -134,7 +135,7 @@ String selectedCriteria="tous";
             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(layout.createSequentialGroup()
                     .addComponent(jButton1)
-                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 241, Short.MAX_VALUE)
+                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 261, Short.MAX_VALUE)
                     .addComponent(updateUserImg)
                     .addGap(242, 242, 242)
                     .addComponent(homeBtn1))
@@ -173,6 +174,8 @@ String selectedCriteria="tous";
             .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
             .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 190, javax.swing.GroupLayout.PREFERRED_SIZE))
     );
+
+    homeBtn1.setOpaque(false);
 
     pack();
     }// </editor-fold>//GEN-END:initComponents

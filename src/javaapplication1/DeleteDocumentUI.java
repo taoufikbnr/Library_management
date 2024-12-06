@@ -53,6 +53,7 @@ Object[][] tableData = null;
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("RT | Supprimer Document");
 
+        returnBtn.setBackground(new Color(0, 0, 0, 0));
         returnBtn.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/return_icon.png"))); // NOI18N
         returnBtn.setAlignmentY(0.0F);
         returnBtn.setBorderPainted(false);
@@ -124,10 +125,10 @@ Object[][] tableData = null;
 
         jLabel2.setText("ID document");
 
-        deleteBtn.setBackground(new java.awt.Color(255, 0, 0));
+        deleteBtn.setBackground(new Color(0, 0, 0, 0));
         deleteBtn.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         deleteBtn.setForeground(new java.awt.Color(255, 255, 255));
-        deleteBtn.setText("supprimer");
+        deleteBtn.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/delete-30.png"))); // NOI18N
         deleteBtn.setBorderPainted(false);
         deleteBtn.setFocusPainted(false);
         deleteBtn.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
@@ -147,27 +148,7 @@ Object[][] tableData = null;
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 577, Short.MAX_VALUE)
-            .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 78, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(docIdInput, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(deleteBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 67, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(queryInput, javax.swing.GroupLayout.PREFERRED_SIZE, 76, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(searchBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 92, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap())
-            .addGroup(layout.createSequentialGroup()
-                .addGap(20, 20, 20)
-                .addComponent(errorLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 158, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(59, 59, 59)
-                .addComponent(title)
-                .addGap(0, 0, Short.MAX_VALUE))
+            .addComponent(jScrollPane1)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(returnBtn)
@@ -175,6 +156,31 @@ Object[][] tableData = null;
                 .addComponent(delUserImg)
                 .addGap(207, 207, 207)
                 .addComponent(homeBtn))
+            .addGroup(layout.createSequentialGroup()
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 78, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(docIdInput, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(deleteBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
+                        .addGap(20, 20, 20)
+                        .addComponent(errorLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 158, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(59, 59, 59)
+                        .addComponent(title)
+                        .addGap(0, 0, Short.MAX_VALUE))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addGap(108, 108, 108)
+                        .addComponent(queryInput, javax.swing.GroupLayout.PREFERRED_SIZE, 76, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(searchBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 92, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addContainerGap())))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -207,6 +213,8 @@ Object[][] tableData = null;
                 .addContainerGap())
         );
 
+        homeBtn.setOpaque(false);
+
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
@@ -234,27 +242,28 @@ Object[][] tableData = null;
          docIdInput.setText((String)id);
     }//GEN-LAST:event_docTableMouseClicked
 
-    private void deleteBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_deleteBtnActionPerformed
- int response = JOptionPane.showConfirmDialog(
-        this,
-        "Etes-vous sûr de vouloir supprimer cet document ?", // message
-        "Confirmer la suppression", // title
-        JOptionPane.YES_NO_OPTION, 
-        JOptionPane.WARNING_MESSAGE 
-    );
-
-    if (response == JOptionPane.YES_OPTION) {
-        String docId = docIdInput.getText();
-        new Subscriber().deleteUser(docId); 
-        performSearch();
-    }    }//GEN-LAST:event_deleteBtnActionPerformed
-
     private void returnBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_returnBtnActionPerformed
         new DocumentManagementUI().setVisible(true);
         dispose();
     }//GEN-LAST:event_returnBtnActionPerformed
 
-    private void performSearch() {
+    private void deleteBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_deleteBtnActionPerformed
+        int response = JOptionPane.showConfirmDialog(
+            this,
+            "Etes-vous sûr de vouloir supprimer cet document ?", // message
+            "Confirmer la suppression", // title
+            JOptionPane.YES_NO_OPTION,
+            JOptionPane.WARNING_MESSAGE
+        );
+
+        if (response == JOptionPane.YES_OPTION) {
+            String docId = docIdInput.getText();
+            new Subscriber().deleteUser(docId);
+            performSearch();
+        }
+    }//GEN-LAST:event_deleteBtnActionPerformed
+
+      private void performSearch() {
         String query = queryInput.getText();
        
         tableData = new Documents().getDocuments(query, selectedCriteria);
@@ -271,7 +280,7 @@ if (tableData != null && tableData.length > 0) {
                 TableColumnModel columnModel = docTable.getColumnModel();
                 columnModel.getColumn(0).setPreferredWidth(5);
                 columnModel.getColumn(1).setPreferredWidth(5);
-    }   
+    } 
           
     /**
      * @param args the command line arguments

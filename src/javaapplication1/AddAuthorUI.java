@@ -3,6 +3,7 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
  */
 package javaapplication1;
+import java.awt.Color;
 import java.sql.*;
 import javax.swing.JOptionPane;
 import javax.swing.*;
@@ -68,6 +69,7 @@ public class AddAuthorUI extends JFrame {
 
         returnBtn1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/return_icon.png"))); // NOI18N
         returnBtn1.setAlignmentY(0.0F);
+        returnBtn1.setBackground(new Color(0, 0, 0, 0));
         returnBtn1.setBorderPainted(false);
         returnBtn1.setFocusPainted(false);
         returnBtn1.setFocusable(false);

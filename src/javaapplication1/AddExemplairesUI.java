@@ -61,6 +61,7 @@ Object[][] tableData = null;
 
         returnBtn.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/return_icon.png"))); // NOI18N
         returnBtn.setAlignmentY(0.0F);
+        returnBtn.setBackground(new Color(0, 0, 0, 0));
         returnBtn.setBorderPainted(false);
         returnBtn.setFocusPainted(false);
         returnBtn.setFocusable(false);

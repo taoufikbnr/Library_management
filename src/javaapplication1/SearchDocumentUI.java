@@ -103,6 +103,7 @@ String currentUser = (Librarian.instance != null && Librarian.instance.getUserna
             }
         });
 
+        returnBtn.setBackground(new Color(0, 0, 0, 0));
         returnBtn.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/return_icon.png"))); // NOI18N
         returnBtn.setAlignmentY(0.0F);
         returnBtn.setBorderPainted(false);
@@ -176,7 +177,7 @@ String currentUser = (Librarian.instance != null && Librarian.instance.getUserna
                         .addComponent(searchDocImg)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)))
                 .addComponent(title)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 49, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 55, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                         .addComponent(queryInput, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -188,6 +189,8 @@ String currentUser = (Librarian.instance != null && Librarian.instance.getUserna
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 184, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18))
         );
+
+        homeBtn.setOpaque(false);
 
         pack();
     }// </editor-fold>//GEN-END:initComponents

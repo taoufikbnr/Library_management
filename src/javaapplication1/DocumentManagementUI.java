@@ -74,8 +74,8 @@ public class DocumentManagementUI extends javax.swing.JFrame {
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/gerer doc 50.png"))); // NOI18N
         jLabel1.setText("Gérer Document");
 
-        homeBtn.setBackground(new Color(0, 0, 0, 0));
         homeBtn.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/home_icon.png"))); // NOI18N
+        homeBtn.setBackground(new Color(0, 0, 0, 0));
         homeBtn.setBorder(null);
         homeBtn.setBorderPainted(false);
         homeBtn.setFocusPainted(false);
@@ -128,6 +128,8 @@ public class DocumentManagementUI extends javax.swing.JFrame {
                     .addComponent(modifyDocBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(30, 30, 30))
         );
+
+        homeBtn.setOpaque(false);
 
         pack();
     }// </editor-fold>//GEN-END:initComponents

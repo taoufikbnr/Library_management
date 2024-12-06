@@ -109,6 +109,7 @@ String selectedCriteria="id";
         }
     });
 
+    returnBtn.setBackground(new Color(0, 0, 0, 0));
     returnBtn.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/return_icon.png"))); // NOI18N
     returnBtn.setAlignmentY(0.0F);
     returnBtn.setBorderPainted(false);
@@ -180,6 +181,8 @@ String selectedCriteria="id";
             .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 188, javax.swing.GroupLayout.PREFERRED_SIZE)
             .addContainerGap())
     );
+
+    homeBtn1.setOpaque(false);
 
     pack();
     }// </editor-fold>//GEN-END:initComponents

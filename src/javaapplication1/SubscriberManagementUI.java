@@ -126,6 +126,8 @@ public class SubscriberManagementUI extends javax.swing.JFrame {
                 .addGap(30, 30, 30))
         );
 
+        homeBtn.setOpaque(false);
+
         pack();
     }// </editor-fold>//GEN-END:initComponents
 

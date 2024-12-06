@@ -169,6 +169,9 @@
       <Events>
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="homeBtn1ActionPerformed"/>
       </Events>
+      <AuxValues>
+        <AuxValue name="JavaCodeGenerator_AddingCodePost" type="java.lang.String" value="homeBtn1.setOpaque(false);"/>
+      </AuxValues>
     </Component>
     <Component class="javax.swing.JButton" name="returnBtn">
       <Properties>
@@ -176,6 +179,9 @@
           <Image iconType="3" name="/images/return_icon.png"/>
         </Property>
         <Property name="alignmentY" type="float" value="0.0"/>
+        <Property name="background" type="java.awt.Color" editor="org.netbeans.modules.form.RADConnectionPropertyEditor">
+          <Connection code="new Color(0, 0, 0, 0)" type="code"/>
+        </Property>
         <Property name="borderPainted" type="boolean" value="false"/>
         <Property name="focusPainted" type="boolean" value="false"/>
         <Property name="focusable" type="boolean" value="false"/>
@@ -200,10 +206,10 @@
     </Component>
     <Component class="javax.swing.JLabel" name="title">
       <Properties>
+        <Property name="text" type="java.lang.String" value="Rechercher Abonn&#xe9;"/>
         <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
           <Font name="sansserif" size="12" style="3"/>
         </Property>
-        <Property name="text" type="java.lang.String" value="Rechercher Abonn&#xe9;"/>
       </Properties>
     </Component>
   </SubComponents>

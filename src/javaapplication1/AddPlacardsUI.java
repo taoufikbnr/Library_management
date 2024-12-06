@@ -4,6 +4,7 @@
  */
 package javaapplication1;
 import java.sql.*;
+import java.awt.*;
 import javax.swing.JOptionPane;
 import javax.swing.*;
 import javax.swing.table.DefaultTableModel;
@@ -70,6 +71,7 @@ public class AddPlacardsUI extends JFrame {
 
         returnBtn1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/return_icon.png"))); // NOI18N
         returnBtn1.setAlignmentY(0.0F);
+        returnBtn1.setBackground(new Color(0, 0, 0, 0));
         returnBtn1.setBorderPainted(false);
         returnBtn1.setFocusPainted(false);
         returnBtn1.setFocusable(false);

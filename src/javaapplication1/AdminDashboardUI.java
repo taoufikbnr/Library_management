@@ -101,6 +101,8 @@ public class AdminDashboardUI extends javax.swing.JFrame {
         homeBtn.setBorder(null);
         homeBtn.setBorderPainted(false);
         homeBtn.setFocusPainted(false);
+        homeBtn.setFocusable(false);
+        homeBtn.setMargin(new java.awt.Insets(0, 0, 0, 0));
         homeBtn.setSelectedIcon(new javax.swing.ImageIcon(getClass().getResource("/images/home icon 50.png"))); // NOI18N
         homeBtn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -189,6 +191,9 @@ public class AdminDashboardUI extends javax.swing.JFrame {
                     .addComponent(addPlBtn, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addGap(48, 48, 48))
         );
+
+        homeBtn.setOpaque(false);
+        homeBtn.setContentAreaFilled(false);
 
         pack();
     }// </editor-fold>//GEN-END:initComponents

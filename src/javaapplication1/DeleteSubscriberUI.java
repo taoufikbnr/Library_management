@@ -53,6 +53,7 @@ Object[][] tableData = null;
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("RT | Supprimer Abonné");
 
+        returnBtn.setBackground(new Color(0, 0, 0, 0));
         returnBtn.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/return_icon.png"))); // NOI18N
         returnBtn.setAlignmentY(0.0F);
         returnBtn.setBorderPainted(false);
@@ -202,6 +203,8 @@ Object[][] tableData = null;
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 184, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
         );
+
+        homeBtn.setOpaque(false);
 
         pack();
     }// </editor-fold>//GEN-END:initComponents

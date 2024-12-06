@@ -99,6 +99,7 @@ Object[][] subTableData = null;
             }
         });
 
+        returnBtn.setBackground(new Color(0, 0, 0, 0));
         returnBtn.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/return_icon.png"))); // NOI18N
         returnBtn.setAlignmentY(0.0F);
         returnBtn.setBorderPainted(false);
@@ -295,6 +296,8 @@ Object[][] subTableData = null;
                     .addComponent(addBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGap(52, 52, 52))))
     );
+
+    homeBtn.setOpaque(false);
 
     pack();
     }// </editor-fold>//GEN-END:initComponents

@@ -60,10 +60,10 @@ String selectedCriteria="nom";
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("RT | Modifier Abonné");
 
+        addSubBtn.setText("Enregistrer");
         addSubBtn.setBackground(new java.awt.Color(0, 153, 51));
         addSubBtn.setFont(new java.awt.Font("Segoe UI", 2, 14)); // NOI18N
         addSubBtn.setForeground(new java.awt.Color(255, 255, 255));
-        addSubBtn.setText("Enregistrer");
         addSubBtn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 addSubBtnActionPerformed(evt);
@@ -88,8 +88,8 @@ String selectedCriteria="nom";
 
         telLabel.setText("Tel");
 
-        homeBtn1.setBackground(new Color(0, 0, 0, 0));
         homeBtn1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/home_icon.png"))); // NOI18N
+        homeBtn1.setBackground(new Color(0, 0, 0, 0));
         homeBtn1.setBorder(null);
         homeBtn1.setBorderPainted(false);
         homeBtn1.setFocusPainted(false);
@@ -102,6 +102,7 @@ String selectedCriteria="nom";
 
         jButton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/return_icon.png"))); // NOI18N
         jButton1.setAlignmentY(0.0F);
+        jButton1.setBackground(new Color(0, 0, 0, 0));
         jButton1.setBorderPainted(false);
         jButton1.setFocusPainted(false);
         jButton1.setFocusable(false);
@@ -164,8 +165,8 @@ String selectedCriteria="nom";
 
     jLabel1.setText("ID");
 
-    title.setFont(new java.awt.Font("sansserif", 3, 12)); // NOI18N
     title.setText("Modifier Abonné");
+    title.setFont(new java.awt.Font("sansserif", 3, 12)); // NOI18N
 
     javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
     getContentPane().setLayout(layout);
@@ -267,6 +268,8 @@ String selectedCriteria="nom";
             .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
             .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 91, javax.swing.GroupLayout.PREFERRED_SIZE))
     );
+
+    homeBtn1.setOpaque(false);
 
     pack();
     }// </editor-fold>//GEN-END:initComponents
