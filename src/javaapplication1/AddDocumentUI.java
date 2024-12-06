@@ -84,6 +84,7 @@ ArrayList<Integer> selectedAuthorsId = new ArrayList<>();
         themeLabel = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setTitle("RT | Ajouter Document");
         setBackground(new java.awt.Color(0, 0, 0));
 
         etat.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "disponible", "non disponible" }));
@@ -95,7 +96,7 @@ ArrayList<Integer> selectedAuthorsId = new ArrayList<>();
             }
         });
 
-        addBtn.setText("Add");
+        addBtn.setText("Ajouter");
         addBtn.setBackground(new java.awt.Color(0, 204, 51));
         addBtn.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         addBtn.setForeground(new java.awt.Color(255, 255, 255));
@@ -263,7 +264,6 @@ ArrayList<Integer> selectedAuthorsId = new ArrayList<>();
 
         title.setText("Ajouter Document");
         title.setFont(new java.awt.Font("sansserif", 3, 12)); // NOI18N
-        title.setForeground(new java.awt.Color(0, 0, 204));
 
         addDocImg.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/add Doc 50.png"))); // NOI18N
 
@@ -388,9 +388,9 @@ ArrayList<Integer> selectedAuthorsId = new ArrayList<>();
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 59, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(nomAuteurLabel))
-                        .addGap(113, 113, 113)
+                        .addGap(144, 144, 144)
                         .addComponent(addBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(85, 85, 85))))
+                        .addGap(54, 54, 54))))
         );
 
         pack();

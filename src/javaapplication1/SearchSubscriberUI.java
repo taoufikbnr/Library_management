@@ -51,6 +51,7 @@ String selectedCriteria="id";
         title = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setTitle("RT | Rechercher Abonné");
 
         jTable1.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -126,7 +127,6 @@ String selectedCriteria="id";
     searchUserImg.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/search user 50x50.png"))); // NOI18N
 
     title.setFont(new java.awt.Font("sansserif", 3, 12)); // NOI18N
-    title.setForeground(new java.awt.Color(0, 0, 204));
     title.setText("Rechercher Abonné");
 
     javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());

@@ -51,6 +51,7 @@ Object[][] tableData = null;
         title = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setTitle("RT | Supprimer Document");
 
         returnBtn.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/return_icon.png"))); // NOI18N
         returnBtn.setAlignmentY(0.0F);
@@ -139,7 +140,6 @@ Object[][] tableData = null;
         delUserImg.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/delete Doc 50.png"))); // NOI18N
 
         title.setFont(new java.awt.Font("sansserif", 3, 12)); // NOI18N
-        title.setForeground(new java.awt.Color(0, 0, 204));
         title.setText("Supprimer Document");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -264,7 +264,7 @@ if (tableData != null && tableData.length > 0) {
             new String[]{"ID","Cote","Titre","Auteur","Theme","Date","Type","Diplome","Editeur","ISBN", "Etat"} 
         ));
     } else {
-        errorLabel.setText("No records found");
+        errorLabel.setText("Aucun enregistrement trouvé");
             }    
                 TableColumnModel columnModel = docTable.getColumnModel();
                 columnModel.getColumn(0).setPreferredWidth(5);

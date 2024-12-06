@@ -47,6 +47,7 @@ public class AddAuthorUI extends JFrame {
         returnBtn1 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setTitle("RT | Ajouter un auteur");
 
         addAuthorBtn.setBackground(new java.awt.Color(0, 153, 51));
         addAuthorBtn.setForeground(new java.awt.Color(255, 255, 255));
@@ -171,7 +172,7 @@ public class AddAuthorUI extends JFrame {
          statement.setString(2, firstNameInput.getText());
         int rowsAffected = statement.executeUpdate();
             if (rowsAffected > 0) {
-             JOptionPane.showMessageDialog(this, "Author ajoute avec succes!");
+             JOptionPane.showMessageDialog(this, "Auteur ajouté avec succès!");
             lastNameInput.setText(""); 
             firstNameInput.setText("");
         }

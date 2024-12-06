@@ -35,7 +35,7 @@ public class DocumentManagementUI extends javax.swing.JFrame {
         homeBtn = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setTitle("RT | Admin Dashboard");
+        setTitle("RT | Gestion de documents");
 
         addDocBtn.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/add Doc 50.png"))); // NOI18N
         addDocBtn.setText("Ajouter Document");

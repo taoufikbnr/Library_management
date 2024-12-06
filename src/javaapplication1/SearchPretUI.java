@@ -49,6 +49,7 @@ String selectedCriteria="tous";
         jLabel1 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setTitle("RT | Rechercher Prêt");
 
         updateUserImg.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/search pret.png"))); // NOI18N
 
@@ -119,7 +120,6 @@ String selectedCriteria="tous";
     });
 
     title.setFont(new java.awt.Font("sansserif", 3, 12)); // NOI18N
-    title.setForeground(new java.awt.Color(0, 0, 204));
     title.setText("Rechercher Pret");
 
     jLabel1.setText("CIN");

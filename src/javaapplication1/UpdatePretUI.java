@@ -51,6 +51,7 @@ String selectedCriteria="nom";
         title = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setTitle("RT | Enregistrer Retour Prêt");
 
         addSubBtn.setBackground(new java.awt.Color(0, 153, 51));
         addSubBtn.setFont(new java.awt.Font("Segoe UI", 2, 14)); // NOI18N
@@ -138,7 +139,6 @@ String selectedCriteria="nom";
     });
 
     title.setFont(new java.awt.Font("sansserif", 3, 12)); // NOI18N
-    title.setForeground(new java.awt.Color(0, 0, 204));
     title.setText("Enregistrer Retour Pret");
 
     javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -220,7 +220,7 @@ String selectedCriteria="nom";
                 new Pret().updatePret(Integer.parseInt(id));
                 pretIdInput.setText("");
                 
-                JOptionPane.showMessageDialog(this,"Pret enregistré");
+                JOptionPane.showMessageDialog(this,"Prêt enregistré");
             } catch (ParseException ex) {
                 Logger.getLogger(UpdatePretUI.class.getName()).log(Level.SEVERE, null, ex);
             }

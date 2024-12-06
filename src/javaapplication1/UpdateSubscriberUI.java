@@ -58,6 +58,7 @@ String selectedCriteria="nom";
         title = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setTitle("RT | Modifier Abonné");
 
         addSubBtn.setBackground(new java.awt.Color(0, 153, 51));
         addSubBtn.setFont(new java.awt.Font("Segoe UI", 2, 14)); // NOI18N
@@ -163,7 +164,6 @@ String selectedCriteria="nom";
     jLabel1.setText("ID");
 
     title.setFont(new java.awt.Font("sansserif", 3, 12)); // NOI18N
-    title.setForeground(new java.awt.Color(0, 0, 204));
     title.setText("Modifier Abonné");
 
     javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -288,7 +288,7 @@ String selectedCriteria="nom";
         cinInput.setText("");
         adrInput.setText("");
         telInput.setText("");
-        JOptionPane.showMessageDialog(this,"Abonné modifié aves succes");
+        JOptionPane.showMessageDialog(this,"Abonné modifié aves succès");
         
          }
         

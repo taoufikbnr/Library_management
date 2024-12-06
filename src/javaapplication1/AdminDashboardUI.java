@@ -61,10 +61,10 @@ public class AdminDashboardUI extends javax.swing.JFrame {
         jScrollPane1.setViewportView(jTable1);
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setTitle("RT | Dashboard");
 
         title.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
-        title.setForeground(new java.awt.Color(0, 51, 153));
-        title.setText("Welcome " + currentUser);
+        title.setText("Bienvenue " + currentUser);
 
         addPretBtn.setBackground(new java.awt.Color(204, 255, 204));
         addPretBtn.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/gerer pret 50.png"))); // NOI18N

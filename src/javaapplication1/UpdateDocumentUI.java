@@ -91,6 +91,7 @@ ArrayList<Integer> selectedAuthorsId = new ArrayList<>();
         jLabel1 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setTitle("RT | Modifier Document");
         setBackground(new java.awt.Color(0, 0, 0));
 
         coteInput.setEditable(false);
@@ -228,7 +229,6 @@ ArrayList<Integer> selectedAuthorsId = new ArrayList<>();
 
         title.setText("Modifier Document");
         title.setFont(new java.awt.Font("sansserif", 3, 12)); // NOI18N
-        title.setForeground(new java.awt.Color(0, 0, 204));
 
         addDocImg.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/add Doc 50.png"))); // NOI18N
 
@@ -253,9 +253,6 @@ ArrayList<Integer> selectedAuthorsId = new ArrayList<>();
         });
 
         errorLabel.setForeground(new java.awt.Color(255, 0, 0));
-
-        docId.setBackground(new java.awt.Color(0, 102, 153));
-        docId.setForeground(new java.awt.Color(255, 255, 255));
 
         docIdLabel.setText("ID  document");
 
@@ -446,7 +443,7 @@ ArrayList<Integer> selectedAuthorsId = new ArrayList<>();
             JOptionPane.showMessageDialog(this,"Veuillez sélectionner le diplôme");
         }else{
         new Documents(cote,titreData,dateString,etatData,typeData,editeurData,isbnData,selectedMemoire,themeData).updateDocument(id);
-        JOptionPane.showMessageDialog(this,"Abonné modifié aves succes");
+        JOptionPane.showMessageDialog(this,"Abonné modifié aves succès");
         performSearch();
          }
         
@@ -579,7 +576,7 @@ ArrayList<Integer> selectedAuthorsId = new ArrayList<>();
                         new String[]{"ID","Cote","Titre","Auteur","Theme","Date","Type","Diplome","Editeur","ISBN", "Etat"} 
                     ));
                 } else {
-                errorLabel.setText("No records found");
+                errorLabel.setText("Aucun enregistrement trouvé");
                     }    
                 TableColumnModel columnModel = docTable.getColumnModel();
                 columnModel.getColumn(0).setPreferredWidth(10);

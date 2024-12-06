@@ -57,6 +57,7 @@ Object[][] tableData = null;
         addExpBtn = new javax.swing.JToggleButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setTitle("RT `| Ajouter Exemplaire");
 
         returnBtn.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/return_icon.png"))); // NOI18N
         returnBtn.setAlignmentY(0.0F);
@@ -121,7 +122,6 @@ Object[][] tableData = null;
         delUserImg.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/gerer exemplaire.png"))); // NOI18N
 
         title.setFont(new java.awt.Font("sansserif", 3, 12)); // NOI18N
-        title.setForeground(new java.awt.Color(0, 0, 204));
         title.setText("Ajouter Exemplaire");
 
         jTable1.setModel(new javax.swing.table.DefaultTableModel(
@@ -294,7 +294,7 @@ Object[][] tableData = null;
             JOptionPane.showMessageDialog(null, "Veuillez choisir un etagere","Alert",JOptionPane.WARNING_MESSAGE);
         }else           {
             new Exemplaires(Integer.parseInt(docId),Integer.parseInt(etagereId)).addExemplaire();
-            JOptionPane.showMessageDialog(null, "Exemplaire ajouté avec succes");
+            JOptionPane.showMessageDialog(null, "Exemplaire ajouté avec succès");
         }
     }//GEN-LAST:event_addExpBtnActionPerformed
 

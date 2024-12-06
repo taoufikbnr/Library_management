@@ -51,10 +51,11 @@ public class AddPlacardsUI extends JFrame {
         numEtagereInput = new javax.swing.JTextField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setTitle("RT | Gérer Placards");
 
-        addPlBtn.setText("Ajouter Placard");
         addPlBtn.setBackground(new java.awt.Color(0, 153, 51));
         addPlBtn.setForeground(new java.awt.Color(255, 255, 255));
+        addPlBtn.setText("Ajouter Placard");
         addPlBtn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 addPlBtnActionPerformed(evt);
@@ -85,9 +86,9 @@ public class AddPlacardsUI extends JFrame {
 
         tableTitle.setText("Liste des placards");
 
-        addEtagereBtn.setText("Ajouter etagère");
         addEtagereBtn.setBackground(new java.awt.Color(0, 153, 51));
         addEtagereBtn.setForeground(new java.awt.Color(255, 255, 255));
+        addEtagereBtn.setText("Ajouter etagère");
         addEtagereBtn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 addEtagereBtnActionPerformed(evt);

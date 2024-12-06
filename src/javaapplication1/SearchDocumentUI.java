@@ -24,6 +24,11 @@ String currentUser = (Librarian.instance != null && Librarian.instance.getUserna
         initComponents();
         setLocationRelativeTo(null);
         performSearch();
+            if(currentUser!=null){
+        homeBtn.setVisible(true);   
+        }else{
+        homeBtn.setVisible(false);   
+        }
     }
 
     /**
@@ -48,6 +53,7 @@ String currentUser = (Librarian.instance != null && Librarian.instance.getUserna
         checkExpBtn = new javax.swing.JToggleButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setTitle("RT | Rechercher Document");
 
         docTable.getTableHeader().setBackground(new java.awt.Color(0, 153, 51));
         docTable.getTableHeader().setForeground(new java.awt.Color(255, 255, 255));
@@ -115,7 +121,6 @@ String currentUser = (Librarian.instance != null && Librarian.instance.getUserna
         searchDocImg.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/search Doc 50.png"))); // NOI18N
 
         title.setFont(new java.awt.Font("sansserif", 3, 12)); // NOI18N
-        title.setForeground(new java.awt.Color(0, 0, 204));
         title.setText("Rechercher Document");
 
         checkExpBtn.setBackground(new java.awt.Color(0, 0, 0));
@@ -248,7 +253,7 @@ String currentUser = (Librarian.instance != null && Librarian.instance.getUserna
                             }
                         });
                 } else {
-                errorLabel.setText("No records found");
+                errorLabel.setText("Aucun enregistrement trouvé");
                     } 
                 TableColumnModel columnModel = docTable.getColumnModel();
                 columnModel.getColumn(0).setPreferredWidth(20);

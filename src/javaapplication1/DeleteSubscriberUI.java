@@ -51,6 +51,7 @@ Object[][] tableData = null;
         delUserImg = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setTitle("RT | Supprimer Abonné");
 
         returnBtn.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/return_icon.png"))); // NOI18N
         returnBtn.setAlignmentY(0.0F);
@@ -87,7 +88,6 @@ Object[][] tableData = null;
         jScrollPane1.setViewportView(docTable);
 
         title.setFont(new java.awt.Font("sansserif", 3, 12)); // NOI18N
-        title.setForeground(new java.awt.Color(0, 0, 204));
         title.setText("Supprimer Abonné");
 
         errorLabel.setForeground(new java.awt.Color(255, 0, 0));
@@ -226,7 +226,7 @@ Object[][] tableData = null;
         int response = JOptionPane.showConfirmDialog(
         this,
         "Etes-vous sûr de vouloir supprimer cet abonné?", // message
-        "Confirm Delete", // title
+        "Confirmer Suppression", // title
         JOptionPane.YES_NO_OPTION, 
         JOptionPane.WARNING_MESSAGE 
     );
@@ -265,7 +265,7 @@ if (tableData != null && tableData.length > 0) {
             new String[]{"Id", "Prénom","Nom","CIN","Adresse","Tel","Date Ab"}
         ));
     } else {
-        errorLabel.setText("No records found");
+        errorLabel.setText("Aucun enregistrement trouvé");
             }    
                 TableColumnModel columnModel = docTable.getColumnModel();
                 columnModel.getColumn(0).setPreferredWidth(5);

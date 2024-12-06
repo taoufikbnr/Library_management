@@ -47,6 +47,7 @@ public class AddSubscriberUI extends javax.swing.JFrame {
         title = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setTitle("RT | Ajouter Abonné");
 
         addSubBtn.setBackground(new java.awt.Color(0, 153, 51));
         addSubBtn.setFont(new java.awt.Font("Segoe UI", 2, 14)); // NOI18N
@@ -99,7 +100,6 @@ public class AddSubscriberUI extends javax.swing.JFrame {
         });
 
         title.setFont(new java.awt.Font("sansserif", 3, 12)); // NOI18N
-        title.setForeground(new java.awt.Color(0, 0, 204));
         title.setText("Ajouter Abonné");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -200,7 +200,7 @@ public class AddSubscriberUI extends javax.swing.JFrame {
         adrInput.setText("");
         cinInput.setText("");
         telInput.setText("");
-        JOptionPane.showMessageDialog(this,"Abonné ajouté aves succes");
+        JOptionPane.showMessageDialog(this,"Abonné ajouté aves succès");
         
          }
         

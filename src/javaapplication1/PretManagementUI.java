@@ -34,7 +34,7 @@ public class PretManagementUI extends javax.swing.JFrame {
         addDocBtn1 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setTitle("RT | Admin Dashboard");
+        setTitle("RT | Gestion de prets");
 
         addDocBtn.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/add pret.png"))); // NOI18N
         addDocBtn.setText("Ajouter Prêt");

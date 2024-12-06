@@ -52,6 +52,7 @@ Object[][] tableData = null;
         title = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setTitle("RT | Rechercher Exemplaire");
 
         docTable.getTableHeader().setBackground(new java.awt.Color(0, 153, 51));
         docTable.getTableHeader().setForeground(new java.awt.Color(255, 255, 255));
@@ -71,19 +72,12 @@ Object[][] tableData = null;
         searchDocImg.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/search Doc 50.png"))); // NOI18N
 
         title.setFont(new java.awt.Font("sansserif", 3, 12)); // NOI18N
-        title.setForeground(new java.awt.Color(0, 0, 204));
-        title.setText("Exemplaire ");
+        title.setText("Rechercher Exemplaire ");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addGap(0, 0, Short.MAX_VALUE)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(title)
-                    .addComponent(searchDocImg))
-                .addGap(308, 308, 308))
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -91,6 +85,15 @@ Object[][] tableData = null;
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(errorLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 158, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(0, 0, Short.MAX_VALUE))))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addGap(0, 0, Short.MAX_VALUE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addComponent(searchDocImg)
+                        .addGap(308, 308, 308))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addComponent(title)
+                        .addGap(271, 271, 271))))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -122,7 +125,7 @@ Object[][] tableData = null;
                         }
                     });
                 } else {
-                errorLabel.setText("No records found");
+                errorLabel.setText("Aucun enregistrement trouvé");
                         docTable.setModel(new javax.swing.table.DefaultTableModel(
             new Object[][]{},
             new String[]{"ID","Doc", "Cote", "Titre", "Auteur", "Placard", "Etagere", "Statut"}

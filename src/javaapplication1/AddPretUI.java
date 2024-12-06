@@ -65,6 +65,7 @@ Object[][] subTableData = null;
         addBtn = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setTitle("RT | Ajouter Prêt");
 
         docTable.getTableHeader().setBackground(new java.awt.Color(0, 153, 51));
         docTable.getTableHeader().setForeground(new java.awt.Color(255, 255, 255));
@@ -117,8 +118,7 @@ Object[][] subTableData = null;
         searchDocImg.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/search Doc 50.png"))); // NOI18N
 
         title.setFont(new java.awt.Font("sansserif", 3, 12)); // NOI18N
-        title.setForeground(new java.awt.Color(0, 0, 204));
-        title.setText("Ajouter Pret");
+        title.setText("Ajouter Prêt");
 
         expSearchBtn.setText("Rechercher");
         expSearchBtn.addActionListener(new java.awt.event.ActionListener() {
@@ -188,10 +188,10 @@ Object[][] subTableData = null;
 
     jLabel2.setText("Id Exemplaire");
 
-    addBtn.setText("Enregistrer");
     addBtn.setBackground(new java.awt.Color(0, 204, 51));
     addBtn.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
     addBtn.setForeground(new java.awt.Color(255, 255, 255));
+    addBtn.setText("Enregistrer");
     addBtn.setHideActionText(true);
     addBtn.addActionListener(new java.awt.event.ActionListener() {
         public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -358,7 +358,7 @@ Object[][] subTableData = null;
                 new Pret(Integer.parseInt(docId),Integer.parseInt(subId)).addPret();
                 new Exemplaires().setStatut("prete", Integer.parseInt(subId));
                 performSearchExemplaires();
-            JOptionPane.showMessageDialog(this,"Pret enregistré.");
+            JOptionPane.showMessageDialog(this,"Prêt enregistré.");
             } catch (ParseException ex) {
                 Logger.getLogger(AddPretUI.class.getName()).log(Level.SEVERE, null, ex);
             }

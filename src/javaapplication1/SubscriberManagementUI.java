@@ -35,7 +35,7 @@ public class SubscriberManagementUI extends javax.swing.JFrame {
         homeBtn = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setTitle("RT | Admin Dashboard");
+        setTitle("RT | Gestion des abonnés");
 
         addSubBtn.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/add_user.png"))); // NOI18N
         addSubBtn.setText("Ajouté Abonné");
