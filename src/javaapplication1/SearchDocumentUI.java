@@ -83,7 +83,8 @@ String currentUser = (Librarian.instance != null && Librarian.instance.getUserna
 
         errorLabel.setForeground(new java.awt.Color(255, 0, 0));
 
-        searchBtn.setText("Search");
+        searchBtn.setText("Rechercher");
+        searchBtn.setMargin(new java.awt.Insets(0, 0, 0, 0));
         searchBtn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 searchBtnActionPerformed(evt);

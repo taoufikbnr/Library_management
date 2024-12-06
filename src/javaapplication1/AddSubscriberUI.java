@@ -52,7 +52,7 @@ public class AddSubscriberUI extends javax.swing.JFrame {
         addSubBtn.setBackground(new java.awt.Color(0, 153, 51));
         addSubBtn.setFont(new java.awt.Font("Segoe UI", 2, 14)); // NOI18N
         addSubBtn.setForeground(new java.awt.Color(255, 255, 255));
-        addSubBtn.setText("Add");
+        addSubBtn.setText("Ajouter");
         addSubBtn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 addSubBtnActionPerformed(evt);

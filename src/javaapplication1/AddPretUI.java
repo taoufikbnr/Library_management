@@ -121,6 +121,7 @@ Object[][] subTableData = null;
         title.setText("Ajouter Prêt");
 
         expSearchBtn.setText("Rechercher");
+        expSearchBtn.setMargin(new java.awt.Insets(0, 0, 0, 0));
         expSearchBtn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 expSearchBtnActionPerformed(evt);

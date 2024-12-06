@@ -133,7 +133,7 @@ Object[][] tableData = null;
             }
         });
 
-        jButton1.setText("Search");
+        jButton1.setText("Rechercher");
         jButton1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton1ActionPerformed(evt);
@@ -262,7 +262,7 @@ if (tableData != null && tableData.length > 0) {
         errorLabel.setText(""); 
         docTable.setModel(new javax.swing.table.DefaultTableModel(
             tableData,
-            new String[]{"Id", "Prénom","Nom","CIN","Adresse","Tel","Date Ab"}
+            new String[]{"Id", "Prénom","Nom","CIN","Adresse","Tel","Date"}
         ));
     } else {
         errorLabel.setText("Aucun enregistrement trouvé");

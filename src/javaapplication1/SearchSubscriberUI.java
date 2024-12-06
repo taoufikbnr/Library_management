@@ -77,6 +77,7 @@ String selectedCriteria="id";
     jScrollPane1.setViewportView(jTable1);
 
     jButton1.setText("Rechercher");
+    jButton1.setMargin(new java.awt.Insets(0, 0, 0, 0));
     jButton1.addActionListener(new java.awt.event.ActionListener() {
         public void actionPerformed(java.awt.event.ActionEvent evt) {
             jButton1ActionPerformed(evt);
@@ -170,7 +171,7 @@ String selectedCriteria="id";
                     .addComponent(searchUserImg)
                     .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                     .addComponent(title)))
-            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 61, Short.MAX_VALUE)
+            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 62, Short.MAX_VALUE)
             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                 .addComponent(jButton1)
                 .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -223,7 +224,7 @@ String selectedCriteria="id";
         Object[][] tableData = userSubscriber.getUsers(queryStr, selectedCriteria);
         jTable1.setModel(new javax.swing.table.DefaultTableModel(
             tableData,
-            new String[]{"Id", "Prénom","Nom","CIN","Adresse","Tel","Date abonnement"}
+            new String[]{"Id", "Prénom","Nom","CIN","Adresse","Tel","Date"}
                 
         ));
                 TableColumnModel columnModel = jTable1.getColumnModel();

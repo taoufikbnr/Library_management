@@ -139,7 +139,8 @@ String selectedCriteria="nom";
     });
     jScrollPane1.setViewportView(docTable);
 
-    jButton2.setText("Search");
+    jButton2.setText("Rechercher");
+    jButton2.setMargin(new java.awt.Insets(0, 0, 0, 0));
     jButton2.addActionListener(new java.awt.event.ActionListener() {
         public void actionPerformed(java.awt.event.ActionEvent evt) {
             jButton2ActionPerformed(evt);
@@ -221,7 +222,7 @@ String selectedCriteria="nom";
                             .addGap(18, 18, 18)
                             .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                            .addComponent(jButton2))
+                            .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 535, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGap(27, 27, 27))
                 .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
@@ -256,7 +257,7 @@ String selectedCriteria="nom";
                     .addComponent(telInput, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(telLabel))
                 .addComponent(addSubBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE))
-            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 23, Short.MAX_VALUE)
+            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 24, Short.MAX_VALUE)
             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                 .addComponent(jButton2)
                 .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -347,7 +348,7 @@ String selectedCriteria="nom";
         Object[][] tableData = userSubscriber.getUsers(queryStr, selectedCriteria);
         docTable.setModel(new javax.swing.table.DefaultTableModel(
             tableData,
-            new String[]{"Id","Prenom","Nom","CIN","Adresse","Tel","Date Ab"}
+            new String[]{"Id","Prenom","Nom","CIN","Adresse","Tel","Date"}
                 
         ));
                 TableColumnModel columnModel = docTable.getColumnModel();
