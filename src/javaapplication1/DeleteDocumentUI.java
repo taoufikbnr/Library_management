@@ -257,6 +257,7 @@ Object[][] tableData = null;
         String query = queryInput.getText();
        
         tableData = new Documents().getDocuments(query, selectedCriteria);
+        
 if (tableData != null && tableData.length > 0) {
         errorLabel.setText(""); 
         docTable.setModel(new javax.swing.table.DefaultTableModel(

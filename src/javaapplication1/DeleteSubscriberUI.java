@@ -269,7 +269,6 @@ if (tableData != null && tableData.length > 0) {
             }    
                 TableColumnModel columnModel = docTable.getColumnModel();
                 columnModel.getColumn(0).setPreferredWidth(5);
-                columnModel.getColumn(1).setPreferredWidth(5);
     }   
           
     /**
