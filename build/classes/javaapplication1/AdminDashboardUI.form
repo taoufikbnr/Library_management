@@ -102,11 +102,11 @@
                   <Component id="addPretBtn" max="32767" attributes="0"/>
               </Group>
               <EmptySpace type="unrelated" max="32767" attributes="0"/>
-              <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                  <Component id="addExpBtn" pref="90" max="32767" attributes="0"/>
+              <Group type="103" groupAlignment="0" attributes="0">
+                  <Component id="addExpBtn" min="-2" pref="90" max="-2" attributes="0"/>
                   <Component id="addPlBtn" max="32767" attributes="0"/>
               </Group>
-              <EmptySpace min="-2" pref="48" max="-2" attributes="0"/>
+              <EmptySpace min="-2" pref="33" max="-2" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
@@ -146,6 +146,7 @@
           <Image iconType="3" name="/images/gerer abonne.png"/>
         </Property>
         <Property name="text" type="java.lang.String" value="G&#xe9;rer Abonn&#xe9;"/>
+        <Property name="focusPainted" type="boolean" value="false"/>
         <Property name="horizontalAlignment" type="int" value="2"/>
       </Properties>
       <Events>
@@ -161,6 +162,7 @@
           <Image iconType="3" name="/images/gerer doc 50.png"/>
         </Property>
         <Property name="text" type="java.lang.String" value="G&#xe9;rer Document"/>
+        <Property name="focusPainted" type="boolean" value="false"/>
         <Property name="horizontalAlignment" type="int" value="2"/>
       </Properties>
       <Events>
@@ -233,7 +235,7 @@
         <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
           <Image iconType="3" name="/images/gerer exemplaire.png"/>
         </Property>
-        <Property name="text" type="java.lang.String" value="G&#xe9;rer Exemplaire"/>
+        <Property name="text" type="java.lang.String" value="Ajouter Exemplaire"/>
         <Property name="horizontalAlignment" type="int" value="2"/>
       </Properties>
       <Events>

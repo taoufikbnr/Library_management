@@ -36,7 +36,9 @@ public class DocumentManagementUI extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("RT | Gestion de documents");
+        setPreferredSize(null);
 
+        addDocBtn.setBackground(new java.awt.Color(204, 255, 204));
         addDocBtn.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/add Doc 50.png"))); // NOI18N
         addDocBtn.setText("Ajouter Document");
         addDocBtn.addActionListener(new java.awt.event.ActionListener() {
@@ -45,16 +47,20 @@ public class DocumentManagementUI extends javax.swing.JFrame {
             }
         });
 
-        modifyDocBtn.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/edit doc 50.png"))); // NOI18N
+        modifyDocBtn.setBackground(new java.awt.Color(204, 255, 204));
+        modifyDocBtn.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/update document.png"))); // NOI18N
         modifyDocBtn.setText("Modifier Document");
+        modifyDocBtn.setFocusPainted(false);
         modifyDocBtn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 modifyDocBtnActionPerformed(evt);
             }
         });
 
+        delDocBtn.setBackground(new java.awt.Color(204, 255, 204));
         delDocBtn.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/delete Doc 50.png"))); // NOI18N
         delDocBtn.setText("Supprimer Document");
+        delDocBtn.setFocusPainted(false);
         delDocBtn.setMargin(new java.awt.Insets(2, 10, 3, 10));
         delDocBtn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -62,8 +68,10 @@ public class DocumentManagementUI extends javax.swing.JFrame {
             }
         });
 
+        searchDocBtn.setBackground(new java.awt.Color(204, 255, 204));
         searchDocBtn.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/search Doc 50.png"))); // NOI18N
         searchDocBtn.setText("Rechercher Document");
+        searchDocBtn.setFocusPainted(false);
         searchDocBtn.setMargin(new java.awt.Insets(2, 5, 3, 5));
         searchDocBtn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -74,8 +82,8 @@ public class DocumentManagementUI extends javax.swing.JFrame {
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/gerer doc 50.png"))); // NOI18N
         jLabel1.setText("Gérer Document");
 
-        homeBtn.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/home_icon.png"))); // NOI18N
         homeBtn.setBackground(new Color(0, 0, 0, 0));
+        homeBtn.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/home_icon.png"))); // NOI18N
         homeBtn.setBorder(null);
         homeBtn.setBorderPainted(false);
         homeBtn.setFocusPainted(false);
@@ -91,7 +99,7 @@ public class DocumentManagementUI extends javax.swing.JFrame {
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addContainerGap(44, Short.MAX_VALUE)
+                .addContainerGap(53, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -113,7 +121,7 @@ public class DocumentManagementUI extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addContainerGap(8, Short.MAX_VALUE)
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(jLabel1))
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(homeBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 52, javax.swing.GroupLayout.PREFERRED_SIZE)

@@ -107,10 +107,10 @@ Object[][] tableData = null;
 
         jLabel2.setText("ID abonné");
 
-        deleteBtn.setBackground(new java.awt.Color(255, 0, 0));
+        deleteBtn.setBackground(new Color(0,0,0,0));
         deleteBtn.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         deleteBtn.setForeground(new java.awt.Color(255, 255, 255));
-        deleteBtn.setText("supprimer");
+        deleteBtn.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/delete-30.png"))); // NOI18N
         deleteBtn.setBorderPainted(false);
         deleteBtn.setFocusPainted(false);
         deleteBtn.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
@@ -154,7 +154,7 @@ Object[][] tableData = null;
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(docIdInput, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(deleteBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 67, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(deleteBtn)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(queryInput, javax.swing.GroupLayout.PREFERRED_SIZE, 71, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
@@ -185,7 +185,7 @@ Object[][] tableData = null;
                     .addComponent(delUserImg))
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 17, Short.MAX_VALUE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 19, Short.MAX_VALUE)
                         .addComponent(errorLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(7, 7, 7))
                     .addGroup(layout.createSequentialGroup()
@@ -205,6 +205,7 @@ Object[][] tableData = null;
         );
 
         homeBtn.setOpaque(false);
+        deleteBtn.setOpaque(false);
 
         pack();
     }// </editor-fold>//GEN-END:initComponents

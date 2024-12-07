@@ -231,7 +231,7 @@ ArrayList<Integer> selectedAuthorsId = new ArrayList<>();
         title.setText("Modifier Document");
         title.setFont(new java.awt.Font("sansserif", 3, 12)); // NOI18N
 
-        addDocImg.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/add Doc 50.png"))); // NOI18N
+        addDocImg.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/update document.png"))); // NOI18N
 
         queryInput.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -398,7 +398,7 @@ ArrayList<Integer> selectedAuthorsId = new ArrayList<>();
                             .addComponent(etatLabel))))
                 .addGap(8, 8, 8)
                 .addComponent(addBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 35, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 23, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                         .addComponent(searchBtn1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)

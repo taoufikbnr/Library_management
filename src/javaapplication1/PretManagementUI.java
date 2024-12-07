@@ -36,16 +36,20 @@ public class PretManagementUI extends javax.swing.JFrame {
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("RT | Gestion de prets");
 
+        addDocBtn.setBackground(new java.awt.Color(204, 255, 204));
         addDocBtn.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/add pret.png"))); // NOI18N
         addDocBtn.setText("Ajouter Prêt");
+        addDocBtn.setFocusPainted(false);
         addDocBtn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 addDocBtnActionPerformed(evt);
             }
         });
 
+        searchDocBtn.setBackground(new java.awt.Color(204, 255, 204));
         searchDocBtn.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/update pret.png"))); // NOI18N
         searchDocBtn.setText("Enregistrer Retour");
+        searchDocBtn.setFocusPainted(false);
         searchDocBtn.setMargin(new java.awt.Insets(2, 5, 3, 5));
         searchDocBtn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -68,8 +72,10 @@ public class PretManagementUI extends javax.swing.JFrame {
             }
         });
 
+        addDocBtn1.setBackground(new java.awt.Color(204, 255, 204));
         addDocBtn1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/search pret.png"))); // NOI18N
         addDocBtn1.setText("Prêt en retard");
+        addDocBtn1.setFocusPainted(false);
         addDocBtn1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 addDocBtn1ActionPerformed(evt);
@@ -114,6 +120,8 @@ public class PretManagementUI extends javax.swing.JFrame {
                 .addComponent(addDocBtn1, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
         );
+
+        homeBtn.setOpaque(false);
 
         pack();
     }// </editor-fold>//GEN-END:initComponents

@@ -109,9 +109,9 @@ String selectedCriteria="id";
         }
     });
 
-    returnBtn.setBackground(new Color(0, 0, 0, 0));
     returnBtn.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/return_icon.png"))); // NOI18N
     returnBtn.setAlignmentY(0.0F);
+    returnBtn.setBackground(new Color(0, 0, 0, 0));
     returnBtn.setBorderPainted(false);
     returnBtn.setFocusPainted(false);
     returnBtn.setFocusable(false);
@@ -128,8 +128,8 @@ String selectedCriteria="id";
 
     searchUserImg.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/search user 50x50.png"))); // NOI18N
 
-    title.setFont(new java.awt.Font("sansserif", 3, 12)); // NOI18N
     title.setText("Rechercher Abonné");
+    title.setFont(new java.awt.Font("sansserif", 3, 12)); // NOI18N
 
     javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
     getContentPane().setLayout(layout);
@@ -150,7 +150,7 @@ String selectedCriteria="id";
                                     .addGap(153, 153, 153))
                                 .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                                     .addComponent(searchUserImg)
-                                    .addGap(192, 192, 192)))
+                                    .addGap(206, 206, 206)))
                             .addComponent(homeBtn1))
                         .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                             .addGap(0, 0, Short.MAX_VALUE)

@@ -79,6 +79,7 @@ public class AdminDashboardUI extends javax.swing.JFrame {
         addSubBtn.setBackground(new java.awt.Color(204, 255, 204));
         addSubBtn.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/gerer abonne.png"))); // NOI18N
         addSubBtn.setText("Gérer Abonné");
+        addSubBtn.setFocusPainted(false);
         addSubBtn.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         addSubBtn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -89,6 +90,7 @@ public class AdminDashboardUI extends javax.swing.JFrame {
         addDocBtn.setBackground(new java.awt.Color(204, 255, 204));
         addDocBtn.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/gerer doc 50.png"))); // NOI18N
         addDocBtn.setText("Gérer Document");
+        addDocBtn.setFocusPainted(false);
         addDocBtn.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         addDocBtn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -132,7 +134,7 @@ public class AdminDashboardUI extends javax.swing.JFrame {
 
         addExpBtn.setBackground(new java.awt.Color(204, 255, 204));
         addExpBtn.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/gerer exemplaire.png"))); // NOI18N
-        addExpBtn.setText("Gérer Exemplaire");
+        addExpBtn.setText("Ajouter Exemplaire");
         addExpBtn.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         addExpBtn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -186,10 +188,10 @@ public class AdminDashboardUI extends javax.swing.JFrame {
                     .addComponent(addAuthorBtn, javax.swing.GroupLayout.DEFAULT_SIZE, 90, Short.MAX_VALUE)
                     .addComponent(addPretBtn, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(addExpBtn, javax.swing.GroupLayout.DEFAULT_SIZE, 90, Short.MAX_VALUE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(addExpBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(addPlBtn, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addGap(48, 48, 48))
+                .addGap(33, 33, 33))
         );
 
         homeBtn.setOpaque(false);
