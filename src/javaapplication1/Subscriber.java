@@ -110,7 +110,7 @@ public class Subscriber {
   
         } catch (SQLException e) {
             e.printStackTrace();
-            JOptionPane.showMessageDialog(null, "Error retrieving users: " + e.getMessage());
+            JOptionPane.showMessageDialog(null, "Ereur, il y a des prêts pour cet utilisateur!");
         } finally {
             try {
                 if (resultSet != null) resultSet.close();

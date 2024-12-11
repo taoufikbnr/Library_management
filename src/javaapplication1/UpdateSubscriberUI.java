@@ -21,6 +21,7 @@ String selectedCriteria="nom";
      */
     public UpdateSubscriberUI() {
         initComponents();
+        setIconImage(Toolkit.getDefaultToolkit().getImage(getClass().getResource("rt_icon.png")));
         setLocationRelativeTo(null);
         performSearch();
     }
@@ -59,11 +60,12 @@ String selectedCriteria="nom";
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("RT | Modifier Abonné");
+        setResizable(false);
 
-        addSubBtn.setText("Enregistrer");
         addSubBtn.setBackground(new java.awt.Color(0, 153, 51));
-        addSubBtn.setFont(new java.awt.Font("Segoe UI", 2, 14)); // NOI18N
+        addSubBtn.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         addSubBtn.setForeground(new java.awt.Color(255, 255, 255));
+        addSubBtn.setText("Enregistrer");
         addSubBtn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 addSubBtnActionPerformed(evt);
@@ -88,8 +90,8 @@ String selectedCriteria="nom";
 
         telLabel.setText("Tel");
 
-        homeBtn1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/home_icon.png"))); // NOI18N
         homeBtn1.setBackground(new Color(0, 0, 0, 0));
+        homeBtn1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/home_icon.png"))); // NOI18N
         homeBtn1.setBorder(null);
         homeBtn1.setBorderPainted(false);
         homeBtn1.setFocusPainted(false);
@@ -100,9 +102,9 @@ String selectedCriteria="nom";
             }
         });
 
+        jButton1.setBackground(new Color(0, 0, 0, 0));
         jButton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/return_icon.png"))); // NOI18N
         jButton1.setAlignmentY(0.0F);
-        jButton1.setBackground(new Color(0, 0, 0, 0));
         jButton1.setBorderPainted(false);
         jButton1.setFocusPainted(false);
         jButton1.setFocusable(false);
@@ -142,6 +144,7 @@ String selectedCriteria="nom";
 
     jButton2.setText("Rechercher");
     jButton2.setMargin(new java.awt.Insets(0, 0, 0, 0));
+    jButton2.setPreferredSize(new java.awt.Dimension(61, 27));
     jButton2.addActionListener(new java.awt.event.ActionListener() {
         public void actionPerformed(java.awt.event.ActionEvent evt) {
             jButton2ActionPerformed(evt);
@@ -149,12 +152,14 @@ String selectedCriteria="nom";
     });
 
     jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "id", "nom", "prenom", "cin", "adresse", "tel" }));
+    jComboBox1.setPreferredSize(new java.awt.Dimension(76, 27));
     jComboBox1.addActionListener(new java.awt.event.ActionListener() {
         public void actionPerformed(java.awt.event.ActionEvent evt) {
             jComboBox1ActionPerformed(evt);
         }
     });
 
+    query.setPreferredSize(new java.awt.Dimension(64, 27));
     query.addActionListener(new java.awt.event.ActionListener() {
         public void actionPerformed(java.awt.event.ActionEvent evt) {
             queryActionPerformed(evt);
@@ -162,11 +167,12 @@ String selectedCriteria="nom";
     });
 
     docId.setEnabled(false);
+    docId.setPreferredSize(new java.awt.Dimension(64, 27));
 
     jLabel1.setText("ID");
 
+    title.setFont(new java.awt.Font("sansserif", 1, 12)); // NOI18N
     title.setText("Modifier Abonné");
-    title.setFont(new java.awt.Font("sansserif", 3, 12)); // NOI18N
 
     javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
     getContentPane().setLayout(layout);
@@ -191,11 +197,11 @@ String selectedCriteria="nom";
                         .addComponent(cinInput)
                         .addComponent(prenomInput)
                         .addComponent(docId, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE))))
-            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addGap(6, 15, Short.MAX_VALUE)
             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(layout.createSequentialGroup()
                     .addComponent(updateUserImg)
-                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 234, Short.MAX_VALUE)
                     .addComponent(homeBtn1)
                     .addContainerGap())
                 .addGroup(layout.createSequentialGroup()
@@ -214,21 +220,21 @@ String selectedCriteria="nom";
                                     .addComponent(adrInput, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE)))))
                     .addGap(57, 57, 57))))
         .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-            .addContainerGap(63, Short.MAX_VALUE)
+            .addContainerGap(38, Short.MAX_VALUE)
             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                     .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 560, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGroup(layout.createSequentialGroup()
-                            .addComponent(query, javax.swing.GroupLayout.PREFERRED_SIZE, 71, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(query, javax.swing.GroupLayout.PREFERRED_SIZE, 97, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addGap(18, 18, 18)
                             .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                            .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 535, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 78, javax.swing.GroupLayout.PREFERRED_SIZE)))
                     .addGap(27, 27, 27))
                 .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                     .addComponent(title, javax.swing.GroupLayout.PREFERRED_SIZE, 129, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGap(225, 225, 225))))
+                    .addGap(230, 230, 230))))
     );
     layout.setVerticalGroup(
         layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -258,15 +264,16 @@ String selectedCriteria="nom";
                     .addComponent(telInput, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(telLabel))
                 .addComponent(addSubBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE))
-            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 24, Short.MAX_VALUE)
+            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 19, Short.MAX_VALUE)
             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                .addComponent(jButton2)
+                .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addComponent(query, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addComponent(docId, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addComponent(jLabel1))
             .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-            .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 91, javax.swing.GroupLayout.PREFERRED_SIZE))
+            .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 156, javax.swing.GroupLayout.PREFERRED_SIZE)
+            .addGap(17, 17, 17))
     );
 
     homeBtn1.setOpaque(false);
@@ -286,6 +293,7 @@ String selectedCriteria="nom";
         JOptionPane.showMessageDialog(this,"Tous les champs sont obligatoires.");
         }else{
         new Subscriber(nom,prenom,cin,adresse,Integer.parseInt(tel)).updateUser(id);
+        performSearch();
         docId.setText("");
         prenomInput.setText("");
         nomInput.setText("");

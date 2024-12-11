@@ -102,6 +102,33 @@ public class Documents {
          return docId;
     }      
         
+  
+      public void deleteDocument(String id){
+         Connection conn = null;
+        PreparedStatement statement = null;
+        ResultSet resultSet = null;
+            
+ try {
+            conn = DBConnection.getConnection();
+            statement = conn.prepareStatement("DELETE FROM documents WHERE id = ?");
+            statement.setString(1,id);
+            statement.executeUpdate();      
+  
+        } catch (SQLException e) {
+            e.printStackTrace();
+            JOptionPane.showMessageDialog(null, "Ereur, y'a des exemplaire pour ce document!");
+        } finally {
+            try {
+                if (resultSet != null) resultSet.close();
+                if (statement != null) statement.close();
+                if (conn != null) conn.close();
+            } catch (SQLException e) {
+                e.printStackTrace();
+            }
+        }
+    
+}
+      
         
  public Object[][] getDocuments(String query, String selectedCriteria) {
     PreparedStatement statement = null;

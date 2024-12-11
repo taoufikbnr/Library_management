@@ -24,6 +24,7 @@ String selectedCriteria="nom";
      */
     public UpdatePretUI() {
         initComponents();
+        setIconImage(Toolkit.getDefaultToolkit().getImage(getClass().getResource("rt_icon.png")));
         setLocationRelativeTo(null);
         performSearch();
     }
@@ -49,26 +50,31 @@ String selectedCriteria="nom";
         jComboBox1 = new javax.swing.JComboBox<>();
         query = new javax.swing.JTextField();
         title = new javax.swing.JLabel();
+        numExemplaire = new javax.swing.JTextField();
+        nomLabel1 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("RT | Enregistrer Retour Prêt");
+        setResizable(false);
 
-        addSubBtn.setText("Enregistrer Retour");
         addSubBtn.setBackground(new java.awt.Color(0, 153, 51));
-        addSubBtn.setFont(new java.awt.Font("Segoe UI", 2, 14)); // NOI18N
+        addSubBtn.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         addSubBtn.setForeground(new java.awt.Color(255, 255, 255));
+        addSubBtn.setText("Enregistrer Retour");
         addSubBtn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 addSubBtnActionPerformed(evt);
             }
         });
 
-        nomLabel.setText("ID prêt");
+        nomLabel.setText("Exemplaire");
 
         updateUserImg.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/update pret.png"))); // NOI18N
 
-        homeBtn1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/home_icon.png"))); // NOI18N
+        pretIdInput.setEditable(false);
+
         homeBtn1.setBackground(new Color(0, 0, 0, 0));
+        homeBtn1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/home_icon.png"))); // NOI18N
         homeBtn1.setBorder(null);
         homeBtn1.setBorderPainted(false);
         homeBtn1.setFocusPainted(false);
@@ -79,9 +85,9 @@ String selectedCriteria="nom";
             }
         });
 
+        jButton1.setBackground(new Color(0, 0, 0, 0));
         jButton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/return_icon.png"))); // NOI18N
         jButton1.setAlignmentY(0.0F);
-        jButton1.setBackground(new Color(0, 0, 0, 0));
         jButton1.setBorderPainted(false);
         jButton1.setFocusPainted(false);
         jButton1.setFocusable(false);
@@ -121,6 +127,7 @@ String selectedCriteria="nom";
 
     jButton2.setText("Rechercher");
     jButton2.setMargin(new java.awt.Insets(0, 0, 0, 0));
+    jButton2.setPreferredSize(new java.awt.Dimension(61, 27));
     jButton2.addActionListener(new java.awt.event.ActionListener() {
         public void actionPerformed(java.awt.event.ActionEvent evt) {
             jButton2ActionPerformed(evt);
@@ -128,59 +135,79 @@ String selectedCriteria="nom";
     });
 
     jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "cin" }));
+    jComboBox1.setPreferredSize(new java.awt.Dimension(72, 27));
     jComboBox1.addActionListener(new java.awt.event.ActionListener() {
         public void actionPerformed(java.awt.event.ActionEvent evt) {
             jComboBox1ActionPerformed(evt);
         }
     });
 
+    query.setPreferredSize(new java.awt.Dimension(64, 27));
     query.addActionListener(new java.awt.event.ActionListener() {
         public void actionPerformed(java.awt.event.ActionEvent evt) {
             queryActionPerformed(evt);
         }
     });
 
+    title.setFont(new java.awt.Font("sansserif", 1, 12)); // NOI18N
     title.setText("Enregistrer Retour Pret");
-    title.setFont(new java.awt.Font("sansserif", 3, 12)); // NOI18N
+
+    numExemplaire.setEditable(false);
+    numExemplaire.addActionListener(new java.awt.event.ActionListener() {
+        public void actionPerformed(java.awt.event.ActionEvent evt) {
+            numExemplaireActionPerformed(evt);
+        }
+    });
+
+    nomLabel1.setText("ID prêt");
 
     javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
     getContentPane().setLayout(layout);
     layout.setHorizontalGroup(
         layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-        .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-            .addContainerGap(244, Short.MAX_VALUE)
+        .addGroup(layout.createSequentialGroup()
+            .addContainerGap()
             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                    .addComponent(title, javax.swing.GroupLayout.PREFERRED_SIZE, 151, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGap(242, 242, 242))
-                .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                    .addComponent(query, javax.swing.GroupLayout.PREFERRED_SIZE, 71, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGap(18, 18, 18)
-                    .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                    .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 82, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addContainerGap())))
-        .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                .addGroup(layout.createSequentialGroup()
-                    .addContainerGap()
-                    .addComponent(jButton1)
-                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addGap(0, 250, Short.MAX_VALUE)
                     .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                         .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                            .addComponent(nomLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 46, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGap(18, 18, 18)
-                            .addComponent(pretIdInput, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(title, javax.swing.GroupLayout.PREFERRED_SIZE, 151, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGap(230, 230, 230))
                         .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                            .addComponent(updateUserImg)
-                            .addGap(75, 75, 75))))
-                .addGroup(layout.createSequentialGroup()
-                    .addGap(0, 0, Short.MAX_VALUE)
-                    .addComponent(addSubBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE)))
-            .addGap(167, 167, 167)
-            .addComponent(homeBtn1)
-            .addContainerGap())
-        .addComponent(jScrollPane1, javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                .addComponent(addSubBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGroup(layout.createSequentialGroup()
+                                    .addComponent(query, javax.swing.GroupLayout.PREFERRED_SIZE, 164, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                    .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, 94, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                    .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 97, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                            .addContainerGap())))
+                .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                        .addComponent(jScrollPane1)
+                        .addGroup(layout.createSequentialGroup()
+                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                .addGroup(layout.createSequentialGroup()
+                                    .addComponent(jButton1)
+                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 251, Short.MAX_VALUE)
+                                    .addComponent(updateUserImg)
+                                    .addGap(75, 75, 75))
+                                .addGroup(layout.createSequentialGroup()
+                                    .addGap(0, 0, Short.MAX_VALUE)
+                                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                                        .addGroup(layout.createSequentialGroup()
+                                            .addComponent(nomLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 69, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                            .addComponent(numExemplaire, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                        .addGroup(layout.createSequentialGroup()
+                                            .addComponent(nomLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                            .addComponent(pretIdInput, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE)))))
+                            .addGap(167, 167, 167)
+                            .addComponent(homeBtn1)))
+                    .addContainerGap())))
     );
     layout.setVerticalGroup(
         layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -195,16 +222,21 @@ String selectedCriteria="nom";
             .addGap(44, 44, 44)
             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                 .addComponent(pretIdInput, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addComponent(nomLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE))
-            .addGap(18, 18, 18)
-            .addComponent(addSubBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
-            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 44, Short.MAX_VALUE)
+                .addComponent(nomLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE))
+            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                .addComponent(jButton2)
+                .addComponent(numExemplaire, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(nomLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE))
+            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 44, Short.MAX_VALUE)
+            .addComponent(addSubBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
+            .addGap(18, 18, 18)
+            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addComponent(query, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-            .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 91, javax.swing.GroupLayout.PREFERRED_SIZE))
+            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+            .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 147, javax.swing.GroupLayout.PREFERRED_SIZE)
+            .addGap(14, 14, 14))
     );
 
     homeBtn1.setOpaque(false);
@@ -214,13 +246,17 @@ String selectedCriteria="nom";
 
     private void addSubBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addSubBtnActionPerformed
         String id = pretIdInput.getText();
+        String numEx = numExemplaire.getText();
         
        if(id.isEmpty()){
         JOptionPane.showMessageDialog(this,"Veuillez selection un prêt.");
         }else{
             try {
                 new Pret().updatePret(Integer.parseInt(id));
+                new Exemplaires().setStatut("disponible", Integer.parseInt(numEx));
+
                 pretIdInput.setText("");
+                performSearch();
                 
                 JOptionPane.showMessageDialog(this,"Prêt enregistré");
             } catch (ParseException ex) {
@@ -248,6 +284,8 @@ String selectedCriteria="nom";
         Object id = model.getValueAt(selectedRow, 0);
 
         pretIdInput.setText((String)id);
+        Object numEx = model.getValueAt(selectedRow, 2);
+        numExemplaire.setText((String)numEx);
 
         
 
@@ -264,6 +302,10 @@ String selectedCriteria="nom";
     private void queryActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_queryActionPerformed
         performSearch();
     }//GEN-LAST:event_queryActionPerformed
+
+    private void numExemplaireActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_numExemplaireActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_numExemplaireActionPerformed
     private void performSearch() {
         String queryStr = query.getText();
        
@@ -277,7 +319,7 @@ String selectedCriteria="nom";
     }
         pretTable.setModel(new javax.swing.table.DefaultTableModel(
             tableData,
-            new String[]{"Id","CIN","Date pret","Date Retour"}
+            new String[]{"Id","CIN","Exemplaire","Date pret","Date Retour"}
                 
         ));
                 TableColumnModel columnModel = pretTable.getColumnModel();
@@ -295,6 +337,8 @@ String selectedCriteria="nom";
     private javax.swing.JComboBox<String> jComboBox1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JLabel nomLabel;
+    private javax.swing.JLabel nomLabel1;
+    private javax.swing.JTextField numExemplaire;
     private javax.swing.JTextField pretIdInput;
     private javax.swing.JTable pretTable;
     private javax.swing.JTextField query;
