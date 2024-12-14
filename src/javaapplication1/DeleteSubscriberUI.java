@@ -235,31 +235,36 @@ Object[][] tableData = null;
     }//GEN-LAST:event_docTableMouseClicked
 
     private void deleteBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_deleteBtnActionPerformed
-            if(docIdInput.getText().isEmpty()){
-                JOptionPane.showMessageDialog(this,"Id abonné est vide.","Alert",JOptionPane.WARNING_MESSAGE);     
-                return;
-            }
+        if(docIdInput.getText().isEmpty()){
+            JOptionPane.showMessageDialog(this,"Id abonné est vide.","Alert",JOptionPane.WARNING_MESSAGE);     
+            return;
+        }
         int response = JOptionPane.showConfirmDialog(
-        this,
-        "Etes-vous sûr de vouloir supprimer cet abonné?", // message
-        "Confirmer Suppression", // title
+            this,
+            "Etes-vous sûr de vouloir supprimer cet abonné?", // message
+            "Confirmer Suppression", // title
+            JOptionPane.YES_NO_OPTION, 
+            JOptionPane.WARNING_MESSAGE 
+            );
+            
+            if (response == JOptionPane.YES_OPTION) {
+                
+                int response2 = JOptionPane.showConfirmDialog(
+                    this,
+                    "Tous les prêts de cet abonné seront supprimés", // message
+                    "Confirmer Suppression", // title
         JOptionPane.YES_NO_OPTION, 
         JOptionPane.WARNING_MESSAGE 
-    );
+        );
+        if (response2 == JOptionPane.YES_OPTION) {
+            String subId = docIdInput.getText();
+            if(verifyUser(subId)){
+                JOptionPane.showMessageDialog(null, "Impossible de supprimer:Abonné a des prêt en cours");
 
-    if (response == JOptionPane.YES_OPTION) {
-        
-          int response2 = JOptionPane.showConfirmDialog(
-        this,
-        "Tous les prêts de cet abonné seront supprimés", // message
-        "Confirmer Suppression", // title
-        JOptionPane.YES_NO_OPTION, 
-        JOptionPane.WARNING_MESSAGE 
-    );
-          if (response2 == JOptionPane.YES_OPTION) {
-        String docId = docIdInput.getText();
-        new Subscriber().deleteUser(docId); 
-        performSearch();
+            }else{
+                new Subscriber().deleteUser(subId); 
+            }
+            performSearch();
     }    }//GEN-LAST:event_deleteBtnActionPerformed
     }
     private void returnBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_returnBtnActionPerformed
@@ -299,7 +304,25 @@ if (tableData != null && tableData.length > 0) {
                 TableColumnModel columnModel = docTable.getColumnModel();
                 columnModel.getColumn(0).setPreferredWidth(5);
     }   
-          
+      public boolean verifyUser(String userId){
+        PreparedStatement  statement;
+        Connection conn = null;
+        ResultSet  resultSet= null;
+        boolean havePret=false;
+        try {
+            conn = DBConnection.getConnection();
+
+            statement = conn.prepareStatement("SELECT * FROM pret WHERE subscriber_id=? AND dateRetour IS NULL ");
+            statement.setString(1, userId);
+            resultSet = statement.executeQuery();
+            if(resultSet.next()){
+                havePret=true;
+            }
+        } catch (Exception e) {
+            // TODO: handle exception
+        }
+        return havePret;
+      }    
     /**
      * @param args the command line arguments
      */
