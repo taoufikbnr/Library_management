@@ -1,0 +1,53 @@
+
+
+Version:	3.50
+CmdLine:	C:\Users\ramzi\Downloads\code_improvedUI\LibraryManagement_Taoufik_Ramzi\new.exe --l4j-debug
+JNI:		No
+WOW64:		Yes
+Working dir:	C:\Users\ramzi\Downloads\code_improvedUI\LibraryManagement_Taoufik_Ramzi\.
+Requires JDK:	Yes
+Requires 64-Bit: No
+Java min ver:	1.000.001
+Java max ver:	
+Substitute:	JAVA_HOME = 
+Substitute:	PATH = C:\Python312\Scripts\;C:\Python312\;C:\Program Files\Common Files\Oracle\Java\javapath;C:\Program Files (x86)\Common Files\Oracle\Java\java8path;C:\Program Files (x86)\Common Files\Oracle\Java\javapath;C:\windows\system32;C:\windows;C:\windows\System32\Wbem;C:\windows\System32\WindowsPowerShell\v1.0\;C:\windows\System32\OpenSSH\;C:\Program Files\Git\cmd;C:\Program Files\Docker\Docker\resources\bin;C:\Program Files\WireGuard\;C:\xampp\php;C:\ProgramData\ComposerSetup\bin;C:\Program Files\nodejs\;C:\ProgramData\chocolatey\bin;C:\Program Files\MATLAB\R2024a\runtime\win64;C:\Program Files\MATLAB\R2024a\bin;C:\Program Files (x86)\Inno Setup 6;C:\Users\ramzi\AppData\Local\Microsoft\WindowsApps;C:\Users\ramzi\AppData\Local\Programs\Microsoft VS Code\bin;C:\Users\ramzi\AppData\Roaming\Composer\vendor\bin;C:\Users\ramzi\AppData\Roaming\npm;C:\Program Files\Java\jre1.8.0_431\bin
+JRE paths:	;C:\Python312\Scripts\;C:\Python312\;C:\Program Files\Common Files\Oracle\Java\javapath;C:\Program Files (x86)\Common Files\Oracle\Java\java8path;C:\Program Files (x86)\Common Files\Oracle\Java\javapath;C:\windows\system32;C:\windows;C:\windows\System32\Wbem;C:\windows\System32\WindowsPowerShell\v1.0\;C:\windows\System32\OpenSSH\;C:\Program Files\Git\cmd;C:\Program Files\Docker\Docker\resources\bin;C:\Program Files\WireGuard\;C:\xampp\php;C:\ProgramData\ComposerSetup\bin;C:\Program Files\nodejs\;C:\ProgramData\chocolatey\bin;C:\Program Files\MATLAB\R2024a\runtime\win64;C:\Program Files\MATLAB\R2024a\bin;C:\Program Files (x86)\Inno Setup 6;C:\Users\ramzi\AppData\Local\Microsoft\WindowsApps;C:\Users\ramzi\AppData\Local\Programs\Microsoft VS Code\bin;C:\Users\ramzi\AppData\Roaming\Composer\vendor\bin;C:\Users\ramzi\AppData\Roaming\npm;C:\Program Files\Java\jre1.8.0_431\bin
+Check launcher:	C:\Python312\Scripts\bin\javaw.exe (not found)
+Check launcher:	C:\Python312\bin\javaw.exe (not found)
+Check launcher:	C:\Program Files\Common Files\Oracle\Java\javapath\bin\javaw.exe (not found)
+Check launcher:	C:\Program Files (x86)\Common Files\Oracle\Java\java8path\bin\javaw.exe (not found)
+Check launcher:	C:\Program Files (x86)\Common Files\Oracle\Java\javapath\bin\javaw.exe (not found)
+Check launcher:	C:\windows\system32\bin\javaw.exe (not found)
+Check launcher:	C:\windows\bin\javaw.exe (not found)
+Check launcher:	C:\windows\System32\Wbem\bin\javaw.exe (not found)
+Check launcher:	C:\windows\System32\WindowsPowerShell\v1.0\bin\javaw.exe (not found)
+Check launcher:	C:\windows\System32\OpenSSH\bin\javaw.exe (not found)
+Check launcher:	C:\Program Files\Git\cmd\bin\javaw.exe (not found)
+Check launcher:	C:\Program Files\Docker\Docker\resources\bin\javaw.exe (not found)
+Check launcher:	C:\Program Files\WireGuard\bin\javaw.exe (not found)
+Check launcher:	C:\xampp\php\bin\javaw.exe (not found)
+Check launcher:	C:\ProgramData\ComposerSetup\bin\javaw.exe (not found)
+Check launcher:	C:\Program Files\nodejs\bin\javaw.exe (not found)
+Check launcher:	C:\ProgramData\chocolatey\bin\javaw.exe (not found)
+Check launcher:	C:\Program Files\MATLAB\R2024a\runtime\win64\bin\javaw.exe (not found)
+Check launcher:	C:\Program Files\MATLAB\R2024a\bin\javaw.exe (not found)
+Check launcher:	C:\Program Files (x86)\Inno Setup 6\bin\javaw.exe (not found)
+Check launcher:	C:\Users\ramzi\AppData\Local\Microsoft\WindowsApps\bin\javaw.exe (not found)
+Check launcher:	C:\Users\ramzi\AppData\Local\Programs\Microsoft VS Code\bin\javaw.exe (not found)
+Check launcher:	C:\Users\ramzi\AppData\Roaming\Composer\vendor\bin\javaw.exe (not found)
+Check launcher:	C:\Users\ramzi\AppData\Roaming\npm\bin\javaw.exe (not found)
+Check launcher:	C:\Program Files\Java\jre1.8.0_431\bin\javaw.exe (OK)
+Check javac:	C:\Program Files\Java\jre1.8.0_431\bin\javac.exe (not found)
+64-bit search:	SOFTWARE\JavaSoft\Java Development Kit...
+32-bit search:	SOFTWARE\JavaSoft\Java Development Kit...
+64-bit search:	SOFTWARE\JavaSoft\JDK...
+Check:		SOFTWARE\JavaSoft\JDK\17.0.12
+Version string: 1.017.000_012 / 64-Bit (OK)
+Check launcher:	C:\Program Files\Java\jdk-17\bin\javaw.exe (OK)
+Check javac:	C:\Program Files\Java\jdk-17\bin\javac.exe (OK)
+Match:		1.017.000_012
+Runtime used:	1.017.000_012 (64-bit)
+Launcher:	C:\Program Files\Java\jdk-17\bin\javaw.exe
+Launcher args:	-jar "C:\Users\ramzi\Downloads\code_improvedUI\LibraryManagement_Taoufik_Ramzi\new.exe"
+Args length:	87/32768 chars
+Exit code:	0

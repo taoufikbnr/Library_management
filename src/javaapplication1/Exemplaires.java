@@ -33,7 +33,7 @@ public class Exemplaires {
         PreparedStatement statement=null;
         try {
             conn=DBConnection.getConnection();
-            statement = conn.prepareStatement("INSERT INTO exemplaires (exemplaire_id,etagere_id,statut) VALUES (?,?,?)");
+            statement = conn.prepareStatement("INSERT INTO exemplaires (document_id,etagere_id,statut) VALUES (?,?,?)");
             statement.setInt(1, this.documentId);
             statement.setInt(2, this.etagereId);
             statement.setString(3, this.statut);
@@ -59,7 +59,7 @@ public class Exemplaires {
              "INNER JOIN exemplaires e ON d.id = e.document_id " + 
              "LEFT JOIN etageres et ON et.id = e.etagere_id " + 
              "LEFT JOIN placards pl ON pl.numPl = et.placard_id " +  
-             "WHERE (d.id = ? OR d.cote=? OR d.titre LIKE ?) AND statut='disponible'"; 
+             "WHERE (d.id = ? OR d.cote=? OR d.titre LIKE ?) AND statut='disponible' GROUP BY e.numEx"; 
     }else{
     sql = "SELECT d.id, d.cote, d.titre, d.etat, " +
              "a.nom_auteur, a.prenom_auteur, " +
@@ -70,7 +70,7 @@ public class Exemplaires {
              "INNER JOIN exemplaires e ON d.id = e.document_id " + 
              "LEFT JOIN etageres et ON et.id = e.etagere_id " + 
              "LEFT JOIN placards pl ON pl.numPl = et.placard_id " +  
-             "WHERE (d.id = ? OR d.cote=? OR d.titre LIKE ?)"; 
+             "WHERE (d.id = ? OR d.cote=? OR d.titre LIKE ?) GROUP BY e.numEx"; 
     }
    
 
@@ -128,7 +128,7 @@ public class Exemplaires {
         try {
             
              conn = DBConnection.getConnection();
-        statement = conn.prepareStatement("UPDATE exemplaires SET  statut = ? WHERE numEx = ?");
+        statement = conn.prepareStatement("UPDATE exemplaires SET statut = ? WHERE numEx = ?");
         statement.setString(1, statut);
         statement.setInt(2, numEx);
         statement.executeUpdate();

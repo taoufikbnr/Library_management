@@ -1,0 +1,12 @@
+SYSTEME DE GESTION DE BIBLIOTHEQUE UNIVERSITAIRE
+
+MINI PROPJET - PROGRAMMATION ORIENTEE OBJET
+
+REALISER PAR TAOUFIK BENNOUR & RAMZI BEN ZAID
+
+Une bibliothèque universitaire joue un rôle crucial dans la facilitation de l'accès aux ressources
+Académiques pour les étudiants, enseignants, et chercheurs. Avec la croissance exponentielle du
+Nombre d'ouvrages et de ressources numériques, la gestion efficace des bibliothèques devient
+Essentielle. Un système de gestion informatisé permet d'améliorer l'organisation et l'efficacité des
+Opérations courantes telles que l'emprunt, la restitution, ainsi que la consultation des inventaires et
+Des documents.

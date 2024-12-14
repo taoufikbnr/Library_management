@@ -4,6 +4,7 @@
   <Properties>
     <Property name="defaultCloseOperation" type="int" value="3"/>
     <Property name="title" type="java.lang.String" value="RT | Gestion des abonn&#xe9;s"/>
+    <Property name="resizable" type="boolean" value="false"/>
   </Properties>
   <SyntheticProperties>
     <SyntheticProperty name="formSizePolicy" type="int" value="1"/>
@@ -24,10 +25,11 @@
   <Layout>
     <DimensionLayout dim="0">
       <Group type="103" groupAlignment="0" attributes="0">
-          <Group type="102" attributes="0">
+          <Group type="102" alignment="1" attributes="0">
               <EmptySpace pref="42" max="32767" attributes="0"/>
               <Group type="103" groupAlignment="0" attributes="0">
-                  <Group type="102" alignment="1" attributes="0">
+                  <Component id="homeBtn" min="-2" pref="45" max="-2" attributes="0"/>
+                  <Group type="102" attributes="0">
                       <Group type="103" groupAlignment="0" attributes="0">
                           <Component id="modifySubBtn" alignment="1" min="-2" pref="207" max="-2" attributes="0"/>
                           <Component id="addSubBtn" alignment="1" min="-2" pref="207" max="-2" attributes="0"/>
@@ -37,39 +39,25 @@
                           <Component id="delSubBtn" min="-2" pref="207" max="-2" attributes="0"/>
                           <Component id="searchSubBtn" min="-2" pref="207" max="-2" attributes="0"/>
                       </Group>
-                      <EmptySpace min="-2" pref="44" max="-2" attributes="0"/>
-                  </Group>
-                  <Group type="102" alignment="1" attributes="0">
-                      <Component id="jLabel1" min="-2" pref="213" max="-2" attributes="0"/>
-                      <EmptySpace min="-2" pref="109" max="-2" attributes="0"/>
-                      <Component id="homeBtn" min="-2" pref="45" max="-2" attributes="0"/>
                   </Group>
               </Group>
+              <EmptySpace min="-2" pref="44" max="-2" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
     <DimensionLayout dim="1">
       <Group type="103" groupAlignment="0" attributes="0">
           <Group type="102" alignment="0" attributes="0">
+              <Component id="homeBtn" min="-2" pref="52" max="-2" attributes="0"/>
+              <EmptySpace pref="40" max="32767" attributes="0"/>
               <Group type="103" groupAlignment="0" attributes="0">
-                  <Group type="102" alignment="1" attributes="0">
-                      <EmptySpace pref="8" max="32767" attributes="0"/>
-                      <Component id="jLabel1" min="-2" max="-2" attributes="0"/>
-                  </Group>
-                  <Group type="102" attributes="0">
-                      <Component id="homeBtn" min="-2" pref="52" max="-2" attributes="0"/>
-                      <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
-                  </Group>
-              </Group>
-              <EmptySpace max="-2" attributes="0"/>
-              <Group type="103" groupAlignment="3" attributes="0">
-                  <Component id="searchSubBtn" alignment="3" min="-2" pref="130" max="-2" attributes="0"/>
-                  <Component id="addSubBtn" alignment="3" min="-2" pref="130" max="-2" attributes="0"/>
+                  <Component id="addSubBtn" min="-2" pref="100" max="-2" attributes="0"/>
+                  <Component id="searchSubBtn" min="-2" pref="100" max="-2" attributes="0"/>
               </Group>
               <EmptySpace type="separate" max="-2" attributes="0"/>
-              <Group type="103" groupAlignment="3" attributes="0">
-                  <Component id="delSubBtn" alignment="3" min="-2" pref="130" max="-2" attributes="0"/>
-                  <Component id="modifySubBtn" alignment="3" min="-2" pref="130" max="-2" attributes="0"/>
+              <Group type="103" groupAlignment="1" attributes="0">
+                  <Component id="delSubBtn" min="-2" pref="96" max="-2" attributes="0"/>
+                  <Component id="modifySubBtn" min="-2" pref="96" max="-2" attributes="0"/>
               </Group>
               <EmptySpace min="-2" pref="30" max="-2" attributes="0"/>
           </Group>
@@ -101,6 +89,9 @@
         </Property>
         <Property name="text" type="java.lang.String" value="Modifier Abonn&#xe9;"/>
         <Property name="focusPainted" type="boolean" value="false"/>
+        <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
+          <Dimension value="[186, 55]"/>
+        </Property>
       </Properties>
       <Events>
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="modifySubBtnActionPerformed"/>
@@ -115,6 +106,9 @@
           <Image iconType="3" name="/images/delete user-icon.png"/>
         </Property>
         <Property name="text" type="java.lang.String" value="Supprimer Abonn&#xe9;"/>
+        <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
+          <Dimension value="[186, 55]"/>
+        </Property>
       </Properties>
       <Events>
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="delSubBtnActionPerformed"/>
@@ -133,14 +127,6 @@
       <Events>
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="searchSubBtnActionPerformed"/>
       </Events>
-    </Component>
-    <Component class="javax.swing.JLabel" name="jLabel1">
-      <Properties>
-        <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-          <Image iconType="3" name="/images/gerer abonne.png"/>
-        </Property>
-        <Property name="text" type="java.lang.String" value="G&#xe9;rer Abonn&#xe9;"/>
-      </Properties>
     </Component>
     <Component class="javax.swing.JButton" name="homeBtn">
       <Properties>

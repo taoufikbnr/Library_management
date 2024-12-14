@@ -51,8 +51,9 @@ public class Pret {
            
         try {
             conn=DBConnection.getConnection();
-            statement = conn.prepareStatement("SELECT p.numPr,p.created_at,p.dateRetour,s.cin FROM pret p INNER JOIN subscribers s"
+            statement = conn.prepareStatement("SELECT p.numPr,p.created_at,p.dateRetour,s.cin,ex.numEx FROM pret p INNER JOIN subscribers s"
                     + " ON p.subscriber_id = s.id"
+                    + " JOIN Exemplaires ex ON p.exemplaire_id = ex.numEx"
                     + " WHERE cin LIKE ? AND dateRetour IS NULL");
             statement.setString(1, "%"+query+"%");
             resultSet = statement.executeQuery();
@@ -61,10 +62,11 @@ public class Pret {
   
         while (resultSet.next()) {
             String numPr = resultSet.getString("numPr");
+            String exemplaire = resultSet.getString("numEx");
             String cin = resultSet.getString("cin");
             String dateR = resultSet.getString("dateRetour");
             String date = resultSet.getString("created_at");
-            data.add(new Object[]{numPr,cin, date,dateR});
+            data.add(new Object[]{numPr,cin,exemplaire,date,dateR});
         }
 
         tableData = data.toArray(new Object[0][]);
@@ -85,6 +87,7 @@ public class Pret {
             statement.setDate(1, this.dateRetour);
             statement.setInt(2, numPr);
             statement.executeUpdate();
+                   
         } catch (SQLException e) {
             System.out.println(e.getMessage());
         }     
